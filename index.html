@@ -3074,12 +3074,12 @@ function GroupSection({
     const rep = sorted.find(r => maskName(r.name).replace(/ /g, "\n") === payload.value);
     const cfg = STATUS_CFG[rep?.status] || STATUS_CFG["On Track"];
     return /*#__PURE__*/React.createElement("text", {
-      x: x - 4,
-      y: y + 4,
-      textAnchor: "end",
+      x: x,
+      y: y + 14,
+      textAnchor: "middle",
       fill: cfg.text,
       fontSize: 11
-    }, payload.value.replace(/\n/g, " "));
+    }, payload.value);
   };
   return /*#__PURE__*/React.createElement("div", {
     style: {
@@ -3127,6 +3127,74 @@ function GroupSection({
       alignItems: "flex-start"
     }
   }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: Math.max(260, sorted.length * 60),
+      flexShrink: 0,
+      background: "#0d1e32",
+      border: "1px solid #1a3550",
+      borderRadius: 6,
+      padding: "12px 12px 8px"
+    }
+  }, /*#__PURE__*/React.createElement(ResponsiveContainer, {
+    width: "100%",
+    height: 180
+  }, /*#__PURE__*/React.createElement(BarChart, {
+    cursor: false,
+    data: chartData,
+    margin: {
+      top: 4,
+      right: 40,
+      bottom: 24,
+      left: -10
+    }
+  }, /*#__PURE__*/React.createElement(CartesianGrid, {
+    vertical: false,
+    stroke: "#0f2438"
+  }), /*#__PURE__*/React.createElement(XAxis, {
+    dataKey: "name",
+    tick: /*#__PURE__*/React.createElement(CustomTick, null),
+    axisLine: false,
+    tickLine: false
+  }), /*#__PURE__*/React.createElement(YAxis, {
+    tick: {
+      fill: "#a8c4d8",
+      fontSize: 11
+    },
+    axisLine: false,
+    tickLine: false
+  }), /*#__PURE__*/React.createElement(Tooltip, {
+    contentStyle: {
+      background: "#0a1525",
+      border: "1px solid #22d3ee44",
+      fontSize: 14,
+      color: "#e2e8f0"
+    },
+    labelStyle: {
+      color: "#7ec8e3",
+      fontWeight: 700
+    },
+    formatter: (v, n, p) => [`${v} pts`, p.payload.fullName]
+  }), /*#__PURE__*/React.createElement(ReferenceLine, {
+    y: avg,
+    stroke: "#ef4444",
+    strokeDasharray: "4 2",
+    strokeWidth: 1.5,
+    label: {
+      value: `AVG: ${avg}`,
+      position: "right",
+      fill: "#ef4444",
+      fontSize: 12,
+      fontWeight: 700
+    }
+  }), /*#__PURE__*/React.createElement(Bar, {
+    activeBar: false,
+    dataKey: "pts",
+    radius: [3, 3, 0, 0],
+    maxBarSize: 44
+  }, chartData.map((d, i) => /*#__PURE__*/React.createElement(Cell, {
+    key: i,
+    fill: d.above ? group.color : `${group.color}44`
+  })))))), /*#__PURE__*/React.createElement("div", {
     style: {
       flex: 1,
       overflowX: "auto"
@@ -3247,87 +3315,7 @@ function GroupSection({
         fontSize: 13
       }
     }, r.avgMtg || 0, "%"));
-  })))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: 220,
-      flexShrink: 0,
-      background: "#0d1e32",
-      border: "1px solid #1a3550",
-      borderRadius: 6,
-      padding: "12px 8px 4px"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      color: "#4a7fa8",
-      fontSize: 11,
-      letterSpacing: 1,
-      textAlign: "center",
-      marginBottom: 4
-    }
-  }, "FEB PTS"), /*#__PURE__*/React.createElement(ResponsiveContainer, {
-    width: "100%",
-    height: Math.max(120, sorted.length * 36)
-  }, /*#__PURE__*/React.createElement(BarChart, {
-    cursor: false,
-    data: chartData,
-    margin: {
-      top: 4,
-      right: 50,
-      bottom: 4,
-      left: -10
-    },
-    layout: "vertical"
-  }, /*#__PURE__*/React.createElement(CartesianGrid, {
-    horizontal: false,
-    stroke: "#0f2438"
-  }), /*#__PURE__*/React.createElement(XAxis, {
-    type: "number",
-    tick: {
-      fill: "#a8c4d8",
-      fontSize: 11
-    },
-    axisLine: false,
-    tickLine: false
-  }), /*#__PURE__*/React.createElement(YAxis, {
-    type: "category",
-    dataKey: "name",
-    tick: /*#__PURE__*/React.createElement(CustomTick, null),
-    axisLine: false,
-    tickLine: false,
-    width: 80
-  }), /*#__PURE__*/React.createElement(Tooltip, {
-    contentStyle: {
-      background: "#0a1525",
-      border: "1px solid #22d3ee44",
-      fontSize: 14,
-      color: "#e2e8f0"
-    },
-    labelStyle: {
-      color: "#7ec8e3",
-      fontWeight: 700
-    },
-    formatter: (v, n, p) => [`${v} pts`, p.payload.fullName]
-  }), /*#__PURE__*/React.createElement(ReferenceLine, {
-    x: avg,
-    stroke: "#ef4444",
-    strokeDasharray: "4 2",
-    strokeWidth: 1.5,
-    label: {
-      value: `AVG: ${avg}`,
-      position: "right",
-      fill: "#ef4444",
-      fontSize: 12,
-      fontWeight: 700
-    }
-  }), /*#__PURE__*/React.createElement(Bar, {
-    activeBar: false,
-    dataKey: "pts",
-    radius: [0, 3, 3, 0],
-    maxBarSize: 22
-  }, chartData.map((d, i) => /*#__PURE__*/React.createElement(Cell, {
-    key: i,
-    fill: d.above ? group.color : `${group.color}44`
-  }))))))));
+  }))))));
 }
 function LeaderboardView({
   onSel,

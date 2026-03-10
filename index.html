@@ -54697,7 +54697,7 @@
         const value = data[key];
         return value !== void 0 ? { key, value } : null;
       },
-      async set(key, value) {
+      async save(key, value) {
         const data = await load();
         data[key] = value;
         await persist();
@@ -54883,7 +54883,7 @@
       const next = __spreadProps(__spreadValues({}, meetings), { [repName]: data });
       setMeetingsState(next);
       try {
-        await storage.set(STORAGE_KEY, JSON.stringify(next));
+        await storage.save(STORAGE_KEY, JSON.stringify(next));
       } catch (e) {
       }
     };
@@ -55576,7 +55576,7 @@
       const next = __spreadProps(__spreadValues({}, meetings), { [repName]: data });
       setMeetingsState(next);
       try {
-        await storage.set(MEETING_STORAGE_KEY, JSON.stringify(next));
+        await storage.save(MEETING_STORAGE_KEY, JSON.stringify(next));
       } catch (e) {
       }
     };
@@ -55607,7 +55607,7 @@
       const next = __spreadProps(__spreadValues({}, goals), { [repName]: g });
       setGoals(next);
       try {
-        await storage.set(GOALS_STORAGE_KEY, JSON.stringify(next));
+        await storage.save(GOALS_STORAGE_KEY, JSON.stringify(next));
       } catch (e) {
       }
     };
@@ -56274,7 +56274,7 @@
     const savePending = async (next) => {
       setPending(next);
       try {
-        await storage.set(DATA_STORAGE_KEY, JSON.stringify(next));
+        await storage.save(DATA_STORAGE_KEY, JSON.stringify(next));
       } catch (e) {
       }
     };
@@ -56844,7 +56844,7 @@
     const saveBm = async (next) => {
       setBm(next);
       try {
-        await storage.set(BENCHMARKS_STORAGE_KEY, JSON.stringify(next));
+        await storage.save(BENCHMARKS_STORAGE_KEY, JSON.stringify(next));
       } catch (e) {
       }
     };
@@ -56861,7 +56861,7 @@
     const saveRoster = async (next) => {
       setRoster(next);
       try {
-        await storage.set(ROSTER_STORAGE_KEY, JSON.stringify(next));
+        await storage.save(ROSTER_STORAGE_KEY, JSON.stringify(next));
       } catch (e) {
       }
     };
@@ -56883,7 +56883,7 @@
     const saveDeptData = async (next) => {
       setDeptData(next);
       try {
-        await storage.set(DEPTHEAD_KEY, JSON.stringify(next));
+        await storage.save(DEPTHEAD_KEY, JSON.stringify(next));
       } catch (e) {
       }
     };
@@ -56900,7 +56900,7 @@
     const saveProducts = async (next) => {
       setProducts(next);
       try {
-        await storage.set(PRODUCTS_KEY, JSON.stringify(next));
+        await storage.save(PRODUCTS_KEY, JSON.stringify(next));
       } catch (e) {
       }
     };

@@ -13337,6 +13337,8 @@ function AppInner() {
   };
   // ──────────────────────────────────────────────────────────────────────────
   const [sel, setSel] = useState(null);
+  const [view, setView] = useState("board");
+  const [statusFilt, setStatusFilt] = useState("all");
   const [meetingMode, setMeetingMode] = useState(false);
   const [focusRep, setFocusRep] = useState(null);
   // Stable alphabetical anon map: "Rep 01" … "Rep 35"

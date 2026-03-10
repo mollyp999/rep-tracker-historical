@@ -8,19 +8,16 @@
 </head>
 <body>
 <div id="root"></div>
-
-<!-- Load dependencies synchronously so they are available when app runs -->
 <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prop-types@15.8.1/prop-types.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/recharts@2.12.7/umd/Recharts.min.js"></script>
-
 <script>
-// Verify deps loaded before running app
-if (typeof React === 'undefined') { document.getElementById('root').innerHTML = '<div style="color:red;padding:20px">Error: React failed to load</div>'; throw new Error('React not loaded'); }
-if (typeof Recharts === 'undefined') { document.getElementById('root').innerHTML = '<div style="color:red;padding:20px">Error: Recharts failed to load</div>'; throw new Error('Recharts not loaded'); }
+if (typeof React === 'undefined' || typeof Recharts === 'undefined') {
+  document.getElementById('root').innerHTML = '<div style="color:red;padding:40px;font-family:sans-serif"><b>Load error:</b> CDN scripts failed. Try refreshing.</div>';
+  throw new Error('CDN deps not loaded');
+}
 </script>
-
 <script>
 const {
   useState,
@@ -8768,11 +8765,6 @@ function TeamComparisonView({
         fontWeight: active ? 700 : 400
       }
     }, mo, " '", is26 ? "26" : "25");
-  }), mo => "Feb" && /*#__PURE__*/React.createElement("button", {
-    onClick: () => setSelMonth("Feb"),
-    style: {
-      display: "none"
-    }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       width: 1,
@@ -13344,6 +13336,7 @@ function AppInner() {
     } catch (e) {}
   };
   // ──────────────────────────────────────────────────────────────────────────
+  const [sel, setSel] = useState(null);
   const [meetingMode, setMeetingMode] = useState(false);
   const [focusRep, setFocusRep] = useState(null);
   // Stable alphabetical anon map: "Rep 01" … "Rep 35"

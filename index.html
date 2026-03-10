@@ -3327,7 +3327,6 @@ function LeaderboardView({
     dir: "desc"
   });
   const [filt, setFilt] = useState("all");
-  const [productFilt, setProductFilt] = useState("all");
   const [period, setPeriod] = useState("Feb");
   const [open25, setOpen25] = useState(false);
   const [open26, setOpen26] = useState(false);
@@ -3607,17 +3606,6 @@ function LeaderboardView({
   const filtered = useMemo(() => {
     let d = filt === "all" ? active : active.filter(r => r.group === filt);
     if (statusFilt !== "all") d = d.filter(r => getPd(r).status === statusFilt);
-    if (productFilt !== "all") {
-      const MOS_ALL = ["Oct", "Nov", "Dec", "Jan", "Feb"];
-      const moYear = mo => ["Oct", "Nov", "Dec"].includes(mo) ? "2025" : "2026";
-      d = d.filter(r => {
-        return MOS_ALL.some(mo => {
-          const key = `${r.name}::${moYear(mo)}::${mo}`;
-          const d2 = products[key] || {};
-          return (d2[productFilt]?.units || 0) > 0 || (d2[productFilt]?.amount || 0) > 0;
-        });
-      });
-    }
     return [...d].sort((a, b) => {
       const pa = getPd(a),
         pb = getPd(b);
@@ -4505,6 +4493,27 @@ function LeaderboardView({
   }, {
     id: "Feb",
     label: "February"
+  }, {
+    id: "Mar",
+    label: "March"
+  }, {
+    id: "Apr",
+    label: "April"
+  }, {
+    id: "May",
+    label: "May"
+  }, {
+    id: "Jun",
+    label: "June"
+  }, {
+    id: "Jul",
+    label: "July"
+  }, {
+    id: "Aug",
+    label: "August"
+  }, {
+    id: "Sep",
+    label: "September"
   }];
   const FLAT_TABS = [{
     id: "2025",
@@ -4519,7 +4528,9 @@ function LeaderboardView({
     label: "ALL TIME",
     c: "#22d3ee"
   }];
-  const CURRENT_MONTH = "Feb"; // update when March data is added
+  const _mn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const CURRENT_MONTH = _mn[new Date().getMonth()];
+  const CURRENT_YEAR = String(new Date().getFullYear());
   const periodLabel = period === "all" ? "ALL TIME" : period === "2025" ? "2025 YTD" : period === "2026" ? "2026 YTD" : MOS25_OPTS.find(m => m.id === period)?.label || MOS26_OPTS.find(m => m.id === period)?.label || period;
   const is25Mo = MOS25_OPTS.some(m => m.id === period);
   const is26Mo = MOS26_OPTS.some(m => m.id === period);
@@ -4728,43 +4739,6 @@ function LeaderboardView({
       }
     }, k === "all" ? "ALL" : k.toUpperCase());
   }), /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: 1,
-      height: 20,
-      background: "#1a3550",
-      margin: "0 4px"
-    }
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: "#4a7fa8",
-      fontSize: 12,
-      letterSpacing: 1
-    }
-  }, "PRODUCT:"), /*#__PURE__*/React.createElement("button", {
-    onClick: () => setProductFilt("all"),
-    style: {
-      background: productFilt === "all" ? "#22d3ee22" : "#0f2438",
-      border: `1px solid ${productFilt === "all" ? "#22d3ee" : "#1a3550"}`,
-      color: productFilt === "all" ? "#22d3ee" : "#a8c4d8",
-      borderRadius: 4,
-      padding: "3px 10px",
-      fontSize: 14,
-      cursor: "pointer"
-    }
-  }, "ALL"), PRODUCT_TYPES.map(pt => /*#__PURE__*/React.createElement("button", {
-    key: pt.key,
-    onClick: () => setProductFilt(p => p === pt.key ? "all" : pt.key),
-    style: {
-      background: productFilt === pt.key ? `${pt.color}22` : "#0f2438",
-      border: `1px solid ${productFilt === pt.key ? pt.color : "#1a3550"}`,
-      color: productFilt === pt.key ? pt.color : "#a8c4d8",
-      borderRadius: 4,
-      padding: "3px 10px",
-      fontSize: 14,
-      cursor: "pointer",
-      letterSpacing: .5
-    }
-  }, pt.label)), /*#__PURE__*/React.createElement("div", {
     style: {
       marginLeft: "auto",
       position: "relative"
@@ -11494,6 +11468,7 @@ function RosterView() {
     setEditName(rep.name);
     setEditVals({
       active: existing.active !== false,
+      group: existing.group || rep.group,
       endYear: existing.endYear || "2026",
       endMonth: existing.endMonth || "Jan",
       note: existing.note || ""
@@ -11549,7 +11524,8 @@ function RosterView() {
     const isEditing = editName === rep.name;
     const entry = roster[rep.name] || {};
     const totalFunded = rep.mos.reduce((s, m) => s + (m.fundedAmt || 0), 0);
-    const gc = POS_GROUPS.find(p => p.key === rep.group);
+    const effectiveGroup = entry.group || rep.group;
+    const gc = POS_GROUPS.find(p => p.key === effectiveGroup);
     const gc_c = gc?.color || "#9db4c8";
     return /*#__PURE__*/React.createElement("div", {
       style: {
@@ -11593,7 +11569,7 @@ function RosterView() {
         borderRadius: 10,
         letterSpacing: .5
       }
-    }, rep.group), isFmr && entry.endMonth && /*#__PURE__*/React.createElement("span", {
+    }, effectiveGroup), isFmr && entry.endMonth && /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#f87171",
         fontSize: 12,
@@ -11691,7 +11667,7 @@ function RosterView() {
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         display: "grid",
-        gridTemplateColumns: "auto auto 1fr auto",
+        gridTemplateColumns: "auto auto auto 1fr auto",
         gap: 12,
         alignItems: "center",
         flexWrap: "wrap"
@@ -11732,7 +11708,37 @@ function RosterView() {
         cursor: "pointer",
         fontWeight: editVals.active === o.v ? 700 : 400
       }
-    }, o.l)))), !editVals.active && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    }, o.l)))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        color: "#4a7fa8",
+        fontSize: 12,
+        letterSpacing: 1,
+        marginBottom: 4
+      }
+    }, "POSITION"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 4,
+        flexWrap: "wrap"
+      }
+    }, POS_GROUPS.map(g => /*#__PURE__*/React.createElement("button", {
+      key: g.key,
+      onClick: () => setEditVals(p => ({
+        ...p,
+        group: g.key
+      })),
+      style: {
+        background: editVals.group === g.key ? `${g.color}22` : "#06111f",
+        border: `1px solid ${editVals.group === g.key ? g.color : "#1a3550"}`,
+        borderRadius: 4,
+        padding: "4px 8px",
+        color: editVals.group === g.key ? g.color : "#4a7fa8",
+        fontSize: 12,
+        cursor: "pointer",
+        fontWeight: editVals.group === g.key ? 700 : 400,
+        letterSpacing: .3
+      }
+    }, g.key)))), !editVals.active && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
       style: {
         color: "#4a7fa8",
         fontSize: 12,
@@ -12707,16 +12713,85 @@ function ProductMixView() {
   const {
     isActive
   } = React.useContext(RosterCtx);
-  const [period, setPeriod] = useState("Feb");
-  const [year, setYear] = useState("2026");
-  const MOS_ALL = ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"];
-  const moYear = mo => ["Oct", "Nov", "Dec"].includes(mo) ? "2025" : "2026";
+  const _mn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const CURRENT_MONTH = _mn[new Date().getMonth()];
+  const MOS25_OPTS = [{
+    id: "Oct",
+    label: "October"
+  }, {
+    id: "Nov",
+    label: "November"
+  }, {
+    id: "Dec",
+    label: "December"
+  }];
+  const MOS26_OPTS = [{
+    id: "Jan",
+    label: "January"
+  }, {
+    id: "Feb",
+    label: "February"
+  }, {
+    id: "Mar",
+    label: "March"
+  }, {
+    id: "Apr",
+    label: "April"
+  }, {
+    id: "May",
+    label: "May"
+  }, {
+    id: "Jun",
+    label: "June"
+  }, {
+    id: "Jul",
+    label: "July"
+  }, {
+    id: "Aug",
+    label: "August"
+  }, {
+    id: "Sep",
+    label: "September"
+  }];
+  const ALL_MOS_25 = ["Oct", "Nov", "Dec"];
+  const ALL_MOS_26 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"];
+  const MOS_ALL = [...ALL_MOS_25, ...ALL_MOS_26];
+  const moYear = mo => ALL_MOS_25.includes(mo) ? "2025" : "2026";
+  const [period, setPeriod] = useState(CURRENT_MONTH);
+  const [open25, setOpen25] = useState(false);
+  const [open26, setOpen26] = useState(false);
   const makeKey = (name, yr, mo) => `${name}::${yr}::${mo}`;
   const ACTIVE_REPS = ALL.filter(r => isActive(r.name) && !DEPT_HEAD_NAMES.includes(r.name));
+  const is25Mo = MOS25_OPTS.some(m => m.id === period);
+  const is26Mo = MOS26_OPTS.some(m => m.id === period);
+  const periodLabel = period === "all" ? "ALL TIME" : period === "2025" ? "2025 YTD" : period === "2026" ? "2026 YTD" : MOS25_OPTS.find(m => m.id === period)?.label || MOS26_OPTS.find(m => m.id === period)?.label || period;
+
+  // Determine which months to include based on period
+  const activeMos = useMemo(() => {
+    if (period === "all") return MOS_ALL;
+    if (period === "2025") return ALL_MOS_25;
+    if (period === "2026") return ALL_MOS_26;
+    return [period];
+  }, [period]);
+  const tabBtn = (active, color, onClick, children) => /*#__PURE__*/React.createElement("button", {
+    onClick: onClick,
+    style: {
+      background: active ? `${color}22` : "#0a1525",
+      border: `1px solid ${active ? color : "#1a3550"}`,
+      borderRadius: 4,
+      padding: "5px 14px",
+      color: active ? color : "#4a7fa8",
+      fontSize: 15,
+      letterSpacing: .8,
+      cursor: "pointer",
+      fontFamily: "'DM Mono',monospace",
+      whiteSpace: "nowrap",
+      fontWeight: active ? 700 : 400
+    }
+  }, children);
 
   // Build product data for the selected period
   const periodData = useMemo(() => {
-    const mos = period === "all" ? MOS_ALL : [period];
     const repData = ACTIVE_REPS.map(rep => {
       const byProd = {};
       PRODUCT_TYPES.forEach(pt => {
@@ -12725,7 +12800,7 @@ function ProductMixView() {
           amount: 0
         };
       });
-      mos.forEach(mo => {
+      activeMos.forEach(mo => {
         const yr = moYear(mo);
         const key = makeKey(rep.name, yr, mo);
         const d = products[key] || {};
@@ -12745,7 +12820,7 @@ function ProductMixView() {
       };
     }).filter(r => r.totalUnits > 0 || r.totalAmount > 0);
     return repData;
-  }, [products, period, year]);
+  }, [products, activeMos]);
 
   // Team-wide totals per product
   const teamTotals = useMemo(() => {
@@ -12775,7 +12850,12 @@ function ProductMixView() {
     units: teamTotals[pt.key].units
   })).filter(d => d.value > 0);
   const isEmpty = totalAmount === 0 && totalUnits === 0;
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
+    onClick: () => {
+      if (open25) setOpen25(false);
+      if (open26) setOpen26(false);
+    }
+  }, /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       alignItems: "center",
@@ -12813,31 +12893,142 @@ function ProductMixView() {
       borderRadius: 4,
       padding: "3px 10px"
     }
-  }, "Tag deals in Data Entry to populate this view")), /*#__PURE__*/React.createElement("div", {
+  }, "Tag deals in Data Entry to populate this view"))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
+      alignItems: "center",
       gap: 8,
-      alignItems: "center"
+      marginBottom: 16,
+      flexWrap: "wrap"
     }
-  }, /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => {
+      setPeriod(CURRENT_MONTH);
+      setOpen25(false);
+      setOpen26(false);
+    },
     style: {
-      color: "#4a7fa8",
-      fontSize: 13
-    }
-  }, "PERIOD:"), ["Oct", "Nov", "Dec", "Jan", "Feb", "all"].map(p => /*#__PURE__*/React.createElement("button", {
-    key: p,
-    onClick: () => setPeriod(p),
-    style: {
-      background: period === p ? "#34d39922" : "none",
-      border: `1px solid ${period === p ? "#34d399" : "#1a3550"}`,
+      background: period === CURRENT_MONTH ? "#22d3ee22" : "#0a1525",
+      border: `1px solid ${period === CURRENT_MONTH ? "#22d3ee" : "#22d3ee66"}`,
       borderRadius: 4,
-      padding: "4px 10px",
-      color: period === p ? "#34d399" : "#7ec8e3",
-      fontSize: 14,
+      padding: "5px 14px",
+      color: period === CURRENT_MONTH ? "#22d3ee" : "#22d3ee99",
+      fontSize: 15,
+      letterSpacing: .8,
       cursor: "pointer",
+      fontFamily: "'DM Mono',monospace",
+      whiteSpace: "nowrap",
+      fontWeight: 700
+    }
+  }, "CURRENT MONTH"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 1,
+      height: 20,
+      background: "#1a3550",
+      margin: "0 2px"
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "relative"
+    }
+  }, tabBtn(is25Mo, "#7ec8e3", e => {
+    e.stopPropagation();
+    setOpen25(!open25);
+    setOpen26(false);
+  }, /*#__PURE__*/React.createElement("span", null, "2025 ", is25Mo ? `· ${periodLabel}` : "", " ", open25 ? "▲" : "▼")), open25 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      top: "calc(100% + 4px)",
+      left: 0,
+      background: "#0d1e32",
+      border: "1px solid #1e3a5f",
+      borderRadius: 6,
+      zIndex: 99,
+      minWidth: 140,
+      boxShadow: "0 4px 16px rgba(0,0,0,.5)"
+    }
+  }, MOS25_OPTS.map(m => /*#__PURE__*/React.createElement("div", {
+    key: m.id,
+    onClick: e => {
+      e.stopPropagation();
+      setPeriod(m.id);
+      setOpen25(false);
+    },
+    style: {
+      padding: "8px 14px",
+      color: period === m.id ? "#7ec8e3" : "#a8c4d8",
+      background: period === m.id ? "#0a1f35" : "transparent",
+      cursor: "pointer",
+      fontSize: 15,
+      letterSpacing: .8,
       fontFamily: "'DM Mono',monospace"
     }
-  }, p === "all" ? "ALL" : p)))), isEmpty ? /*#__PURE__*/React.createElement("div", {
+  }, m.label)))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "relative"
+    }
+  }, tabBtn(is26Mo, "#7ec8e3", e => {
+    e.stopPropagation();
+    setOpen26(!open26);
+    setOpen25(false);
+  }, /*#__PURE__*/React.createElement("span", null, "2026 ", is26Mo ? `· ${periodLabel}` : "", " ", open26 ? "▲" : "▼")), open26 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      top: "calc(100% + 4px)",
+      left: 0,
+      background: "#0d1e32",
+      border: "1px solid #1e3a5f",
+      borderRadius: 6,
+      zIndex: 99,
+      minWidth: 140,
+      boxShadow: "0 4px 16px rgba(0,0,0,.5)"
+    }
+  }, MOS26_OPTS.map(m => /*#__PURE__*/React.createElement("div", {
+    key: m.id,
+    onClick: e => {
+      e.stopPropagation();
+      setPeriod(m.id);
+      setOpen26(false);
+    },
+    style: {
+      padding: "8px 14px",
+      color: period === m.id ? "#7ec8e3" : "#a8c4d8",
+      background: period === m.id ? "#0a1f35" : "transparent",
+      cursor: "pointer",
+      fontSize: 15,
+      letterSpacing: .8,
+      fontFamily: "'DM Mono',monospace"
+    }
+  }, m.label)))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 1,
+      height: 20,
+      background: "#1a3550",
+      margin: "0 4px"
+    }
+  }), [{
+    id: "2025",
+    label: "2025 YTD",
+    c: "#a78bfa"
+  }, {
+    id: "2026",
+    label: "2026 YTD",
+    c: "#a78bfa"
+  }, {
+    id: "all",
+    label: "ALL TIME",
+    c: "#22d3ee"
+  }].map(t => tabBtn(period === t.id, t.c, () => {
+    setPeriod(t.id);
+    setOpen25(false);
+    setOpen26(false);
+  }, t.label)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: "#4a7fa8",
+      fontSize: 14,
+      marginLeft: 8
+    }
+  }, periodLabel)), isEmpty ? /*#__PURE__*/React.createElement("div", {
     style: {
       textAlign: "center",
       padding: "60px 20px",
@@ -12889,7 +13080,7 @@ function ProductMixView() {
       letterSpacing: 1.5,
       marginBottom: 12
     }
-  }, "TEAM PRODUCT MIX \u2014 ", period === "all" ? "ALL TIME" : period), /*#__PURE__*/React.createElement(ResponsiveContainer, {
+  }, "TEAM PRODUCT MIX \u2014 ", periodLabel), /*#__PURE__*/React.createElement(ResponsiveContainer, {
     width: "100%",
     height: 180
   }, /*#__PURE__*/React.createElement(PieChart, null, /*#__PURE__*/React.createElement(Pie, {

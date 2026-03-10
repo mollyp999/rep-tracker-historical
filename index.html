@@ -786,6 +786,13 @@ const ProductsCtx = React.createContext({
 const ALL_MONTHS_12 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const YEAR_OPTS = ["2024", "2025", "2026", "2027"];
 const STATUS_CFG = {
+  "Exceeding": {
+    bg: "#172554",
+    border: "#1d4ed8",
+    text: "#60a5fa",
+    label: "EXCEEDING",
+    urgency: 0
+  },
   "Promotion Ready": {
     bg: "#052e16",
     border: "#166534",
@@ -814,6 +821,17 @@ const STATUS_CFG = {
     label: "ACT NOW",
     urgency: 3
   }
+};
+
+// Global status calculator used by leaderboard, rep detail, and header counts
+const calcStatus = (totalFunded, numMonths, expMonthly, isMax = false) => {
+  if (!expMonthly) return "On Track";
+  const avgMonthly = numMonths > 0 ? totalFunded / numMonths : totalFunded;
+  const pct = avgMonthly / expMonthly;
+  if (pct >= 1.0) return isMax ? "Exceeding" : "Promotion Ready";
+  if (pct >= 0.75) return "On Track";
+  if (pct >= 0.40) return "Needs Attention";
+  return "Underperforming";
 };
 const RAW = {
   "Chris Mothershed": {
@@ -3082,6 +3100,9 @@ function GroupSection({
     v: "all",
     l: "ALL"
   }, {
+    v: "Exceeding",
+    l: "EXCEEDING"
+  }, {
     v: "Promotion Ready",
     l: "PROMOTE"
   }, {
@@ -3524,16 +3545,10 @@ function LeaderboardView({
   };
 
   // Dynamically compute status from period funded vs expected monthly target
-  const calcStatus = (totalFunded, numMonths, expMonthly) => {
-    if (!expMonthly) return "On Track";
-    const avgMonthly = numMonths > 0 ? totalFunded / numMonths : totalFunded;
-    const pct = avgMonthly / expMonthly;
-    if (pct >= 1.0) return "Promotion Ready";
-    if (pct >= 0.75) return "On Track";
-    if (pct >= 0.40) return "Needs Attention";
-    return "Underperforming";
-  };
+  // Uses global calcStatus — isMax when rep is at their highest possible tier
+
   const getPd = r => {
+    const isMax = r.daysNext === "MAX";
     if (period === "all") return {
       funded: r.totalFunded,
       febFunded: r.feb?.fundedAmt || 0,
@@ -3556,7 +3571,7 @@ function LeaderboardView({
         apps: ms.reduce((s, m) => s + (m.sent || 0), 0),
         units: ms.reduce((s, m) => s + (m.funded || 0), 0),
         mtg: mtgMs.length ? Math.round(mtgMs.reduce((s, m) => s + m.meetingPct, 0) / mtgMs.length) : 0,
-        status: calcStatus(totalFunded, ms.length, r.expMonthly),
+        status: calcStatus(totalFunded, ms.length, r.expMonthly, isMax),
         daysNext: "—"
       };
     }
@@ -3568,7 +3583,7 @@ function LeaderboardView({
       apps: mo.sent || 0,
       units: mo.funded || 0,
       mtg: mo.meetingPct || 0,
-      status: calcStatus(moFunded, 1, r.expMonthly),
+      status: calcStatus(moFunded, 1, r.expMonthly, isMax),
       daysNext: "—"
     };
   };
@@ -7675,6 +7690,7 @@ function RepDetail({
     contacts: 0,
     contactPct: 0
   };
+  const periodStatus = calcStatus(selAmt, nMos, rep.expMonthly, rep.daysNext === "MAX");
   const tabBtn = (active, color, onClick, children) => /*#__PURE__*/React.createElement("button", {
     onClick: onClick,
     style: {
@@ -7855,7 +7871,7 @@ function RepDetail({
       fontSize: 13
     }
   }, rep.start), /*#__PURE__*/React.createElement(StatusBadge, {
-    status: rep.status
+    status: periodStatus
   }))), /*#__PURE__*/React.createElement(RepMeetingPanel, {
     rep: rep,
     groupColor: groupColor
@@ -9290,17 +9306,7 @@ function RepCompareView() {
   }];
   const CURRENT_MONTH = "Feb";
   const fmt$v = v => v >= 1e6 ? `$${(v / 1e6).toFixed(1)}M` : v >= 1e3 ? `$${(v / 1e3).toFixed(0)}K` : v > 0 ? `$${Math.round(v)}` : "—";
-
-  // Status computed from the selected period — NOT the pre-computed all-time r.status
-  const calcStatusForPeriod = (funded, numMos, expMonthly) => {
-    if (!expMonthly) return "On Track";
-    const avg = numMos > 0 ? funded / numMos : funded;
-    const pct = avg / expMonthly;
-    if (pct >= 1.0) return "Promotion Ready";
-    if (pct >= 0.75) return "On Track";
-    if (pct >= 0.40) return "Needs Attention";
-    return "Underperforming";
-  };
+  const calcStatusForPeriod = (funded, numMos, expMonthly, isMax = false) => calcStatus(funded, numMos, expMonthly, isMax);
 
   // Compute period-filtered stats for a rep
   const getStats = r => {
@@ -13644,13 +13650,21 @@ function AppInner() {
     ...g,
     reps: ACTIVE.filter(r => r.group === g.key)
   })), [ACTIVE]);
-  const teamStats = useMemo(() => ({
-    promote: ACTIVE.filter(r => r.status === "Promotion Ready").length,
-    act: ACTIVE.filter(r => r.status === "Underperforming").length,
-    watch: ACTIVE.filter(r => r.status === "Needs Attention").length,
-    ok: ACTIVE.filter(r => r.status === "On Track").length,
-    avgFebPts: Math.round(ACTIVE.filter(r => r.febPts !== null).reduce((s, r) => s + (r.febPts || 0), 0) / Math.max(1, ACTIVE.filter(r => r.febPts !== null).length))
-  }), [ACTIVE]);
+  const teamStats = useMemo(() => {
+    const _mn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const curMo = _mn[new Date().getMonth()];
+    const dynStatus = r => {
+      const mo = r.mos.find(m => m.month === curMo) || {};
+      return calcStatus(mo.fundedAmt || 0, 1, r.expMonthly, r.daysNext === "MAX");
+    };
+    return {
+      promote: ACTIVE.filter(r => dynStatus(r) === "Promotion Ready" || dynStatus(r) === "Exceeding").length,
+      act: ACTIVE.filter(r => dynStatus(r) === "Underperforming").length,
+      watch: ACTIVE.filter(r => dynStatus(r) === "Needs Attention").length,
+      ok: ACTIVE.filter(r => dynStatus(r) === "On Track").length,
+      avgFebPts: Math.round(ACTIVE.filter(r => r.febPts !== null).reduce((s, r) => s + (r.febPts || 0), 0) / Math.max(1, ACTIVE.filter(r => r.febPts !== null).length))
+    };
+  }, [ACTIVE]);
   const formerCount = ALL.length - ACTIVE.length;
   const detailRep = sel ? ALL.find(r => r.name === sel) : null;
   const handleStatClick = statusKey => {

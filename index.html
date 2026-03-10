@@ -3025,7 +3025,7 @@ function StatusBadge({
       borderRadius: 3,
       padding: "2px 8px",
       color: cfg.text,
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: .5,
       whiteSpace: "nowrap"
     }
@@ -3041,7 +3041,7 @@ function StatusBadge({
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: cfg.text,
-      fontSize: 11,
+      fontSize: 14,
       fontWeight: 600,
       letterSpacing: 1
     }
@@ -3102,19 +3102,19 @@ function GroupSection({
   }), /*#__PURE__*/React.createElement("span", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 20,
+      fontSize: 24,
       color: group.color,
       letterSpacing: 2
     }
   }, group.key), /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#7ec8e3",
-      fontSize: 10
+      fontSize: 13
     }
   }, withPts.length, " REP", withPts.length !== 1 ? "S" : ""), /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#a8c4d8",
-      fontSize: 10,
+      fontSize: 13,
       background: "#0f2438",
       border: "1px solid #1a3550",
       borderRadius: 3,
@@ -3151,7 +3151,7 @@ function GroupSection({
   }), /*#__PURE__*/React.createElement(YAxis, {
     tick: {
       fill: "#a8c4d8",
-      fontSize: 9
+      fontSize: 12
     },
     axisLine: false,
     tickLine: false
@@ -3159,7 +3159,7 @@ function GroupSection({
     contentStyle: {
       background: "#0a1525",
       border: "1px solid #22d3ee44",
-      fontSize: 12,
+      fontSize: 15,
       color: "#e2e8f0"
     },
     labelStyle: {
@@ -3179,7 +3179,7 @@ function GroupSection({
       value: `AVG ${avg}`,
       position: "right",
       fill: "#ef4444",
-      fontSize: 9
+      fontSize: 12
     }
   }), /*#__PURE__*/React.createElement(Bar, {
     activeBar: false,
@@ -3204,7 +3204,7 @@ function GroupSection({
     style: {
       padding: "4px 10px",
       color: "#7ec8e3",
-      fontSize: 9,
+      fontSize: 12,
       letterSpacing: 1.2,
       textAlign: "left",
       fontWeight: 500,
@@ -3237,7 +3237,7 @@ function GroupSection({
       style: {
         color: (r.febPts || 0) >= avg ? group.color : "#f87171",
         fontWeight: 700,
-        fontSize: 15,
+        fontSize: 18,
         fontFamily: "'Bebas Neue',sans-serif"
       }
     }, r.febPts ?? 0)), /*#__PURE__*/React.createElement("td", {
@@ -3255,7 +3255,7 @@ function GroupSection({
         padding: "8px 10px",
         color: tc,
         fontWeight: 700,
-        fontSize: 16
+        fontSize: 20
       }
     }, trend), /*#__PURE__*/React.createElement("td", {
       style: {
@@ -3297,13 +3297,13 @@ function GroupSection({
     })), /*#__PURE__*/React.createElement("span", {
       style: {
         color: (r.revProg || 0) >= 100 ? "#34d399" : (r.revProg || 0) >= 50 ? "#fbbf24" : "#f87171",
-        fontSize: 10
+        fontSize: 13
       }
     }, r.revProg || 0, "%"))), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "8px 10px",
         color: r.avgMtg >= 70 ? "#34d399" : r.avgMtg >= 40 ? "#fbbf24" : r.avgMtg > 0 ? "#fb923c" : "#a8c4d8",
-        fontSize: 10
+        fontSize: 13
       }
     }, r.avgMtg || 0, "%"));
   }))));
@@ -3707,7 +3707,7 @@ function LeaderboardView({
             title: "Meeting overdue",
             style: {
               color: "#f87171",
-              fontSize: 13,
+              fontSize: 16,
               lineHeight: 1
             }
           }, "\u26A0"), /*#__PURE__*/React.createElement("span", {
@@ -3724,7 +3724,7 @@ function LeaderboardView({
             padding: "9px 10px",
             whiteSpace: "nowrap",
             color: "#7ec8e3",
-            fontSize: 10
+            fontSize: 13
           }
         }, r.start);
       case "position":
@@ -3743,7 +3743,7 @@ function LeaderboardView({
               color: tc,
               padding: "3px 10px",
               borderRadius: 10,
-              fontSize: 11,
+              fontSize: 14,
               fontWeight: 700
             }
           }, r.group));
@@ -3771,13 +3771,13 @@ function LeaderboardView({
               color: pc,
               padding: "3px 10px",
               borderRadius: 10,
-              fontSize: 11,
+              fontSize: 14,
               fontWeight: 700
             }
           }, pp.pos), /*#__PURE__*/React.createElement("div", {
             style: {
               color: deltaColor,
-              fontSize: 9,
+              fontSize: 12,
               marginTop: 3,
               fontWeight: 700
             }
@@ -3808,14 +3808,14 @@ function LeaderboardView({
             style: {
               color: c,
               fontFamily: "'Bebas Neue',sans-serif",
-              fontSize: 28,
+              fontSize: 32,
               letterSpacing: 1,
               lineHeight: 1
             }
           }, "T", tt.tier), /*#__PURE__*/React.createElement("div", {
             style: {
               color: "#4a7fa8",
-              fontSize: 9,
+              fontSize: 12,
               marginTop: 2
             }
           }, tt.pos));
@@ -3835,14 +3835,14 @@ function LeaderboardView({
             style: {
               color: c,
               fontFamily: "'Bebas Neue',sans-serif",
-              fontSize: 28,
+              fontSize: 32,
               letterSpacing: 1,
               lineHeight: 1
             }
           }, "T", pt.tier), /*#__PURE__*/React.createElement("div", {
             style: {
               color: "#4a7fa8",
-              fontSize: 9,
+              fontSize: 12,
               marginTop: 2
             }
           }, pt.pos));
@@ -3858,7 +3858,7 @@ function LeaderboardView({
                 padding: "9px 10px",
                 color: "#4ade80",
                 fontWeight: 700,
-                fontSize: 12
+                fontSize: 15
               }
             }, "MAX");
           }
@@ -3876,14 +3876,14 @@ function LeaderboardView({
             style: {
               color: c,
               fontFamily: "'Bebas Neue',sans-serif",
-              fontSize: 28,
+              fontSize: 32,
               letterSpacing: 1,
               lineHeight: 1
             }
           }, "T", nextNum), /*#__PURE__*/React.createElement("div", {
             style: {
               color: "#4a7fa8",
-              fontSize: 9,
+              fontSize: 12,
               marginTop: 2
             }
           }, nextBench?.pos || "—"));
@@ -3914,13 +3914,13 @@ function LeaderboardView({
             style: {
               color: dc,
               fontFamily: "'Bebas Neue',sans-serif",
-              fontSize: 22,
+              fontSize: 26,
               letterSpacing: 1
             }
           }, overdue ? "-" : "", Math.abs(d), "d"), /*#__PURE__*/React.createElement("div", {
             style: {
               color: "#4a7fa8",
-              fontSize: 9,
+              fontSize: 12,
               marginTop: 1
             }
           }, overdue ? "OVERDUE" : urgent ? "URGENT" : warning ? "SOON" : "to next tier"));
@@ -3933,7 +3933,7 @@ function LeaderboardView({
             style: {
               padding: "9px 10px",
               color: "#2a4a6a",
-              fontSize: 11,
+              fontSize: 14,
               fontStyle: "italic"
             }
           }, "none set");
@@ -3956,13 +3956,13 @@ function LeaderboardView({
             style: {
               color: dc,
               fontFamily: "'Bebas Neue',sans-serif",
-              fontSize: 22,
+              fontSize: 26,
               letterSpacing: 1
             }
           }, overdue ? "-" : "", Math.abs(diff), "d"), /*#__PURE__*/React.createElement("div", {
             style: {
               color: "#4a7fa8",
-              fontSize: 9,
+              fontSize: 12,
               marginTop: 1
             }
           }, overdue ? "PAST DUE" : urgent ? "THIS WEEK" : soon ? "UPCOMING" : "scheduled"));
@@ -4017,14 +4017,14 @@ function LeaderboardView({
               padding: "3px 10px",
               cursor: "pointer",
               color: hasMet ? "#4ade80" : "#4a7fa8",
-              fontSize: 10,
+              fontSize: 13,
               fontWeight: 700,
               whiteSpace: "nowrap"
             }
           }, hasMet ? "✓ Met" : "○ Not met"), hasMet && /*#__PURE__*/React.createElement("span", {
             style: {
               color: "#4a7fa8",
-              fontSize: 9,
+              fontSize: 12,
               flex: 1
             }
           }, fmtDate(m.metDate)), hasAny && !isConfirming && /*#__PURE__*/React.createElement("button", {
@@ -4038,7 +4038,7 @@ function LeaderboardView({
               borderRadius: 3,
               cursor: "pointer",
               color: "#f87171",
-              fontSize: 10,
+              fontSize: 13,
               padding: "1px 6px",
               lineHeight: 1,
               marginLeft: "auto"
@@ -4063,7 +4063,7 @@ function LeaderboardView({
           }, /*#__PURE__*/React.createElement("span", {
             style: {
               color: "#f87171",
-              fontSize: 9,
+              fontSize: 12,
               whiteSpace: "nowrap"
             }
           }, "Clear all?"), /*#__PURE__*/React.createElement("button", {
@@ -4074,7 +4074,7 @@ function LeaderboardView({
               borderRadius: 3,
               padding: "1px 7px",
               color: "#f87171",
-              fontSize: 9,
+              fontSize: 12,
               cursor: "pointer",
               fontWeight: 700
             }
@@ -4089,7 +4089,7 @@ function LeaderboardView({
               borderRadius: 3,
               padding: "1px 7px",
               color: "#4a7fa8",
-              fontSize: 9,
+              fontSize: 12,
               cursor: "pointer"
             }
           }, "No"))), isEditing ? /*#__PURE__*/React.createElement("div", {
@@ -4115,7 +4115,7 @@ function LeaderboardView({
               borderRadius: 3,
               padding: "2px 4px",
               color: "#7ec8e3",
-              fontSize: 9,
+              fontSize: 12,
               cursor: "pointer",
               width: "100%",
               outline: "none",
@@ -4145,7 +4145,7 @@ function LeaderboardView({
               borderRadius: 3,
               padding: "2px 6px",
               color: "#e2e8f0",
-              fontSize: 10,
+              fontSize: 13,
               outline: "none",
               flex: 1,
               colorScheme: "dark"
@@ -4161,7 +4161,7 @@ function LeaderboardView({
               borderRadius: 3,
               padding: "2px 7px",
               color: "#4ade80",
-              fontSize: 10,
+              fontSize: 13,
               cursor: "pointer"
             }
           }, "\u2713"), /*#__PURE__*/React.createElement("button", {
@@ -4175,7 +4175,7 @@ function LeaderboardView({
               borderRadius: 3,
               padding: "2px 7px",
               color: "#f87171",
-              fontSize: 10,
+              fontSize: 13,
               cursor: "pointer"
             }
           }, "\u2715"))) : /*#__PURE__*/React.createElement("div", {
@@ -4246,7 +4246,7 @@ function LeaderboardView({
           }, hasSched ? /*#__PURE__*/React.createElement("span", {
             style: {
               color: schedOverdue ? "#f87171" : "#22d3ee",
-              fontSize: 16,
+              fontSize: 20,
               fontWeight: 700,
               fontFamily: "'Bebas Neue',sans-serif",
               letterSpacing: 1
@@ -4254,7 +4254,7 @@ function LeaderboardView({
           }, schedOverdue ? "⚠ " : "", fmtDate(m.scheduledDate)) : /*#__PURE__*/React.createElement("span", {
             style: {
               color: "#2a4a6a",
-              fontSize: 11,
+              fontSize: 14,
               fontStyle: "italic"
             }
           }, "+ schedule meeting"))));
@@ -4265,7 +4265,7 @@ function LeaderboardView({
           style: {
             padding: "9px 10px",
             fontFamily: "'Bebas Neue',sans-serif",
-            fontSize: 22,
+            fontSize: 26,
             color: pd.pts !== null ? pd.pts >= 0 ? "#f1f5f9" : "#f87171" : "#2a4a6a"
           }
         }, pd.pts !== null ? pd.pts : "—");
@@ -4279,7 +4279,7 @@ function LeaderboardView({
               padding: "9px 10px",
               color: tC,
               fontWeight: 900,
-              fontSize: 22,
+              fontSize: 26,
               fontFamily: "'Bebas Neue',sans-serif",
               letterSpacing: 1,
               textShadow: `0 0 8px ${tC}88`
@@ -4315,7 +4315,7 @@ function LeaderboardView({
         })), /*#__PURE__*/React.createElement("span", {
           style: {
             color: (r.revProg || 0) >= 100 ? "#34d399" : (r.revProg || 0) >= 50 ? "#fbbf24" : "#f87171",
-            fontSize: 11,
+            fontSize: 14,
             minWidth: 36
           }
         }, r.revProg || 0, "%")));
@@ -4354,7 +4354,7 @@ function LeaderboardView({
           })), /*#__PURE__*/React.createElement("div", {
             style: {
               color: pct >= 100 ? "#4ade80" : pct >= 75 ? "#22d3ee" : "#4a7fa8",
-              fontSize: 9,
+              fontSize: 12,
               marginTop: 1
             }
           }, pct, "% of ", fmt$(goal))));
@@ -4395,7 +4395,7 @@ function LeaderboardView({
           })), /*#__PURE__*/React.createElement("div", {
             style: {
               color: pct >= 100 ? "#4ade80" : pct >= 75 ? "#22d3ee" : "#4a7fa8",
-              fontSize: 9,
+              fontSize: 12,
               marginTop: 1
             }
           }, pct, "% of goal")));
@@ -4422,7 +4422,7 @@ function LeaderboardView({
           style: {
             padding: "9px 10px",
             color: pd.mtg >= 70 ? "#34d399" : pd.mtg >= 40 ? "#fbbf24" : pd.mtg > 0 ? "#fb923c" : "#a8c4d8",
-            fontSize: 10
+            fontSize: 13
           }
         }, pd.mtg > 0 ? `${pd.mtg}%` : "—");
       case "contact":
@@ -4431,7 +4431,7 @@ function LeaderboardView({
           style: {
             padding: "9px 10px",
             color: (r.raw?.calls?.contactPct || 0) >= 20 ? "#34d399" : (r.raw?.calls?.contactPct || 0) >= 10 ? "#fbbf24" : (r.raw?.calls?.contactPct || 0) > 0 ? "#fb923c" : "#a8c4d8",
-            fontSize: 10
+            fontSize: 13
           }
         }, r.raw?.calls?.dials > 0 ? `${r.raw.calls.contactPct}%` : "—");
       case "prevMeeting":
@@ -4452,7 +4452,7 @@ function LeaderboardView({
             style: {
               padding: "9px 10px",
               color: "#2a4a6a",
-              fontSize: 11,
+              fontSize: 14,
               fontStyle: "italic"
             }
           }, "none");
@@ -4468,13 +4468,13 @@ function LeaderboardView({
           }, /*#__PURE__*/React.createElement("div", {
             style: {
               color: "#7ec8e3",
-              fontSize: 13,
+              fontSize: 16,
               fontWeight: 700
             }
           }, fmtDate(prev)), /*#__PURE__*/React.createElement("div", {
             style: {
               color: "#4a7fa8",
-              fontSize: 9,
+              fontSize: 12,
               marginTop: 2
             }
           }, daysAgo, "d ago"));
@@ -4532,7 +4532,7 @@ function LeaderboardView({
       borderRadius: 4,
       padding: "5px 14px",
       color: active ? color : "#4a7fa8",
-      fontSize: 13,
+      fontSize: 16,
       letterSpacing: .8,
       cursor: "pointer",
       fontFamily: "'DM Mono',monospace",
@@ -4565,7 +4565,7 @@ function LeaderboardView({
       borderRadius: 4,
       padding: "5px 14px",
       color: period === CURRENT_MONTH ? "#22d3ee" : "#22d3ee99",
-      fontSize: 13,
+      fontSize: 16,
       letterSpacing: .8,
       cursor: "pointer",
       fontFamily: "'DM Mono',monospace",
@@ -4611,7 +4611,7 @@ function LeaderboardView({
       color: period === m.id ? "#7ec8e3" : "#a8c4d8",
       background: period === m.id ? "#0a1f35" : "transparent",
       cursor: "pointer",
-      fontSize: 13,
+      fontSize: 16,
       letterSpacing: .8,
       fontFamily: "'DM Mono',monospace"
     }
@@ -4647,7 +4647,7 @@ function LeaderboardView({
       color: period === m.id ? "#7ec8e3" : "#a8c4d8",
       background: period === m.id ? "#0a1f35" : "transparent",
       cursor: "pointer",
-      fontSize: 13,
+      fontSize: 16,
       letterSpacing: .8,
       fontFamily: "'DM Mono',monospace"
     }
@@ -4676,13 +4676,13 @@ function LeaderboardView({
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       letterSpacing: 1
     }
   }, "FILTER:"), /*#__PURE__*/React.createElement("span", {
     style: {
       color: STATUS_CFG[statusFilt]?.text || "#22d3ee",
-      fontSize: 11,
+      fontSize: 14,
       fontWeight: 700,
       letterSpacing: .5
     }
@@ -4693,7 +4693,7 @@ function LeaderboardView({
       border: "none",
       color: "#4a7fa8",
       cursor: "pointer",
-      fontSize: 11,
+      fontSize: 14,
       padding: "0 2px",
       lineHeight: 1
     },
@@ -4722,7 +4722,7 @@ function LeaderboardView({
         color: on ? gc?.color || "#22d3ee" : "#a8c4d8",
         borderRadius: 4,
         padding: "4px 12px",
-        fontSize: 13,
+        fontSize: 16,
         letterSpacing: .5,
         cursor: "pointer"
       }
@@ -4737,7 +4737,7 @@ function LeaderboardView({
   }), /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       letterSpacing: 1
     }
   }, "PRODUCT:"), /*#__PURE__*/React.createElement("button", {
@@ -4748,7 +4748,7 @@ function LeaderboardView({
       color: productFilt === "all" ? "#22d3ee" : "#a8c4d8",
       borderRadius: 4,
       padding: "3px 10px",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer"
     }
   }, "ALL"), PRODUCT_TYPES.map(pt => /*#__PURE__*/React.createElement("button", {
@@ -4760,7 +4760,7 @@ function LeaderboardView({
       color: productFilt === pt.key ? pt.color : "#a8c4d8",
       borderRadius: 4,
       padding: "3px 10px",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer",
       letterSpacing: .5
     }
@@ -4779,7 +4779,7 @@ function LeaderboardView({
       padding: "4px 10px",
       color: showColMenu ? "#22d3ee" : "#4a7fa8",
       cursor: "pointer",
-      fontSize: 13,
+      fontSize: 16,
       display: "flex",
       alignItems: "center",
       gap: 5
@@ -4805,7 +4805,7 @@ function LeaderboardView({
       color: "#06111f",
       borderRadius: 8,
       padding: "0 5px",
-      fontSize: 10,
+      fontSize: 13,
       fontWeight: 700
     }
   }, hiddenCols.size)), showColMenu && /*#__PURE__*/React.createElement("div", {
@@ -4826,7 +4826,7 @@ function LeaderboardView({
     style: {
       padding: "4px 12px 8px",
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1,
       borderBottom: "1px solid #1a3550",
       marginBottom: 4
@@ -4865,13 +4865,13 @@ function LeaderboardView({
     }, !hidden && /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#22d3ee",
-        fontSize: 10,
+        fontSize: 13,
         lineHeight: 1
       }
     }, "\u2713")), /*#__PURE__*/React.createElement("span", {
       style: {
         color: hidden ? "#4a7fa8" : "#e2e8f0",
-        fontSize: 12
+        fontSize: 15
       }
     }, c.label));
   }), hiddenCols.size > 0 && /*#__PURE__*/React.createElement("div", {
@@ -4883,7 +4883,7 @@ function LeaderboardView({
       border: "1px solid #1a3550",
       borderRadius: 4,
       color: "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer",
       textAlign: "center"
     }
@@ -4909,7 +4909,7 @@ function LeaderboardView({
     style: {
       padding: "9px 10px",
       color: sortCol.col === col.key ? "#22d3ee" : "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       letterSpacing: 1,
       fontWeight: 700,
       textAlign: "left",
@@ -5006,14 +5006,14 @@ function BenchmarksView() {
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 16,
+      fontSize: 20,
       color: "#22d3ee",
       letterSpacing: 2
     }
   }, "BENCHMARK TABLE"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       marginTop: 2
     }
   }, "Click any row to edit thresholds \xB7 changes apply instantly across all views")), /*#__PURE__*/React.createElement("div", {
@@ -5025,7 +5025,7 @@ function BenchmarksView() {
   }, saveMsg && /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4ade80",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: .5
     }
   }, saveMsg), isCustom && /*#__PURE__*/React.createElement("button", {
@@ -5036,7 +5036,7 @@ function BenchmarksView() {
       borderRadius: 4,
       padding: "3px 8px",
       color: "#f87171",
-      fontSize: 9,
+      fontSize: 12,
       cursor: "pointer",
       letterSpacing: .5
     }
@@ -5047,7 +5047,7 @@ function BenchmarksView() {
       borderRadius: 3,
       padding: "2px 6px",
       color: "#fbbf24",
-      fontSize: 9,
+      fontSize: 12,
       letterSpacing: .5
     }
   }, "CUSTOM"))), /*#__PURE__*/React.createElement("table", {
@@ -5064,7 +5064,7 @@ function BenchmarksView() {
     style: {
       padding: "4px 8px",
       color: "#7ec8e3",
-      fontSize: 9,
+      fontSize: 12,
       letterSpacing: 1.2,
       textAlign: "left",
       fontWeight: 500
@@ -5084,13 +5084,13 @@ function BenchmarksView() {
         padding: "6px 8px",
         color: c,
         fontFamily: "'Bebas Neue',sans-serif",
-        fontSize: 18
+        fontSize: 22
       }
     }, b.tier), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "6px 8px",
         color: "#94a3b8",
-        fontSize: 10
+        fontSize: 13
       }
     }, b.range), /*#__PURE__*/React.createElement("td", {
       style: {
@@ -5110,7 +5110,7 @@ function BenchmarksView() {
         borderRadius: 3,
         padding: "2px 4px",
         color: "#e2e8f0",
-        fontSize: 11,
+        fontSize: 14,
         outline: "none"
       }
     }) : /*#__PURE__*/React.createElement("span", {
@@ -5136,7 +5136,7 @@ function BenchmarksView() {
         borderRadius: 3,
         padding: "2px 4px",
         color: "#e2e8f0",
-        fontSize: 11,
+        fontSize: 14,
         outline: "none"
       }
     }) : /*#__PURE__*/React.createElement("span", {
@@ -5153,7 +5153,7 @@ function BenchmarksView() {
         color: c,
         padding: "2px 8px",
         borderRadius: 10,
-        fontSize: 9
+        fontSize: 12
       }
     }, b.pos)), /*#__PURE__*/React.createElement("td", {
       style: {
@@ -5168,7 +5168,7 @@ function BenchmarksView() {
         borderRadius: 3,
         padding: "2px 7px",
         color: "#4ade80",
-        fontSize: 10,
+        fontSize: 13,
         cursor: "pointer",
         marginRight: 4
       }
@@ -5180,7 +5180,7 @@ function BenchmarksView() {
         borderRadius: 3,
         padding: "2px 7px",
         color: "#f87171",
-        fontSize: 10,
+        fontSize: 13,
         cursor: "pointer"
       }
     }, "\u2715")) : b.tier > 0 ? /*#__PURE__*/React.createElement("button", {
@@ -5191,7 +5191,7 @@ function BenchmarksView() {
         borderRadius: 3,
         padding: "2px 7px",
         color: "#4a7fa8",
-        fontSize: 9,
+        fontSize: 12,
         cursor: "pointer",
         letterSpacing: .5
       },
@@ -5202,7 +5202,7 @@ function BenchmarksView() {
     style: {
       marginTop: 12,
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       lineHeight: 1.7,
       borderTop: "1px solid #0a1f35",
       paddingTop: 10
@@ -5216,7 +5216,7 @@ function BenchmarksView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 9,
+      fontSize: 12,
       letterSpacing: 2,
       marginBottom: 8
     }
@@ -5259,20 +5259,20 @@ function BenchmarksView() {
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#94a3b8",
-      fontSize: 10
+      fontSize: 13
     }
   }, p.label), /*#__PURE__*/React.createElement("span", {
     style: {
       color: p.c,
       fontWeight: 700,
-      fontSize: 12,
+      fontSize: 15,
       fontFamily: "'Bebas Neue',sans-serif",
       letterSpacing: 1
     }
   }, p.pts))), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#a8c4d8",
-      fontSize: 9,
+      fontSize: 12,
       marginTop: 8
     }
   }, "\u26A0 Attendance thresholds (7:15/7:45) differ from tracked data (7:30/8:45). Points are approximate until aligned."))), /*#__PURE__*/React.createElement("div", {
@@ -5285,7 +5285,7 @@ function BenchmarksView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 16,
+      fontSize: 20,
       color: "#22d3ee",
       letterSpacing: 2,
       marginBottom: 12
@@ -5323,13 +5323,13 @@ function BenchmarksView() {
     style: {
       color: "#f1f5f9",
       fontWeight: 500,
-      fontSize: 11,
+      fontSize: 14,
       marginBottom: 3
     }
   }, item.t), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#a8c4d8",
-      fontSize: 10
+      fontSize: 13
     }
   }, item.d)))));
 }
@@ -5357,7 +5357,7 @@ function StatBox({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 13,
+      fontSize: 16,
       letterSpacing: 1.5,
       fontWeight: 800,
       textTransform: "uppercase"
@@ -5371,7 +5371,7 @@ function StatBox({
       borderRadius: 4,
       padding: "2px 8px",
       color: "#4a7fa8",
-      fontSize: 13,
+      fontSize: 16,
       cursor: "pointer",
       lineHeight: 1.2
     }
@@ -5395,7 +5395,7 @@ function MetricRow({
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#94b8cc",
-      fontSize: 14,
+      fontSize: 17,
       fontWeight: 600
     }
   }, label), /*#__PURE__*/React.createElement("div", {
@@ -5406,13 +5406,13 @@ function MetricRow({
     style: {
       color,
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 26,
+      fontSize: 30,
       letterSpacing: 1
     }
   }, value), sub && /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 12,
+      fontSize: 15,
       marginTop: 2
     }
   }, sub)));
@@ -5434,14 +5434,14 @@ function SectionDiv({
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: c,
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 1.5
     }
   }, l), sub && /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 12
+      fontSize: 15
     }
   }, sub));
 }
@@ -5452,7 +5452,7 @@ function DrillSectionHeader({
   return /*#__PURE__*/React.createElement("div", {
     style: {
       color: c,
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 1.5,
       padding: "12px 0 8px",
@@ -5489,7 +5489,7 @@ function MiniBar({
     dataKey: "month",
     tick: {
       fill: "#7ec8e3",
-      fontSize: 10
+      fontSize: 13
     },
     axisLine: false,
     tickLine: false
@@ -5499,7 +5499,7 @@ function MiniBar({
     contentStyle: {
       background: "#0a1525",
       border: "1px solid #22d3ee44",
-      fontSize: 12,
+      fontSize: 15,
       color: "#e2e8f0"
     },
     labelStyle: {
@@ -5554,7 +5554,7 @@ function ConvBlock({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: c,
-      fontSize: 12,
+      fontSize: 15,
       fontWeight: 800,
       letterSpacing: 1.5,
       marginBottom: 10
@@ -5570,19 +5570,19 @@ function ConvBlock({
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#94b8cc",
-      fontSize: 12,
+      fontSize: 15,
       fontWeight: 600
     }
   }, lbl), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10
+      fontSize: 13
     }
   }, sub)), /*#__PURE__*/React.createElement("span", {
     style: {
       color: convC(n, d),
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 24
+      fontSize: 28
     }
   }, pct(n, d)))));
 }
@@ -5605,7 +5605,7 @@ function YtdCard({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: c,
-      fontSize: 12,
+      fontSize: 15,
       fontWeight: 800,
       letterSpacing: 1.5,
       marginBottom: 8
@@ -5614,13 +5614,13 @@ function YtdCard({
     style: {
       color: c,
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 32,
+      fontSize: 36,
       lineHeight: 1
     }
   }, fmt ? fmt(tot) : tot), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       marginTop: 5
     }
   }, "avg ", fmt ? fmt(avg) : avg.toFixed(1), " / mo"));
@@ -5652,7 +5652,7 @@ function MonthTable({
     style: {
       padding: "8px 12px",
       color: "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       fontWeight: 800,
       textAlign: "left",
       letterSpacing: 1
@@ -5661,7 +5661,7 @@ function MonthTable({
     style: {
       padding: "8px 12px",
       color: "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       fontWeight: 800,
       textAlign: "left",
       letterSpacing: 1
@@ -5671,7 +5671,7 @@ function MonthTable({
     style: {
       padding: "8px 12px",
       color: "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       fontWeight: 800,
       textAlign: "right",
       letterSpacing: 1
@@ -5691,7 +5691,7 @@ function MonthTable({
         padding: "9px 12px",
         color: isCurrentMonth ? groupColor : "#f1f5f9",
         fontFamily: "'Bebas Neue',sans-serif",
-        fontSize: 16,
+        fontSize: 20,
         letterSpacing: 1
       }
     }, m.month), /*#__PURE__*/React.createElement("td", {
@@ -5704,7 +5704,7 @@ function MonthTable({
         color: yr === "2025" ? "#a78bfa" : "#22d3ee",
         padding: "3px 10px",
         borderRadius: 10,
-        fontSize: 11,
+        fontSize: 14,
         fontWeight: 700
       }
     }, yr)), columns.map(c => {
@@ -5718,7 +5718,7 @@ function MonthTable({
           color: color,
           textAlign: "right",
           fontFamily: "'Bebas Neue',sans-serif",
-          fontSize: 18,
+          fontSize: 22,
           letterSpacing: .5
         }
       }, display);
@@ -5824,14 +5824,14 @@ function DrillDown({
       dataKey: "month",
       tick: {
         fill: "#a8c4d8",
-        fontSize: 11
+        fontSize: 14
       },
       axisLine: false,
       tickLine: false
     }), /*#__PURE__*/React.createElement(YAxis, {
       tick: {
         fill: "#a8c4d8",
-        fontSize: 10
+        fontSize: 13
       },
       axisLine: false,
       tickLine: false,
@@ -5840,7 +5840,7 @@ function DrillDown({
       contentStyle: {
         background: "#0a1525",
         border: "1px solid #22d3ee44",
-        fontSize: 12,
+        fontSize: 15,
         color: "#e2e8f0"
       },
       labelStyle: {
@@ -5930,14 +5930,14 @@ function DrillDown({
       dataKey: "month",
       tick: {
         fill: "#a8c4d8",
-        fontSize: 11
+        fontSize: 14
       },
       axisLine: false,
       tickLine: false
     }), /*#__PURE__*/React.createElement(YAxis, {
       tick: {
         fill: "#a8c4d8",
-        fontSize: 10
+        fontSize: 13
       },
       axisLine: false,
       tickLine: false,
@@ -5947,7 +5947,7 @@ function DrillDown({
       contentStyle: {
         background: "#0a1525",
         border: "1px solid #22d3ee44",
-        fontSize: 12,
+        fontSize: 15,
         color: "#e2e8f0"
       },
       labelStyle: {
@@ -6040,7 +6040,7 @@ function DrillDown({
       }, /*#__PURE__*/React.createElement("div", {
         style: {
           color: c,
-          fontSize: 12,
+          fontSize: 15,
           fontWeight: 800,
           letterSpacing: 1.5,
           marginBottom: 10
@@ -6056,14 +6056,14 @@ function DrillDown({
       }, /*#__PURE__*/React.createElement("div", {
         style: {
           color: "#4a7fa8",
-          fontSize: 10,
+          fontSize: 13,
           marginBottom: 2
         }
       }, lbl), /*#__PURE__*/React.createElement("div", {
         style: {
           color: col,
           fontFamily: "'Bebas Neue',sans-serif",
-          fontSize: 28
+          fontSize: 32
         }
       }, v || "—")))));
     })), /*#__PURE__*/React.createElement(DrillSectionHeader, {
@@ -6086,14 +6086,14 @@ function DrillDown({
       dataKey: "month",
       tick: {
         fill: "#a8c4d8",
-        fontSize: 11
+        fontSize: 14
       },
       axisLine: false,
       tickLine: false
     }), /*#__PURE__*/React.createElement(YAxis, {
       tick: {
         fill: "#a8c4d8",
-        fontSize: 10
+        fontSize: 13
       },
       axisLine: false,
       tickLine: false,
@@ -6102,7 +6102,7 @@ function DrillDown({
       contentStyle: {
         background: "#0a1525",
         border: "1px solid #22d3ee44",
-        fontSize: 12,
+        fontSize: 15,
         color: "#e2e8f0"
       },
       labelStyle: {
@@ -6162,7 +6162,7 @@ function DrillDown({
         display: "flex",
         gap: 16,
         marginTop: 8,
-        fontSize: 11
+        fontSize: 14
       }
     }, [["#22d3ee", "Sent"], ["#a78bfa", "Received"], ["#fbbf24", "Approved"]].map(([c, l]) => /*#__PURE__*/React.createElement("span", {
       key: l,
@@ -6229,7 +6229,7 @@ function DrillDown({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       fontWeight: 800,
       letterSpacing: 1.5,
       marginBottom: 12
@@ -6245,14 +6245,14 @@ function DrillDown({
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#94b8cc",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 600
     }
   }, l), /*#__PURE__*/React.createElement("span", {
     style: {
       color: c,
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 28
+      fontSize: 32
     }
   }, v))), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -6273,13 +6273,13 @@ function DrillDown({
       display: "flex",
       justifyContent: "space-between",
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       marginTop: 5
     }
   }, /*#__PURE__*/React.createElement("span", null, "0%"), /*#__PURE__*/React.createElement("span", null, "10% urgent"), /*#__PURE__*/React.createElement("span", null, "20% strong"), /*#__PURE__*/React.createElement("span", null, "30%+ elite"))) : /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 12
+      fontSize: 15
     }
   }, "No call data")), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -6291,7 +6291,7 @@ function DrillDown({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       fontStyle: "italic"
     }
   }, "\u26A0 Single period only (Feb 3\u2013Mar 4). Provide date-level call log to enable month-over-month comparison.")));
@@ -6318,7 +6318,7 @@ function DrillDown({
       style: {
         padding: "8px 12px",
         color: "#7ec8e3",
-        fontSize: 11,
+        fontSize: 14,
         fontWeight: 800,
         textAlign: h === "Points" || h === "vs Avg" ? "right" : "left",
         letterSpacing: 1
@@ -6337,7 +6337,7 @@ function DrillDown({
           padding: "9px 12px",
           color: "#f1f5f9",
           fontFamily: "'Bebas Neue',sans-serif",
-          fontSize: 16
+          fontSize: 20
         }
       }, d.month), /*#__PURE__*/React.createElement("td", {
         style: {
@@ -6349,7 +6349,7 @@ function DrillDown({
           color: yr === "2025" ? "#a78bfa" : "#22d3ee",
           padding: "3px 10px",
           borderRadius: 10,
-          fontSize: 11,
+          fontSize: 14,
           fontWeight: 700
         }
       }, yr)), /*#__PURE__*/React.createElement("td", {
@@ -6357,14 +6357,14 @@ function DrillDown({
           padding: "9px 12px",
           color: "#22d3ee",
           fontFamily: "'Bebas Neue',sans-serif",
-          fontSize: 22,
+          fontSize: 26,
           textAlign: "right"
         }
       }, d.pts), /*#__PURE__*/React.createElement("td", {
         style: {
           padding: "9px 12px",
           color: diff >= 0 ? "#34d399" : "#f87171",
-          fontSize: 12,
+          fontSize: 15,
           textAlign: "right"
         }
       }, diff >= 0 ? "+" : "", diff));
@@ -6388,14 +6388,14 @@ function DrillDown({
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         color: "#4a7fa8",
-        fontSize: 10,
+        fontSize: 13,
         marginBottom: 5
       }
     }, l), /*#__PURE__*/React.createElement("div", {
       style: {
         color: c,
         fontFamily: "'Bebas Neue',sans-serif",
-        fontSize: 34
+        fontSize: 38
       }
     }, v)))), /*#__PURE__*/React.createElement(DrillSectionHeader, {
       t: "Points Chart"
@@ -6417,14 +6417,14 @@ function DrillDown({
       dataKey: "month",
       tick: {
         fill: "#a8c4d8",
-        fontSize: 11
+        fontSize: 14
       },
       axisLine: false,
       tickLine: false
     }), /*#__PURE__*/React.createElement(YAxis, {
       tick: {
         fill: "#a8c4d8",
-        fontSize: 10
+        fontSize: 13
       },
       axisLine: false,
       tickLine: false,
@@ -6433,7 +6433,7 @@ function DrillDown({
       contentStyle: {
         background: "#0a1525",
         border: "1px solid #22d3ee44",
-        fontSize: 12,
+        fontSize: 15,
         color: "#e2e8f0"
       },
       labelStyle: {
@@ -6502,7 +6502,7 @@ function DrillDown({
       borderRadius: 4,
       padding: "6px 16px",
       color: "#7ec8e3",
-      fontSize: 12,
+      fontSize: 15,
       fontWeight: 700,
       cursor: "pointer",
       letterSpacing: 1
@@ -6510,14 +6510,14 @@ function DrillDown({
   }, "\u2190 BACK"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 22,
+      fontSize: 26,
       color: groupColor,
       letterSpacing: 2
     }
   }, maskName(rep.name)), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 12,
+      fontSize: 15,
       fontWeight: 700,
       letterSpacing: 2
     }
@@ -6551,7 +6551,7 @@ function IdentityCards({
   const lbl = (txt, c = "#7ec8e3") => /*#__PURE__*/React.createElement("div", {
     style: {
       color: c,
-      fontSize: 12,
+      fontSize: 15,
       letterSpacing: 1.5,
       fontWeight: 800,
       textTransform: "uppercase",
@@ -6562,7 +6562,7 @@ function IdentityCards({
     style: {
       color: c,
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 28,
+      fontSize: 32,
       letterSpacing: 1.5,
       lineHeight: 1
     }
@@ -6584,21 +6584,21 @@ function IdentityCards({
   }, lbl("Position"), bigV(rep.group, groupColor), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 13,
+      fontSize: 16,
       marginTop: 2,
       marginBottom: 12
     }
   }, rep.title), divider, lbl("Calculated Position", "#a78bfa"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: calcTierC,
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 700,
       marginTop: 1
     }
   }, rep.expPos), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 12,
+      fontSize: 15,
       marginTop: 2
     }
   }, "based on performance data")), /*#__PURE__*/React.createElement("div", {
@@ -6611,14 +6611,14 @@ function IdentityCards({
   }, lbl("Tier by Tenure"), bigV(rep.expTier, "#818cf8"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 13,
+      fontSize: 16,
       marginTop: 2,
       marginBottom: 12
     }
   }, "expected by start date"), divider, lbl("Calculated Tier", "#fbbf24"), bigV(rep.tier, tierC(rep.tier)), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 12,
+      fontSize: 15,
       marginTop: 2
     }
   }, "based on benchmark metrics")), /*#__PURE__*/React.createElement("div", {
@@ -6631,7 +6631,7 @@ function IdentityCards({
   }, lbl("2025 YTD", "#a78bfa"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 12,
+      fontSize: 15,
       marginBottom: 8
     }
   }, "Oct \xB7 Nov \xB7 Dec"), lbl("Funded $"), bigV(fmt$(ytd25Amt), ytd25Amt > 500000 ? "#34d399" : ytd25Amt > 0 ? "#22d3ee" : "#4a7fa8"), divider, lbl("Units"), bigV(ytd25Units, ytd25Units > 15 ? "#34d399" : ytd25Units > 5 ? "#22d3ee" : "#4a7fa8")), /*#__PURE__*/React.createElement("div", {
@@ -6644,7 +6644,7 @@ function IdentityCards({
   }, lbl("2026 YTD", "#22d3ee"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 12,
+      fontSize: 15,
       marginBottom: 8
     }
   }, "Jan \xB7 Feb"), lbl("Funded $"), bigV(fmt$(ytd26Amt), ytd26Amt > 500000 ? "#34d399" : ytd26Amt > 0 ? "#22d3ee" : "#4a7fa8"), divider, lbl("Units"), bigV(ytd26Units, ytd26Units > 10 ? "#34d399" : ytd26Units > 3 ? "#22d3ee" : "#4a7fa8")), /*#__PURE__*/React.createElement("div", {
@@ -6657,7 +6657,7 @@ function IdentityCards({
   }, lbl("Current Month", "#f1f5f9"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 12,
+      fontSize: 15,
       marginBottom: 8
     }
   }, "February 2026"), lbl("Funded $"), bigV(fmt$(febAmt), febAmt >= rep.expMonthly ? "#34d399" : febAmt > 0 ? "#fbbf24" : "#f87171"), divider, lbl("Units"), bigV(febUnits, febUnits >= 4 ? "#34d399" : febUnits > 0 ? "#fbbf24" : "#f87171")));
@@ -6869,7 +6869,7 @@ function RepMeetingPanel({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 1.5,
       marginBottom: 6,
@@ -6879,13 +6879,13 @@ function RepMeetingPanel({
     style: {
       color: ttC,
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 28,
+      fontSize: 32,
       lineHeight: 1
     }
   }, "T", ct.tier), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       marginTop: 3
     }
   }, ct.pos)), /*#__PURE__*/React.createElement("div", {
@@ -6898,7 +6898,7 @@ function RepMeetingPanel({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 1.5,
       marginBottom: 6,
@@ -6908,13 +6908,13 @@ function RepMeetingPanel({
     style: {
       color: ptC,
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 28,
+      fontSize: 32,
       lineHeight: 1
     }
   }, "T", pt.tier), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       marginTop: 3
     }
   }, pt.pos)), /*#__PURE__*/React.createElement("div", {
@@ -6927,7 +6927,7 @@ function RepMeetingPanel({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 1.5,
       marginBottom: 6,
@@ -6937,20 +6937,20 @@ function RepMeetingPanel({
     style: {
       color: nextC,
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 28,
+      fontSize: 32,
       lineHeight: 1
     }
   }, "T", nextTierNum), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       marginTop: 3
     }
   }, nextBench.pos)) : /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4ade80",
       fontWeight: 700,
-      fontSize: 15,
+      fontSize: 18,
       marginTop: 6
     }
   }, "MAX")), /*#__PURE__*/React.createElement("div", {
@@ -6963,7 +6963,7 @@ function RepMeetingPanel({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 1.5,
       marginBottom: 6,
@@ -6971,26 +6971,26 @@ function RepMeetingPanel({
     }
   }, "DAYS ", /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 16
+      fontSize: 20
     }
   }, "\u2192"), " TIER"), daysToTier === null ? /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4ade80",
       fontWeight: 700,
-      fontSize: 15,
+      fontSize: 18,
       marginTop: 6
     }
   }, "MAX") : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     style: {
       color: daysC(daysToTier),
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 28,
+      fontSize: 32,
       lineHeight: 1
     }
   }, daysToTier < 0 ? "-" : "", Math.abs(daysToTier), "d"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       marginTop: 3
     }
   }, daysToTier < 0 ? "OVERDUE" : daysToTier <= 14 ? "URGENT" : daysToTier <= 30 ? "SOON" : "to next tier")))), /*#__PURE__*/React.createElement("div", {
@@ -7009,7 +7009,7 @@ function RepMeetingPanel({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 1.5,
       marginBottom: 6,
@@ -7017,12 +7017,12 @@ function RepMeetingPanel({
     }
   }, "DAYS ", /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 16
+      fontSize: 20
     }
   }, "\u2192"), " MEETING"), daysToMtg === null ? /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#2a4a6a",
-      fontSize: 13,
+      fontSize: 16,
       fontStyle: "italic",
       marginTop: 5
     }
@@ -7030,13 +7030,13 @@ function RepMeetingPanel({
     style: {
       color: mtgC(daysToMtg),
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 28,
+      fontSize: 32,
       lineHeight: 1
     }
   }, daysToMtg < 0 ? "-" : "", Math.abs(daysToMtg), "d"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       marginTop: 3
     }
   }, daysToMtg < 0 ? "PAST DUE" : daysToMtg <= 3 ? "THIS WEEK" : daysToMtg <= 7 ? "UPCOMING" : "scheduled"))), /*#__PURE__*/React.createElement("div", {
@@ -7049,7 +7049,7 @@ function RepMeetingPanel({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 1.5,
       marginBottom: 6
@@ -7057,19 +7057,19 @@ function RepMeetingPanel({
   }, "PREV MEETING"), m.prevMetDate ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 20,
+      fontSize: 24,
       fontWeight: 700
     }
   }, fmtShortDate(m.prevMetDate)), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       marginTop: 3
     }
   }, Math.round((new Date() - new Date(m.prevMetDate + "T12:00:00")) / 86400000), "d ago")) : /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#2a4a6a",
-      fontSize: 13,
+      fontSize: 16,
       fontStyle: "italic",
       marginTop: 5
     }
@@ -7096,14 +7096,14 @@ function RepMeetingPanel({
       padding: "4px 14px",
       cursor: "pointer",
       color: hasMet ? "#4ade80" : "#4a7fa8",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 700,
       whiteSpace: "nowrap"
     }
   }, hasMet ? "✓ Met" : "○ Not met"), hasMet && /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10
+      fontSize: 13
     }
   }, fmtShortDate(m.metDate)), hasSched && !editSched && /*#__PURE__*/React.createElement("a", {
     href: gcalUrl(rep.name, m.scheduledDate),
@@ -7178,7 +7178,7 @@ function RepMeetingPanel({
       borderRadius: 3,
       padding: "3px 6px",
       color: "#7ec8e3",
-      fontSize: 10,
+      fontSize: 13,
       cursor: "pointer",
       width: "100%",
       outline: "none",
@@ -7208,7 +7208,7 @@ function RepMeetingPanel({
       borderRadius: 3,
       padding: "3px 8px",
       color: "#e2e8f0",
-      fontSize: 11,
+      fontSize: 14,
       outline: "none",
       colorScheme: "dark",
       flex: 1
@@ -7221,7 +7221,7 @@ function RepMeetingPanel({
       borderRadius: 3,
       padding: "3px 9px",
       color: "#4ade80",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer"
     }
   }, "\u2713"), /*#__PURE__*/React.createElement("button", {
@@ -7232,7 +7232,7 @@ function RepMeetingPanel({
       borderRadius: 3,
       padding: "3px 9px",
       color: "#f87171",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer"
     }
   }, "\u2715"))) : /*#__PURE__*/React.createElement("div", {
@@ -7246,7 +7246,7 @@ function RepMeetingPanel({
   }, hasSched ? /*#__PURE__*/React.createElement("span", {
     style: {
       color: schedOverdue ? "#f87171" : "#22d3ee",
-      fontSize: 18,
+      fontSize: 22,
       fontWeight: 700,
       fontFamily: "'Bebas Neue',sans-serif",
       letterSpacing: 1
@@ -7254,7 +7254,7 @@ function RepMeetingPanel({
   }, schedOverdue ? "⚠ " : "", fmtShortDate(m.scheduledDate)) : /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#2a4a6a",
-      fontSize: 13,
+      fontSize: 16,
       fontStyle: "italic"
     }
   }, "+ schedule meeting")), hasAny && !editSched && (confirmClear ? /*#__PURE__*/React.createElement("div", {
@@ -7267,7 +7267,7 @@ function RepMeetingPanel({
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#f87171",
-      fontSize: 10,
+      fontSize: 13,
       whiteSpace: "nowrap"
     }
   }, "Clear all?"), /*#__PURE__*/React.createElement("button", {
@@ -7278,7 +7278,7 @@ function RepMeetingPanel({
       borderRadius: 3,
       padding: "2px 8px",
       color: "#f87171",
-      fontSize: 10,
+      fontSize: 13,
       cursor: "pointer",
       fontWeight: 700
     }
@@ -7290,7 +7290,7 @@ function RepMeetingPanel({
       borderRadius: 3,
       padding: "2px 8px",
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       cursor: "pointer"
     }
   }, "No")) : /*#__PURE__*/React.createElement("button", {
@@ -7301,7 +7301,7 @@ function RepMeetingPanel({
       borderRadius: 3,
       cursor: "pointer",
       color: "#f87171",
-      fontSize: 10,
+      fontSize: 13,
       padding: "2px 7px",
       marginLeft: "auto"
     },
@@ -7330,7 +7330,7 @@ function RepMeetingPanel({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 1.5
     }
@@ -7342,7 +7342,7 @@ function RepMeetingPanel({
       borderRadius: 3,
       padding: "2px 8px",
       color: "#7ec8e3",
-      fontSize: 10,
+      fontSize: 13,
       cursor: "pointer",
       letterSpacing: .5
     }
@@ -7359,7 +7359,7 @@ function RepMeetingPanel({
       borderRadius: 4,
       padding: "8px",
       color: "#e2e8f0",
-      fontSize: 12,
+      fontSize: 15,
       resize: "vertical",
       outline: "none",
       fontFamily: "'DM Mono',monospace",
@@ -7379,7 +7379,7 @@ function RepMeetingPanel({
       borderRadius: 3,
       padding: "4px 12px",
       color: "#4ade80",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer"
     }
   }, "Save"), /*#__PURE__*/React.createElement("button", {
@@ -7390,20 +7390,20 @@ function RepMeetingPanel({
       borderRadius: 3,
       padding: "4px 12px",
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer"
     }
   }, "Cancel"))) : m.notes ? /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#a8c4d8",
-      fontSize: 12,
+      fontSize: 15,
       lineHeight: 1.7,
       whiteSpace: "pre-wrap"
     }
   }, m.notes) : /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#2a4a6a",
-      fontSize: 12,
+      fontSize: 15,
       fontStyle: "italic"
     }
   }, "No notes yet")), history.length > 0 && /*#__PURE__*/React.createElement("div", {
@@ -7423,7 +7423,7 @@ function RepMeetingPanel({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 1.5
     }
@@ -7433,7 +7433,7 @@ function RepMeetingPanel({
       background: "none",
       border: "none",
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer",
       letterSpacing: .5
     }
@@ -7458,7 +7458,7 @@ function RepMeetingPanel({
       }
     }, /*#__PURE__*/React.createElement("span", {
       style: {
-        fontSize: 10,
+        fontSize: 13,
         color: isMet ? "#4ade80" : "#22d3ee",
         fontWeight: 700,
         letterSpacing: .5,
@@ -7467,14 +7467,14 @@ function RepMeetingPanel({
     }, isMet ? "✓ MET" : "📅 SCHED"), /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#e2e8f0",
-        fontSize: 12,
+        fontSize: 15,
         fontFamily: "'Bebas Neue',sans-serif",
         letterSpacing: .5
       }
     }, fmtShortDate(h.date)), /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#2a4a6a",
-        fontSize: 10,
+        fontSize: 13,
         marginLeft: "auto"
       }
     }, new Date(h.recordedAt).toLocaleDateString()));
@@ -7577,7 +7577,7 @@ function RepDetail({
       borderRadius: 4,
       padding: "5px 14px",
       color: "#7ec8e3",
-      fontSize: 12,
+      fontSize: 15,
       letterSpacing: 1,
       cursor: "pointer"
     }
@@ -7589,7 +7589,7 @@ function RepDetail({
       borderRadius: 4,
       padding: "5px 14px",
       color: "#4a7fa8",
-      fontSize: 12,
+      fontSize: 15,
       letterSpacing: 1,
       cursor: "pointer",
       display: "flex",
@@ -7630,7 +7630,7 @@ function RepDetail({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 32,
+      fontSize: 36,
       color: groupColor,
       letterSpacing: 2,
       marginBottom: 6
@@ -7645,7 +7645,7 @@ function RepDetail({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 10
+      fontSize: 13
     }
   }, rep.start), /*#__PURE__*/React.createElement(StatusBadge, {
     status: rep.status
@@ -7666,7 +7666,7 @@ function RepDetail({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 18,
+      fontSize: 22,
       color: groupColor,
       letterSpacing: 2,
       marginBottom: 14
@@ -7690,7 +7690,7 @@ function RepDetail({
     style: {
       padding: "6px 10px",
       color: "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       letterSpacing: 1.2,
       fontWeight: 700,
       textAlign: "left",
@@ -7711,13 +7711,13 @@ function RepDetail({
         padding: "7px 10px",
         color: isCurrent ? groupColor : "#a8c4d8",
         fontWeight: isCurrent ? 700 : 400,
-        fontSize: 11,
+        fontSize: 14,
         whiteSpace: "nowrap"
       }
     }, m.month, " ", m.month === "Oct" || m.month === "Nov" || m.month === "Dec" ? "'25" : "'26", isCurrent && /*#__PURE__*/React.createElement("span", {
       style: {
         color: groupColor,
-        fontSize: 8,
+        fontSize: 14,
         marginLeft: 4,
         letterSpacing: 1
       }
@@ -7725,51 +7725,51 @@ function RepDetail({
       style: {
         padding: "7px 10px",
         color: "#94b8cc",
-        fontSize: 12
+        fontSize: 15
       }
     }, m.sent || "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "7px 10px",
         color: "#a78bfa",
-        fontSize: 12
+        fontSize: 15
       }
     }, m.received || "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "7px 10px",
         color: "#fbbf24",
-        fontSize: 12
+        fontSize: 15
       }
     }, m.approved || "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "7px 10px",
         color: m.funded > 0 ? "#34d399" : "#2a4a6a",
         fontFamily: "'Bebas Neue',sans-serif",
-        fontSize: 18
+        fontSize: 22
       }
     }, m.funded || "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "7px 10px",
         color: m.fundedAmt > 0 ? "#22d3ee" : "#2a4a6a",
         fontWeight: 600,
-        fontSize: 11
+        fontSize: 14
       }
     }, m.fundedAmt > 0 ? fmt$(m.fundedAmt) : "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "7px 10px",
         color: appPct >= 70 ? "#34d399" : appPct >= 40 ? "#fbbf24" : appPct > 0 ? "#fb923c" : "#2a4a6a",
-        fontSize: 11
+        fontSize: 14
       }
     }, m.sent > 0 ? `${appPct}%` : "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "7px 10px",
         color: closePct >= 30 ? "#34d399" : closePct >= 15 ? "#fbbf24" : closePct > 0 ? "#fb923c" : "#2a4a6a",
-        fontSize: 11
+        fontSize: 14
       }
     }, m.sent > 0 ? `${closePct}%` : "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "7px 10px",
         color: m.meetingPct >= 70 ? "#34d399" : m.meetingPct >= 40 ? "#fbbf24" : m.meetingPct > 0 ? "#fb923c" : "#2a4a6a",
-        fontSize: 11
+        fontSize: 14
       }
     }, m.meetingPct > 0 ? `${m.meetingPct}%` : "—"));
   }), (() => {
@@ -7789,7 +7789,7 @@ function RepDetail({
       style: {
         padding: "8px 10px",
         color: "#7ec8e3",
-        fontSize: 9,
+        fontSize: 12,
         fontWeight: 800,
         letterSpacing: 1
       }
@@ -7798,53 +7798,53 @@ function RepDetail({
         padding: "8px 10px",
         color: "#94b8cc",
         fontWeight: 700,
-        fontSize: 12
+        fontSize: 15
       }
     }, totS), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "8px 10px",
         color: "#a78bfa",
         fontWeight: 700,
-        fontSize: 12
+        fontSize: 15
       }
     }, totR), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "8px 10px",
         color: "#fbbf24",
         fontWeight: 700,
-        fontSize: 12
+        fontSize: 15
       }
     }, totA), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "8px 10px",
         color: "#34d399",
         fontFamily: "'Bebas Neue',sans-serif",
-        fontSize: 18
+        fontSize: 22
       }
     }, totU), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "8px 10px",
         color: "#22d3ee",
         fontWeight: 700,
-        fontSize: 11
+        fontSize: 14
       }
     }, fmt$(totF)), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "8px 10px",
         color: "#a8c4d8",
-        fontSize: 11
+        fontSize: 14
       }
     }, totS > 0 ? `${totAppPct}%` : "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "8px 10px",
         color: "#a8c4d8",
-        fontSize: 11
+        fontSize: 14
       }
     }, totS > 0 ? `${totClosePct}%` : "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "8px 10px",
         color: "#4a7fa8",
-        fontSize: 11
+        fontSize: 14
       }
     }, "\u2014"));
   })())))), rep.raw?.calls?.dials > 0 && (() => {
@@ -7857,7 +7857,7 @@ function RepDetail({
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         color: "#4a7fa8",
-        fontSize: 13,
+        fontSize: 16,
         letterSpacing: 1.5,
         marginBottom: 10,
         fontWeight: 800
@@ -7899,7 +7899,7 @@ function RepDetail({
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         color: "#4a7fa8",
-        fontSize: 11,
+        fontSize: 14,
         letterSpacing: 1.2,
         marginBottom: 8,
         fontWeight: 800
@@ -7907,7 +7907,7 @@ function RepDetail({
     }, label), /*#__PURE__*/React.createElement("div", {
       style: {
         fontFamily: "'Bebas Neue',sans-serif",
-        fontSize: 32,
+        fontSize: 36,
         color,
         letterSpacing: 1,
         lineHeight: 1
@@ -7915,7 +7915,7 @@ function RepDetail({
     }, value), sub && /*#__PURE__*/React.createElement("div", {
       style: {
         color: rateColor,
-        fontSize: 12,
+        fontSize: 15,
         marginTop: 5,
         letterSpacing: .5
       }
@@ -8023,7 +8023,7 @@ function RepDetail({
     }, /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#4a7fa8",
-        fontSize: 10
+        fontSize: 13
       }
     }, "$"), /*#__PURE__*/React.createElement("input", {
       type: "text",
@@ -8038,7 +8038,7 @@ function RepDetail({
         borderRadius: 3,
         padding: "2px 6px",
         color: "#e2e8f0",
-        fontSize: 11,
+        fontSize: 14,
         outline: "none",
         width: 90
       }
@@ -8050,7 +8050,7 @@ function RepDetail({
         borderRadius: 3,
         padding: "2px 7px",
         color: "#4ade80",
-        fontSize: 10,
+        fontSize: 13,
         cursor: "pointer"
       }
     }, "\u2713"), /*#__PURE__*/React.createElement("button", {
@@ -8059,7 +8059,7 @@ function RepDetail({
         background: "none",
         border: "none",
         color: "#4a7fa8",
-        fontSize: 10,
+        fontSize: 13,
         cursor: "pointer"
       }
     }, "\u2715")) : /*#__PURE__*/React.createElement("div", {
@@ -8072,7 +8072,7 @@ function RepDetail({
     }, /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#4a7fa8",
-        fontSize: 10
+        fontSize: 13
       }
     }, "GOAL: ", fmt$(g), "/mo"), /*#__PURE__*/React.createElement("button", {
       onClick: () => {
@@ -8083,7 +8083,7 @@ function RepDetail({
         background: "none",
         border: "none",
         color: "#2a4a6a",
-        fontSize: 9,
+        fontSize: 12,
         cursor: "pointer",
         padding: 0
       }
@@ -8105,7 +8105,7 @@ function RepDetail({
     })), /*#__PURE__*/React.createElement("div", {
       style: {
         color: p >= 100 ? "#4ade80" : p >= 75 ? "#22d3ee" : "#4a7fa8",
-        fontSize: 10
+        fontSize: 13
       }
     }, p, "% of monthly goal"))) : /*#__PURE__*/React.createElement("div", {
       style: {
@@ -8122,7 +8122,7 @@ function RepDetail({
         borderRadius: 3,
         padding: "2px 8px",
         color: "#2a4a6a",
-        fontSize: 10,
+        fontSize: 13,
         cursor: "pointer"
       }
     }, "+ set goal"));
@@ -8299,20 +8299,20 @@ function RepDetail({
   })), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       marginTop: 4
     }
   }, "30%+ elite \xB7 20%+ strong \xB7 <10% urgent")), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       marginTop: 8,
       fontStyle: "italic"
     }
   }, "\u26A0 Single period \u2014 expand for details")) : /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 12,
+      fontSize: 15,
       marginTop: 8
     }
   }, "No call data available")), /*#__PURE__*/React.createElement(StatBox, {
@@ -8341,7 +8341,7 @@ function RepDetail({
   })) : /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 12,
+      fontSize: 15,
       marginTop: 8
     }
   }, "No points data available"))), (() => {
@@ -8381,19 +8381,19 @@ function RepDetail({
     }, /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#4a7fa8",
-        fontSize: 18
+        fontSize: 22
       }
     }, "\uD83D\uDCE6"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
       style: {
         color: "#4a7fa8",
-        fontSize: 11,
+        fontSize: 14,
         fontWeight: 700,
         letterSpacing: 1
       }
     }, "NO PRODUCT MIX DATA"), /*#__PURE__*/React.createElement("div", {
       style: {
         color: "#2a4a6a",
-        fontSize: 10,
+        fontSize: 13,
         marginTop: 2
       }
     }, "Go to ", /*#__PURE__*/React.createElement("strong", {
@@ -8422,7 +8422,7 @@ function RepDetail({
     }, /*#__PURE__*/React.createElement("div", {
       style: {
         color: "#7ec8e3",
-        fontSize: 9,
+        fontSize: 12,
         letterSpacing: 2,
         fontWeight: 700,
         marginBottom: 12
@@ -8456,7 +8456,7 @@ function RepDetail({
       contentStyle: {
         background: "#0a1525",
         border: "1px solid #22d3ee44",
-        fontSize: 10
+        fontSize: 13
       },
       formatter: (v, n, p) => [`${fmt$(v)} · ${p.payload.units} deals`, n]
     })))), /*#__PURE__*/React.createElement("div", {
@@ -8497,13 +8497,13 @@ function RepDetail({
       }, /*#__PURE__*/React.createElement("span", {
         style: {
           color: pt.color,
-          fontSize: 10,
+          fontSize: 13,
           fontWeight: 700
         }
       }, pt.name), /*#__PURE__*/React.createElement("span", {
         style: {
           color: "#f1f5f9",
-          fontSize: 10
+          fontSize: 13
         }
       }, fmt$(pt.value))), /*#__PURE__*/React.createElement("div", {
         style: {
@@ -8521,7 +8521,7 @@ function RepDetail({
       })), /*#__PURE__*/React.createElement("div", {
         style: {
           color: "#4a7fa8",
-          fontSize: 8,
+          fontSize: 14,
           marginTop: 2
         }
       }, pt.units, " deal", pt.units !== 1 ? "s" : "", " \xB7 ", pct, "%")));
@@ -8536,12 +8536,12 @@ function RepDetail({
     }, /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#4a7fa8",
-        fontSize: 9
+        fontSize: 12
       }
     }, "TOTAL: ", totalUnits, " deals"), /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#f1f5f9",
-        fontSize: 9,
+        fontSize: 12,
         fontWeight: 700
       }
     }, fmt$(totalAmt))))));
@@ -8555,7 +8555,7 @@ function RepDetail({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 9,
+      fontSize: 12,
       letterSpacing: 2,
       fontWeight: 700,
       marginBottom: 10
@@ -8580,7 +8580,7 @@ function RepDetail({
     style: {
       padding: "6px 10px",
       color: "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       letterSpacing: 1,
       textAlign: "left",
       fontWeight: 800,
@@ -8601,7 +8601,7 @@ function RepDetail({
         padding: "7px 10px",
         color: m.month === "Feb" ? groupColor : "#f1f5f9",
         fontFamily: "'Bebas Neue',sans-serif",
-        fontSize: 14,
+        fontSize: 17,
         letterSpacing: 1
       }
     }, m.month), /*#__PURE__*/React.createElement("td", {
@@ -8644,7 +8644,7 @@ function RepDetail({
       style: {
         padding: "7px 10px",
         fontFamily: "'Bebas Neue',sans-serif",
-        fontSize: 16,
+        fontSize: 20,
         color: pts !== null ? pts >= avgPts ? "#22d3ee" : "#f87171" : "#4a7fa8"
       }
     }, pts !== null ? pts : "—"));
@@ -8700,7 +8700,7 @@ function TeamComparisonView({
   const hdStyle = {
     padding: "9px 10px",
     color: "#7ec8e3",
-    fontSize: 9,
+    fontSize: 12,
     letterSpacing: 1.2,
     fontWeight: 700,
     textAlign: "left",
@@ -8729,7 +8729,7 @@ function TeamComparisonView({
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1
     }
   }, "MONTH:"), [...MONTHS_2025, ...MONTHS_2026].map(mo => {
@@ -8745,7 +8745,7 @@ function TeamComparisonView({
         borderRadius: 4,
         padding: "5px 14px",
         color: active ? c : "#4a7fa8",
-        fontSize: 13,
+        fontSize: 16,
         letterSpacing: .8,
         cursor: "pointer",
         fontFamily: "'DM Mono',monospace",
@@ -8771,7 +8771,7 @@ function TeamComparisonView({
         color: on ? gc?.color || "#22d3ee" : "#a8c4d8",
         borderRadius: 4,
         padding: "4px 12px",
-        fontSize: 13,
+        fontSize: 16,
         letterSpacing: .5,
         cursor: "pointer"
       }
@@ -8797,13 +8797,13 @@ function TeamComparisonView({
     style: {
       color: c,
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 22,
+      fontSize: 26,
       lineHeight: 1
     }
   }, v), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 8,
+      fontSize: 14,
       letterSpacing: 1.2,
       marginTop: 3
     }
@@ -8836,7 +8836,7 @@ function TeamComparisonView({
   }, lbl, /*#__PURE__*/React.createElement("span", {
     style: {
       color: sortCol.col === col ? "#22d3ee" : "#4a7fa8",
-      fontSize: 9
+      fontSize: 12
     }
   }, sc(col)))))), /*#__PURE__*/React.createElement("tbody", null, rows.map((r, i) => {
     const gc = POS_GROUPS.find(p => p.key === r.group);
@@ -8871,33 +8871,33 @@ function TeamComparisonView({
         color: gc2,
         padding: "2px 8px",
         borderRadius: 10,
-        fontSize: 9,
+        fontSize: 12,
         whiteSpace: "nowrap"
       }
     }, r.group || "—")), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "9px 10px",
         color: "#94b8cc",
-        fontSize: 12
+        fontSize: 15
       }
     }, r.sent || "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "9px 10px",
         color: "#a78bfa",
-        fontSize: 12
+        fontSize: 15
       }
     }, r.received || "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "9px 10px",
         color: "#fbbf24",
-        fontSize: 12
+        fontSize: 15
       }
     }, r.approved || "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "9px 10px",
         color: r.units > 0 ? "#34d399" : "#2a4a6a",
         fontFamily: "'Bebas Neue',sans-serif",
-        fontSize: 20
+        fontSize: 24
       }
     }, r.units || "—"), /*#__PURE__*/React.createElement("td", {
       style: {
@@ -8909,19 +8909,19 @@ function TeamComparisonView({
       style: {
         padding: "9px 10px",
         color: r.appPct >= 70 ? "#34d399" : r.appPct >= 40 ? "#fbbf24" : r.appPct > 0 ? "#fb923c" : "#2a4a6a",
-        fontSize: 11
+        fontSize: 14
       }
     }, r.sent > 0 ? `${r.appPct}%` : "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "9px 10px",
         color: r.closePct >= 30 ? "#34d399" : r.closePct >= 15 ? "#fbbf24" : r.closePct > 0 ? "#fb923c" : "#2a4a6a",
-        fontSize: 11
+        fontSize: 14
       }
     }, r.sent > 0 ? `${r.closePct}%` : "—"), /*#__PURE__*/React.createElement("td", {
       style: {
         padding: "9px 10px",
         color: r.meetingPct >= 70 ? "#34d399" : r.meetingPct >= 40 ? "#fbbf24" : r.meetingPct > 0 ? "#fb923c" : "#2a4a6a",
-        fontSize: 11
+        fontSize: 14
       }
     }, r.meetingPct > 0 ? `${r.meetingPct}%` : "—"));
   })))));
@@ -8980,7 +8980,7 @@ function PrintView({
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 36,
+      fontSize: 40,
       color: groupColor,
       letterSpacing: 3,
       lineHeight: 1
@@ -8988,7 +8988,7 @@ function PrintView({
   }, maskName(rep.name)), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       marginTop: 4,
       letterSpacing: 1
     }
@@ -9006,7 +9006,7 @@ function PrintView({
       borderRadius: 4,
       padding: "6px 14px",
       color: groupColor,
-      fontSize: 12,
+      fontSize: 15,
       cursor: "pointer",
       letterSpacing: 1
     }
@@ -9018,7 +9018,7 @@ function PrintView({
       borderRadius: 4,
       padding: "6px 14px",
       color: "#f87171",
-      fontSize: 12,
+      fontSize: 15,
       cursor: "pointer"
     }
   }, "\u2715 CLOSE"))), /*#__PURE__*/React.createElement("div", {
@@ -9065,7 +9065,7 @@ function PrintView({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       letterSpacing: 1.2,
       marginBottom: 4
     }
@@ -9073,13 +9073,13 @@ function PrintView({
     style: {
       color: c,
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 24,
+      fontSize: 28,
       lineHeight: 1
     }
   }, v), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       marginTop: 3
     }
   }, s)))), g > 0 && /*#__PURE__*/React.createElement("div", {
@@ -9100,13 +9100,13 @@ function PrintView({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1
     }
   }, "FEB GOAL PROGRESS"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10
+      fontSize: 13
     }
   }, fmt$v(febAmt), " / ", fmt$v(g))), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -9126,7 +9126,7 @@ function PrintView({
   })), /*#__PURE__*/React.createElement("div", {
     style: {
       color: goalPct >= 100 ? "#4ade80" : goalPct >= 75 ? "#22d3ee" : "#f87171",
-      fontSize: 11,
+      fontSize: 14,
       fontWeight: 700
     }
   }, goalPct, "% of monthly goal")), /*#__PURE__*/React.createElement("div", {
@@ -9136,7 +9136,7 @@ function PrintView({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: groupColor,
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 1.5,
       marginBottom: 10,
@@ -9147,7 +9147,7 @@ function PrintView({
     style: {
       width: "100%",
       borderCollapse: "collapse",
-      fontSize: 12
+      fontSize: 15
     }
   }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", {
     style: {
@@ -9158,7 +9158,7 @@ function PrintView({
     style: {
       padding: "5px 8px",
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       letterSpacing: 1,
       textAlign: "left",
       fontWeight: 700
@@ -9178,11 +9178,11 @@ function PrintView({
         padding: "5px 8px",
         color: isFeb ? groupColor : "#a8c4d8",
         fontWeight: isFeb ? 700 : 400,
-        fontSize: 11
+        fontSize: 14
       }
     }, m.month, " ", ["Oct", "Nov", "Dec"].includes(m.month) ? "'25" : "'26", isFeb && /*#__PURE__*/React.createElement("span", {
       style: {
-        fontSize: 8,
+        fontSize: 14,
         marginLeft: 4,
         color: groupColor
       }
@@ -9206,7 +9206,7 @@ function PrintView({
         padding: "5px 8px",
         color: m.funded > 0 ? "#34d399" : "#4a7fa8",
         fontFamily: "'Bebas Neue',sans-serif",
-        fontSize: 16
+        fontSize: 20
       }
     }, m.funded || "—"), /*#__PURE__*/React.createElement("td", {
       style: {
@@ -9232,7 +9232,7 @@ function PrintView({
   })))), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#2a4a6a",
-      fontSize: 9,
+      fontSize: 12,
       textAlign: "right",
       marginTop: 10
     }
@@ -9363,7 +9363,7 @@ function RepCompareView() {
           style: {
             color: STATUS_CFG[s.status]?.text || "#22d3ee",
             fontWeight: 700,
-            fontSize: 11
+            fontSize: 14
           }
         }, s.status),
         val: 0
@@ -9372,7 +9372,7 @@ function RepCompareView() {
         display: /*#__PURE__*/React.createElement("span", {
           style: {
             color: gc?.color || "#22d3ee",
-            fontSize: 11
+            fontSize: 14
           }
         }, r.group),
         val: 0
@@ -9381,7 +9381,7 @@ function RepCompareView() {
         display: /*#__PURE__*/React.createElement("span", {
           style: {
             color: "#7ec8e3",
-            fontSize: 11
+            fontSize: 14
           }
         }, r.start),
         val: 0
@@ -9391,7 +9391,7 @@ function RepCompareView() {
           style: {
             color: TIER_COLORS[tt.tier] || "#9db4c8",
             fontFamily: "'Bebas Neue',sans-serif",
-            fontSize: 24
+            fontSize: 28
           }
         }, "T", tt.tier),
         val: tt.tier
@@ -9401,7 +9401,7 @@ function RepCompareView() {
           style: {
             color: TIER_COLORS[pt.tier] || "#9db4c8",
             fontFamily: "'Bebas Neue',sans-serif",
-            fontSize: 24
+            fontSize: 28
           }
         }, "T", pt.tier),
         val: pt.tier
@@ -9411,7 +9411,7 @@ function RepCompareView() {
           style: {
             color: "#22d3ee",
             fontFamily: "'Bebas Neue',sans-serif",
-            fontSize: 24,
+            fontSize: 28,
             letterSpacing: 1
           }
         }, s.pts ?? '—'),
@@ -9422,7 +9422,7 @@ function RepCompareView() {
           style: {
             color: "#34d399",
             fontFamily: "'Bebas Neue',sans-serif",
-            fontSize: 28
+            fontSize: 32
           }
         }, s.units || '—'),
         val: s.units
@@ -9432,7 +9432,7 @@ function RepCompareView() {
           style: {
             color: "#22d3ee",
             fontFamily: "'Bebas Neue',sans-serif",
-            fontSize: 22
+            fontSize: 26
           }
         }, fmt$v(s.funded)),
         val: s.funded
@@ -9441,12 +9441,12 @@ function RepCompareView() {
         display: /*#__PURE__*/React.createElement("span", {
           style: {
             color: "#a8c4d8",
-            fontSize: 12
+            fontSize: 15
           }
         }, fmt$v(s.avgFunded), /*#__PURE__*/React.createElement("span", {
           style: {
             color: "#4a7fa8",
-            fontSize: 9
+            fontSize: 12
           }
         }, "/mo")),
         val: s.avgFunded
@@ -9455,7 +9455,7 @@ function RepCompareView() {
         display: /*#__PURE__*/React.createElement("span", {
           style: {
             color: "#94b8cc",
-            fontSize: 16,
+            fontSize: 20,
             fontFamily: "'Bebas Neue',sans-serif"
           }
         }, s.sent || '—'),
@@ -9465,7 +9465,7 @@ function RepCompareView() {
         display: /*#__PURE__*/React.createElement("span", {
           style: {
             color: s.subPct >= 60 ? "#34d399" : s.subPct >= 40 ? "#fbbf24" : "#f87171",
-            fontSize: 16,
+            fontSize: 20,
             fontFamily: "'Bebas Neue',sans-serif"
           }
         }, s.sent ? `${s.subPct}%` : '—'),
@@ -9475,7 +9475,7 @@ function RepCompareView() {
         display: /*#__PURE__*/React.createElement("span", {
           style: {
             color: s.appPct >= 60 ? "#34d399" : s.appPct >= 40 ? "#fbbf24" : "#f87171",
-            fontSize: 16,
+            fontSize: 20,
             fontFamily: "'Bebas Neue',sans-serif"
           }
         }, s.received ? `${s.appPct}%` : '—'),
@@ -9485,7 +9485,7 @@ function RepCompareView() {
         display: /*#__PURE__*/React.createElement("span", {
           style: {
             color: s.closePct >= 40 ? "#34d399" : s.closePct >= 20 ? "#fbbf24" : "#f87171",
-            fontSize: 16,
+            fontSize: 20,
             fontFamily: "'Bebas Neue',sans-serif"
           }
         }, s.approved ? `${s.closePct}%` : '—'),
@@ -9495,7 +9495,7 @@ function RepCompareView() {
         display: /*#__PURE__*/React.createElement("span", {
           style: {
             color: s.overallPct >= 20 ? "#34d399" : s.overallPct >= 10 ? "#fbbf24" : "#f87171",
-            fontSize: 16,
+            fontSize: 20,
             fontFamily: "'Bebas Neue',sans-serif"
           }
         }, s.sent ? `${s.overallPct}%` : '—'),
@@ -9505,7 +9505,7 @@ function RepCompareView() {
         display: /*#__PURE__*/React.createElement("span", {
           style: {
             color: s.avgMtg >= 70 ? "#34d399" : s.avgMtg >= 40 ? "#fbbf24" : s.avgMtg > 0 ? "#fb923c" : "#4a7fa8",
-            fontSize: 16,
+            fontSize: 20,
             fontFamily: "'Bebas Neue',sans-serif"
           }
         }, s.avgMtg ? `${s.avgMtg}%` : '—'),
@@ -9517,7 +9517,7 @@ function RepCompareView() {
           return /*#__PURE__*/React.createElement("span", {
             style: {
               color: p >= 20 ? "#34d399" : p >= 10 ? "#fbbf24" : "#f87171",
-              fontSize: 16,
+              fontSize: 20,
               fontFamily: "'Bebas Neue',sans-serif"
             }
           }, p ? `${p}%` : '—');
@@ -9618,7 +9618,7 @@ function RepCompareView() {
       borderRadius: 4,
       padding: "5px 12px",
       color: active ? color : "#4a7fa8",
-      fontSize: 12,
+      fontSize: 15,
       letterSpacing: .8,
       cursor: "pointer",
       fontFamily: "'DM Mono',monospace",
@@ -9634,7 +9634,7 @@ function RepCompareView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 2,
       marginBottom: 4
@@ -9642,7 +9642,7 @@ function RepCompareView() {
   }, "REP COMPARISON"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       marginBottom: 14
     }
   }, "Select up to 3 reps \xB7 choose a time window \xB7 compare side-by-side"), /*#__PURE__*/React.createElement("div", {
@@ -9656,7 +9656,7 @@ function RepCompareView() {
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1,
       marginRight: 2
     }
@@ -9731,7 +9731,7 @@ function RepCompareView() {
   }, "ALL TIME"), /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       marginLeft: 4
     }
   }, "Showing: ", /*#__PURE__*/React.createElement("span", {
@@ -9777,12 +9777,12 @@ function RepCompareView() {
       style: {
         color: gc?.color || "#22d3ee",
         fontFamily: "'Bebas Neue',sans-serif",
-        fontSize: 20,
+        fontSize: 24,
         letterSpacing: 1
       }
     }, maskName(selRep.name)), !isRepActive(selRep.name) && /*#__PURE__*/React.createElement("span", {
       style: {
-        fontSize: 8,
+        fontSize: 14,
         color: "#f87171",
         border: "1px solid #f8717155",
         borderRadius: 3,
@@ -9792,7 +9792,7 @@ function RepCompareView() {
     }, "FORMER")), /*#__PURE__*/React.createElement("div", {
       style: {
         color: "#4a7fa8",
-        fontSize: 10,
+        fontSize: 13,
         marginTop: 2
       }
     }, selRep.group, " \xB7 ", selRep.start)), /*#__PURE__*/React.createElement("button", {
@@ -9802,14 +9802,14 @@ function RepCompareView() {
         border: "none",
         color: "#f87171",
         cursor: "pointer",
-        fontSize: 14,
+        fontSize: 17,
         padding: 0,
         lineHeight: 1
       }
     }, "\u2715")) : /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
       style: {
         color: "#4a7fa8",
-        fontSize: 10,
+        fontSize: 13,
         letterSpacing: 1,
         marginBottom: 6
       }
@@ -9824,7 +9824,7 @@ function RepCompareView() {
         borderRadius: 4,
         padding: "5px 8px",
         color: "#e2e8f0",
-        fontSize: 11,
+        fontSize: 14,
         outline: "none"
       }
     }), search && filtered.length > 0 && /*#__PURE__*/React.createElement("div", {
@@ -9848,7 +9848,7 @@ function RepCompareView() {
           padding: "5px 8px",
           cursor: "pointer",
           color: isFmr ? "#4a7fa8" : "#a8c4d8",
-          fontSize: 12,
+          fontSize: 15,
           display: "flex",
           alignItems: "center",
           gap: 6
@@ -9857,7 +9857,7 @@ function RepCompareView() {
         onMouseLeave: e => e.currentTarget.style.background = "transparent"
       }, n, isFmr && /*#__PURE__*/React.createElement("span", {
         style: {
-          fontSize: 8,
+          fontSize: 14,
           color: "#f87171",
           border: "1px solid #f8717155",
           borderRadius: 3,
@@ -9887,7 +9887,7 @@ function RepCompareView() {
     style: {
       padding: "10px 14px",
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1.2,
       textAlign: "left",
       width: 150
@@ -9895,7 +9895,7 @@ function RepCompareView() {
   }, "METRIC ", /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#2a4a6a",
-      fontSize: 8
+      fontSize: 14
     }
   }, "\xB7 ", periodLabel)), reps.map(r => {
     const gc = POS_GROUPS.find(p => p.key === r.group);
@@ -9910,13 +9910,13 @@ function RepCompareView() {
       style: {
         color: gc?.color || "#22d3ee",
         fontFamily: "'Bebas Neue',sans-serif",
-        fontSize: 18,
+        fontSize: 22,
         letterSpacing: 1.5
       }
     }, maskName(r.name)), /*#__PURE__*/React.createElement("div", {
       style: {
         color: "#4a7fa8",
-        fontSize: 9,
+        fontSize: 12,
         marginTop: 2
       }
     }, r.group));
@@ -9934,7 +9934,7 @@ function RepCompareView() {
       style: {
         padding: "9px 14px",
         color: isSectionBreak ? "#7ec8e3" : "#4a7fa8",
-        fontSize: 10,
+        fontSize: 13,
         letterSpacing: 1,
         fontWeight: 700
       }
@@ -9954,7 +9954,7 @@ function RepCompareView() {
       }, metrics[row.key]?.display, isBest && /*#__PURE__*/React.createElement("div", {
         style: {
           color: "#4ade80",
-          fontSize: 8,
+          fontSize: 14,
           letterSpacing: 1,
           marginTop: 2
         }
@@ -9963,7 +9963,7 @@ function RepCompareView() {
   })))) : /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#2a4a6a",
-      fontSize: 12,
+      fontSize: 15,
       fontStyle: "italic",
       textAlign: "center",
       padding: "40px 0"
@@ -10055,14 +10055,14 @@ function ProductBreakdownEntry({
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#34d399",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1.5
     }
   }, "\uD83D\uDCE6 PRODUCT BREAKDOWN"), hasExisting && /*#__PURE__*/React.createElement("span", {
     style: {
       background: "#34d39922",
       color: "#34d399",
-      fontSize: 8,
+      fontSize: 14,
       padding: "1px 6px",
       borderRadius: 3,
       letterSpacing: .5
@@ -10070,12 +10070,12 @@ function ProductBreakdownEntry({
   }, "HAS DATA"), totalUnits > 0 && !open && /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10
+      fontSize: 13
     }
   }, totalUnits, " deals \xB7 ", fmt$(totalAmt))), /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10
+      fontSize: 13
     }
   }, open ? "▲" : "▼")), open && selRep && /*#__PURE__*/React.createElement("div", {
     style: {
@@ -10085,7 +10085,7 @@ function ProductBreakdownEntry({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       letterSpacing: 1,
       marginBottom: 10
     }
@@ -10107,7 +10107,7 @@ function ProductBreakdownEntry({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: pt.color,
-      fontSize: 10,
+      fontSize: 13,
       fontWeight: 700,
       marginBottom: 6,
       letterSpacing: .5
@@ -10124,7 +10124,7 @@ function ProductBreakdownEntry({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 8,
+      fontSize: 14,
       marginBottom: 2
     }
   }, "DEALS"), /*#__PURE__*/React.createElement("input", {
@@ -10142,7 +10142,7 @@ function ProductBreakdownEntry({
       borderRadius: 3,
       padding: "3px 6px",
       color: "#e2e8f0",
-      fontSize: 11,
+      fontSize: 14,
       outline: "none"
     }
   })), /*#__PURE__*/React.createElement("div", {
@@ -10152,7 +10152,7 @@ function ProductBreakdownEntry({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 8,
+      fontSize: 14,
       marginBottom: 2
     }
   }, "AMOUNT $"), /*#__PURE__*/React.createElement("input", {
@@ -10170,7 +10170,7 @@ function ProductBreakdownEntry({
       borderRadius: 3,
       padding: "3px 6px",
       color: "#e2e8f0",
-      fontSize: 11,
+      fontSize: 14,
       outline: "none"
     }
   })))))), /*#__PURE__*/React.createElement("div", {
@@ -10182,7 +10182,7 @@ function ProductBreakdownEntry({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10
+      fontSize: 13
     }
   }, "Total: ", /*#__PURE__*/React.createElement("span", {
     style: {
@@ -10200,7 +10200,7 @@ function ProductBreakdownEntry({
       borderRadius: 4,
       padding: "5px 14px",
       color: saved ? "#4ade80" : "#34d399",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer",
       fontWeight: 700,
       letterSpacing: 1
@@ -10568,7 +10568,7 @@ function DataEntryView() {
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 2,
       marginBottom: 4
@@ -10576,7 +10576,7 @@ function DataEntryView() {
   }, "DATA ENTRY"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       marginBottom: 16
     }
   }, "Stage monthly data here for any year. Entries are saved locally until you update the RAW constant in the JSX source."), /*#__PURE__*/React.createElement("div", {
@@ -10602,7 +10602,7 @@ function DataEntryView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       fontWeight: 700,
       letterSpacing: 1,
       marginBottom: 4
@@ -10610,7 +10610,7 @@ function DataEntryView() {
   }, "\uD83D\uDCC1 IMPORT FROM SALESFORCE CSV"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       lineHeight: 1.8
     }
   }, "Columns in ", /*#__PURE__*/React.createElement("span", {
@@ -10647,7 +10647,7 @@ function DataEntryView() {
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: .8
     }
   }, "FALLBACK YEAR FOR ROWS WITHOUT YEAR:"), YEAR_OPTS.map(y => /*#__PURE__*/React.createElement("button", {
@@ -10659,7 +10659,7 @@ function DataEntryView() {
       borderRadius: 4,
       padding: "3px 9px",
       color: selYear === y ? YEAR_COLORS[y] : "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer",
       fontWeight: selYear === y ? 700 : 400
     }
@@ -10671,7 +10671,7 @@ function DataEntryView() {
       borderRadius: 6,
       padding: "10px 18px",
       color: "#22d3ee",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer",
       fontWeight: 700,
       letterSpacing: 1,
@@ -10689,7 +10689,7 @@ function DataEntryView() {
   })), csvMsg && /*#__PURE__*/React.createElement("div", {
     style: {
       color: csvMsg.startsWith("✓") ? "#4ade80" : "#f87171",
-      fontSize: 11,
+      fontSize: 14,
       marginTop: 8,
       fontWeight: 700
     }
@@ -10714,13 +10714,13 @@ function DataEntryView() {
     style: {
       color: "#22d3ee",
       fontWeight: 700,
-      fontSize: 12,
+      fontSize: 15,
       letterSpacing: 1
     }
   }, "CSV PREVIEW \u2014 ", csvPreview.rows.length, " ROWS PARSED"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       marginTop: 3
     }
   }, "Years detected: ", Object.entries(csvPreview.yearCounts).map(([y, n]) => /*#__PURE__*/React.createElement("span", {
@@ -10733,7 +10733,7 @@ function DataEntryView() {
   }, y, ": ", n, " rows"))), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       marginTop: 2
     }
   }, "Columns mapped: ", /*#__PURE__*/React.createElement("span", {
@@ -10753,7 +10753,7 @@ function DataEntryView() {
       borderRadius: 5,
       padding: "5px 12px",
       color: "#f87171",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer"
     }
   }, "CANCEL"), /*#__PURE__*/React.createElement("button", {
@@ -10765,7 +10765,7 @@ function DataEntryView() {
       borderRadius: 5,
       padding: "5px 14px",
       color: "#4ade80",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer",
       fontWeight: 700
     }
@@ -10780,7 +10780,7 @@ function DataEntryView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#f87171",
-      fontSize: 10,
+      fontSize: 13,
       fontWeight: 700,
       marginBottom: 4
     }
@@ -10788,7 +10788,7 @@ function DataEntryView() {
     key: i,
     style: {
       color: "#fca5a5",
-      fontSize: 10,
+      fontSize: 13,
       marginBottom: 1
     }
   }, e))), /*#__PURE__*/React.createElement("div", {
@@ -10802,7 +10802,7 @@ function DataEntryView() {
     style: {
       width: "100%",
       borderCollapse: "collapse",
-      fontSize: 10
+      fontSize: 13
     }
   }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", {
     style: {
@@ -10852,7 +10852,7 @@ function DataEntryView() {
     style: {
       padding: "5px 8px",
       color: "#4a7fa8",
-      fontSize: 10
+      fontSize: 13
     }
   }, "\u2026and ", csvPreview.rows.length - 50, " more rows")))))), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -10871,7 +10871,7 @@ function DataEntryView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: editKey ? "#fbbf24" : "#7ec8e3",
-      fontSize: 12,
+      fontSize: 15,
       fontWeight: 800,
       letterSpacing: 1.5,
       marginBottom: 14
@@ -10883,7 +10883,7 @@ function DataEntryView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1,
       marginBottom: 4
     }
@@ -10901,7 +10901,7 @@ function DataEntryView() {
       borderRadius: 4,
       padding: "5px 8px",
       color: "#e2e8f0",
-      fontSize: 12,
+      fontSize: 15,
       outline: "none",
       marginBottom: 4
     }
@@ -10923,14 +10923,14 @@ function DataEntryView() {
       padding: "5px 8px",
       cursor: "pointer",
       color: "#a8c4d8",
-      fontSize: 12
+      fontSize: 15
     },
     onMouseEnter: e => e.currentTarget.style.background = "#0f2438",
     onMouseLeave: e => e.currentTarget.style.background = "transparent"
   }, n))), selRep && /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#22d3ee",
-      fontSize: 11,
+      fontSize: 14,
       fontWeight: 700
     }
   }, "\u2713 ", selRep)), /*#__PURE__*/React.createElement("div", {
@@ -10940,7 +10940,7 @@ function DataEntryView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1,
       marginBottom: 6
     }
@@ -10960,7 +10960,7 @@ function DataEntryView() {
         borderRadius: 4,
         padding: "5px 14px",
         color: selYear === y ? ycolor : "#4a7fa8",
-        fontSize: 12,
+        fontSize: 15,
         cursor: "pointer",
         fontWeight: selYear === y ? 700 : 400,
         letterSpacing: .5
@@ -10973,7 +10973,7 @@ function DataEntryView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1,
       marginBottom: 6
     }
@@ -10995,7 +10995,7 @@ function DataEntryView() {
         borderRadius: 4,
         padding: "5px 2px",
         color: isActive ? yc : hasEntry && selRep ? "#4ade80" : "#4a7fa8",
-        fontSize: 11,
+        fontSize: 14,
         cursor: "pointer",
         position: "relative",
         textAlign: "center"
@@ -11014,7 +11014,7 @@ function DataEntryView() {
   })), /*#__PURE__*/React.createElement("div", {
     style: {
       color: yc,
-      fontSize: 10,
+      fontSize: 13,
       fontWeight: 700,
       marginTop: 6,
       letterSpacing: .5
@@ -11030,7 +11030,7 @@ function DataEntryView() {
   }, /*#__PURE__*/React.createElement("label", {
     style: {
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       width: 110,
       flexShrink: 0
     }
@@ -11049,7 +11049,7 @@ function DataEntryView() {
       borderRadius: 4,
       padding: "4px 8px",
       color: "#e2e8f0",
-      fontSize: 12,
+      fontSize: 15,
       outline: "none"
     }
   }))), /*#__PURE__*/React.createElement("div", {
@@ -11068,7 +11068,7 @@ function DataEntryView() {
       borderRadius: 6,
       padding: "8px",
       color: selRep ? editKey ? "#fbbf24" : yc : "#2a4a6a",
-      fontSize: 13,
+      fontSize: 16,
       cursor: selRep ? "pointer" : "default",
       fontWeight: 700,
       letterSpacing: 1
@@ -11081,7 +11081,7 @@ function DataEntryView() {
       borderRadius: 6,
       padding: "8px 12px",
       color: "#f87171",
-      fontSize: 12,
+      fontSize: 15,
       cursor: "pointer"
     }
   }, "CANCEL")), /*#__PURE__*/React.createElement(ProductBreakdownEntry, {
@@ -11105,7 +11105,7 @@ function DataEntryView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 12,
+      fontSize: 15,
       fontWeight: 800,
       letterSpacing: 1.5
     }
@@ -11123,7 +11123,7 @@ function DataEntryView() {
       borderRadius: 4,
       padding: "3px 9px",
       color: "#fbbf24",
-      fontSize: 10,
+      fontSize: 13,
       cursor: "pointer"
     }
   }, "\u21A9 UNDO"))), Object.keys(groupedPending).length > 1 && /*#__PURE__*/React.createElement("div", {
@@ -11141,7 +11141,7 @@ function DataEntryView() {
       borderRadius: 3,
       padding: "2px 8px",
       color: filterYear === "all" ? "#e2e8f0" : "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       cursor: "pointer"
     }
   }, "ALL"), Object.keys(groupedPending).sort().map(y => /*#__PURE__*/React.createElement("button", {
@@ -11153,14 +11153,14 @@ function DataEntryView() {
       borderRadius: 3,
       padding: "2px 8px",
       color: filterYear === y ? YEAR_COLORS[y] || "#22d3ee" : "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       cursor: "pointer",
       fontWeight: 700
     }
   }, y, " (", groupedPending[y].length, ")"))), totalCount === 0 ? /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#2a4a6a",
-      fontSize: 12,
+      fontSize: 15,
       fontStyle: "italic"
     }
   }, "No staged entries yet") : /*#__PURE__*/React.createElement("div", {
@@ -11176,7 +11176,7 @@ function DataEntryView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: YEAR_COLORS[yr] || "#22d3ee",
-      fontSize: 10,
+      fontSize: 13,
       fontWeight: 700,
       letterSpacing: 1.5,
       marginBottom: 6,
@@ -11209,13 +11209,13 @@ function DataEntryView() {
     }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#22d3ee",
-        fontSize: 11,
+        fontSize: 14,
         fontWeight: 700
       }
     }, e.rep), /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#4a7fa8",
-        fontSize: 10,
+        fontSize: 13,
         marginLeft: 6
       }
     }, e.month, " ", e.year)), /*#__PURE__*/React.createElement("div", {
@@ -11231,7 +11231,7 @@ function DataEntryView() {
         borderRadius: 3,
         padding: "1px 6px",
         color: isEditing ? "#fbbf24" : "#7ec8e3",
-        fontSize: 9,
+        fontSize: 12,
         cursor: "pointer"
       },
       onMouseEnter: e => e.currentTarget.style.borderColor = "#22d3ee",
@@ -11243,7 +11243,7 @@ function DataEntryView() {
         border: "none",
         color: "#f87171",
         cursor: "pointer",
-        fontSize: 11
+        fontSize: 14
       }
     }, "\u2715"))), /*#__PURE__*/React.createElement("div", {
       style: {
@@ -11256,7 +11256,7 @@ function DataEntryView() {
       style: {
         display: "flex",
         justifyContent: "space-between",
-        fontSize: 10
+        fontSize: 13
       }
     }, /*#__PURE__*/React.createElement("span", {
       style: {
@@ -11275,7 +11275,7 @@ function DataEntryView() {
       border: "1px dashed #1a3550",
       borderRadius: 6,
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       lineHeight: 1.7
     }
   }, "\u26A0 To apply: update the ", /*#__PURE__*/React.createElement("span", {
@@ -11297,7 +11297,7 @@ function DataEntryView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#e2e8f0",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 700,
       letterSpacing: 1.5,
       marginBottom: 6
@@ -11305,7 +11305,7 @@ function DataEntryView() {
   }, "\uD83D\uDCCB CSV COLUMN MAPPING REFERENCE"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       marginBottom: 16
     }
   }, "Row 1 of your CSV must contain headers. Any of the aliases below will be recognized \u2014 columns can be in any order."), /*#__PURE__*/React.createElement("div", {
@@ -11327,7 +11327,7 @@ function DataEntryView() {
     style: {
       padding: "10px 14px",
       color: "#22d3ee",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1.4,
       textAlign: "left",
       fontWeight: 700,
@@ -11395,7 +11395,7 @@ function DataEntryView() {
       padding: "3px 9px",
       color: "#22d3ee",
       fontFamily: "'DM Mono',monospace",
-      fontSize: 11,
+      fontSize: 14,
       whiteSpace: "nowrap"
     }
   }, a)))), /*#__PURE__*/React.createElement("td", {
@@ -11408,14 +11408,14 @@ function DataEntryView() {
     style: {
       color: "#f1f5f9",
       fontWeight: 700,
-      fontSize: 12
+      fontSize: 15
     }
   }, row.field)), /*#__PURE__*/React.createElement("td", {
     style: {
       padding: "11px 14px",
       verticalAlign: "middle",
       color: "#94b8cc",
-      fontSize: 11,
+      fontSize: 14,
       lineHeight: 1.6
     }
   }, row.note || /*#__PURE__*/React.createElement("span", {
@@ -11429,7 +11429,7 @@ function DataEntryView() {
       background: "#06111f",
       border: "1px solid #1e3a5f",
       borderRadius: 6,
-      fontSize: 11,
+      fontSize: 14,
       lineHeight: 1.8
     }
   }, /*#__PURE__*/React.createElement("span", {
@@ -11581,14 +11581,14 @@ function RosterView() {
       style: {
         color: isFmr ? "#4a7fa8" : gc_c,
         fontFamily: "'Bebas Neue',sans-serif",
-        fontSize: 17,
+        fontSize: 21,
         letterSpacing: .8
       }
     }, rep.name), /*#__PURE__*/React.createElement("span", {
       style: {
         background: gc_c + "22",
         color: gc_c,
-        fontSize: 9,
+        fontSize: 12,
         padding: "1px 6px",
         borderRadius: 10,
         letterSpacing: .5
@@ -11596,7 +11596,7 @@ function RosterView() {
     }, rep.group), isFmr && entry.endMonth && /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#f87171",
-        fontSize: 9,
+        fontSize: 12,
         letterSpacing: .5
       }
     }, "LEFT ", entry.endMonth, " ", entry.endYear)), /*#__PURE__*/React.createElement("div", {
@@ -11608,7 +11608,7 @@ function RosterView() {
     }, /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#4a7fa8",
-        fontSize: 10
+        fontSize: 13
       }
     }, "Start: ", /*#__PURE__*/React.createElement("span", {
       style: {
@@ -11617,7 +11617,7 @@ function RosterView() {
     }, rep.start)), /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#4a7fa8",
-        fontSize: 10
+        fontSize: 13
       }
     }, "Total Funded: ", /*#__PURE__*/React.createElement("span", {
       style: {
@@ -11626,7 +11626,7 @@ function RosterView() {
     }, fmt$v(totalFunded))), /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#4a7fa8",
-        fontSize: 10
+        fontSize: 13
       }
     }, "Months: ", /*#__PURE__*/React.createElement("span", {
       style: {
@@ -11635,7 +11635,7 @@ function RosterView() {
     }, rep.mos.length)), entry.note && /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#fbbf24",
-        fontSize: 10
+        fontSize: 13
       }
     }, "Note: ", entry.note))), /*#__PURE__*/React.createElement("div", {
       style: {
@@ -11652,7 +11652,7 @@ function RosterView() {
         borderRadius: 4,
         padding: "4px 10px",
         color: "#4ade80",
-        fontSize: 10,
+        fontSize: 13,
         cursor: "pointer",
         letterSpacing: .5
       }
@@ -11664,7 +11664,7 @@ function RosterView() {
         borderRadius: 4,
         padding: "4px 10px",
         color: "#f87171",
-        fontSize: 10,
+        fontSize: 13,
         cursor: "pointer",
         letterSpacing: .5
       }
@@ -11676,7 +11676,7 @@ function RosterView() {
         borderRadius: 4,
         padding: "4px 10px",
         color: isEditing ? "#fbbf24" : "#7ec8e3",
-        fontSize: 10,
+        fontSize: 13,
         cursor: "pointer",
         letterSpacing: .5
       },
@@ -11699,7 +11699,7 @@ function RosterView() {
     }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
       style: {
         color: "#4a7fa8",
-        fontSize: 9,
+        fontSize: 12,
         letterSpacing: 1,
         marginBottom: 4
       }
@@ -11728,14 +11728,14 @@ function RosterView() {
         borderRadius: 4,
         padding: "4px 10px",
         color: editVals.active === o.v ? o.c : "#4a7fa8",
-        fontSize: 10,
+        fontSize: 13,
         cursor: "pointer",
         fontWeight: editVals.active === o.v ? 700 : 400
       }
     }, o.l)))), !editVals.active && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
       style: {
         color: "#4a7fa8",
-        fontSize: 9,
+        fontSize: 12,
         letterSpacing: 1,
         marginBottom: 4
       }
@@ -11756,7 +11756,7 @@ function RosterView() {
         borderRadius: 4,
         padding: "4px 6px",
         color: "#e2e8f0",
-        fontSize: 11,
+        fontSize: 14,
         outline: "none"
       }
     }, ALL_MONTHS_12.map(m => /*#__PURE__*/React.createElement("option", {
@@ -11774,7 +11774,7 @@ function RosterView() {
         borderRadius: 4,
         padding: "4px 6px",
         color: "#e2e8f0",
-        fontSize: 11,
+        fontSize: 14,
         outline: "none"
       }
     }, YEAR_OPTS.map(y => /*#__PURE__*/React.createElement("option", {
@@ -11783,7 +11783,7 @@ function RosterView() {
     }, y))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
       style: {
         color: "#4a7fa8",
-        fontSize: 9,
+        fontSize: 12,
         letterSpacing: 1,
         marginBottom: 4
       }
@@ -11801,7 +11801,7 @@ function RosterView() {
         borderRadius: 4,
         padding: "4px 8px",
         color: "#e2e8f0",
-        fontSize: 11,
+        fontSize: 14,
         outline: "none"
       }
     })), /*#__PURE__*/React.createElement("div", {
@@ -11816,7 +11816,7 @@ function RosterView() {
         borderRadius: 4,
         padding: "5px 14px",
         color: "#4ade80",
-        fontSize: 11,
+        fontSize: 14,
         cursor: "pointer",
         fontWeight: 700,
         letterSpacing: .5
@@ -11826,7 +11826,7 @@ function RosterView() {
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 800,
       letterSpacing: 2,
       marginBottom: 4
@@ -11834,7 +11834,7 @@ function RosterView() {
   }, "ROSTER MANAGEMENT"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       marginBottom: 16
     }
   }, "Mark reps inactive when they leave \u2014 their data is preserved for historical reporting. Inactive reps are hidden from the leaderboard and current-month views."), /*#__PURE__*/React.createElement("div", {
@@ -11869,7 +11869,7 @@ function RosterView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 28,
+      fontSize: 32,
       color: s.c,
       letterSpacing: 1,
       lineHeight: 1
@@ -11877,14 +11877,14 @@ function RosterView() {
   }, s.v), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1,
       marginTop: 4
     }
   }, s.l))), saveMsg && /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4ade80",
-      fontSize: 11,
+      fontSize: 14,
       alignSelf: "center",
       fontWeight: 700
     }
@@ -11900,7 +11900,7 @@ function RosterView() {
       borderRadius: 5,
       padding: "6px 10px",
       color: "#e2e8f0",
-      fontSize: 12,
+      fontSize: 15,
       outline: "none",
       marginBottom: 16
     }
@@ -11911,7 +11911,7 @@ function RosterView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#34d399",
-      fontSize: 10,
+      fontSize: 13,
       fontWeight: 700,
       letterSpacing: 1.5,
       marginBottom: 10,
@@ -11941,7 +11941,7 @@ function RosterView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#f87171",
-      fontSize: 10,
+      fontSize: 13,
       fontWeight: 700,
       letterSpacing: 1.5
     }
@@ -11954,12 +11954,12 @@ function RosterView() {
   }), /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#f87171",
-      fontSize: 11
+      fontSize: 14
     }
   }, showFormer ? "▲" : "▼")), showFormer && /*#__PURE__*/React.createElement("div", null, filtered(former).length === 0 ? /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#2a4a6a",
-      fontSize: 11,
+      fontSize: 14,
       fontStyle: "italic",
       padding: "10px 0"
     }
@@ -11970,7 +11970,7 @@ function RosterView() {
   })))), former.length === 0 && !search && /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#2a4a6a",
-      fontSize: 11,
+      fontSize: 14,
       fontStyle: "italic"
     }
   }, "No former reps yet. Use \"Mark Inactive\" on a rep when they leave."));
@@ -12126,7 +12126,7 @@ function DeptHeadView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       letterSpacing: 1.2,
       marginBottom: 4
     }
@@ -12134,13 +12134,13 @@ function DeptHeadView() {
     style: {
       color,
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 26,
+      fontSize: 30,
       lineHeight: 1
     }
   }, value), sub && /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       marginTop: 3
     }
   }, sub));
@@ -12155,7 +12155,7 @@ function DeptHeadView() {
   const thStyle = {
     padding: "7px 10px",
     color: "#7ec8e3",
-    fontSize: 9,
+    fontSize: 12,
     letterSpacing: 1,
     fontWeight: 700,
     textAlign: "left",
@@ -12165,7 +12165,7 @@ function DeptHeadView() {
   const tdStyle = (c = "#a8c4d8") => ({
     padding: "7px 10px",
     color: c,
-    fontSize: 11,
+    fontSize: 14,
     whiteSpace: "nowrap",
     borderBottom: "1px solid #070e1c"
   });
@@ -12186,14 +12186,14 @@ function DeptHeadView() {
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 22,
+      fontSize: 26,
       color: "#f59e0b",
       letterSpacing: 2
     }
   }, "DEPARTMENT HEADS"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       background: "#0d1e32",
       border: "1px solid #1a3550",
       borderRadius: 4,
@@ -12225,20 +12225,20 @@ function DeptHeadView() {
     style: {
       color: "#34d399",
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 14,
+      fontSize: 17,
       letterSpacing: 1.5
     }
   }, "SBA")), /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 20,
+      fontSize: 24,
       color: "#34d399",
       letterSpacing: 1.5
     }
   }, meetingMode ? maskName("Max Gualtieri") : "Max Gualtieri"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10
+      fontSize: 13
     }
   }, "SBA Director \xB7 Since ", maxRep?.start)), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -12295,7 +12295,7 @@ function DeptHeadView() {
   }, m.month), " ", /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9
+      fontSize: 12
     }
   }, m.year)), /*#__PURE__*/React.createElement("td", {
     style: tdStyle("#22d3ee")
@@ -12323,7 +12323,7 @@ function DeptHeadView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1.5,
       marginBottom: 10
     }
@@ -12337,7 +12337,7 @@ function DeptHeadView() {
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       marginBottom: 3
     }
   }, "YEAR"), /*#__PURE__*/React.createElement("select", {
@@ -12349,7 +12349,7 @@ function DeptHeadView() {
       borderRadius: 4,
       color: "#f1f5f9",
       padding: "5px 8px",
-      fontSize: 11,
+      fontSize: 14,
       fontFamily: "'DM Mono',monospace"
     }
   }, YEAR_OPTS.map(y => /*#__PURE__*/React.createElement("option", {
@@ -12357,7 +12357,7 @@ function DeptHeadView() {
   }, y)))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       marginBottom: 3
     }
   }, "MONTH"), /*#__PURE__*/React.createElement("select", {
@@ -12369,7 +12369,7 @@ function DeptHeadView() {
       borderRadius: 4,
       color: "#f1f5f9",
       padding: "5px 8px",
-      fontSize: 11,
+      fontSize: 14,
       fontFamily: "'DM Mono',monospace"
     }
   }, ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"].map(m => /*#__PURE__*/React.createElement("option", {
@@ -12387,7 +12387,7 @@ function DeptHeadView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       marginBottom: 3
     }
   }, f.lbl.toUpperCase()), /*#__PURE__*/React.createElement("input", {
@@ -12403,7 +12403,7 @@ function DeptHeadView() {
       borderRadius: 4,
       color: "#f1f5f9",
       padding: "5px 8px",
-      fontSize: 11,
+      fontSize: 14,
       fontFamily: "'DM Mono',monospace",
       width: 120
     }
@@ -12415,7 +12415,7 @@ function DeptHeadView() {
       borderRadius: 4,
       padding: "6px 14px",
       color: maxSaved ? "#4ade80" : "#34d399",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer",
       fontWeight: 700,
       letterSpacing: 1
@@ -12440,20 +12440,20 @@ function DeptHeadView() {
     style: {
       color: "#f59e0b",
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 14,
+      fontSize: 17,
       letterSpacing: 1.5
     }
   }, "CC")), /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 20,
+      fontSize: 24,
       color: "#f59e0b",
       letterSpacing: 1.5
     }
   }, meetingMode ? maskName("Dave Salas") : "Dave Salas"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10
+      fontSize: 13
     }
   }, "CC Processing Director \xB7 Since ", daveRep?.start)), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -12508,7 +12508,7 @@ function DeptHeadView() {
     }, m.month), " ", /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#4a7fa8",
-        fontSize: 9
+        fontSize: 12
       }
     }, m.year)), /*#__PURE__*/React.createElement("td", {
       style: tdStyle("#f59e0b")
@@ -12523,7 +12523,7 @@ function DeptHeadView() {
     style: {
       textAlign: "center",
       color: "#2a4a6a",
-      fontSize: 11,
+      fontSize: 14,
       fontStyle: "italic",
       padding: "16px 0"
     }
@@ -12534,7 +12534,7 @@ function DeptHeadView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 9,
+      fontSize: 12,
       letterSpacing: 1.5,
       marginBottom: 8,
       opacity: .7
@@ -12583,7 +12583,7 @@ function DeptHeadView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#f59e0b",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1.5,
       marginBottom: 10
     }
@@ -12597,7 +12597,7 @@ function DeptHeadView() {
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       marginBottom: 3
     }
   }, "YEAR"), /*#__PURE__*/React.createElement("select", {
@@ -12609,7 +12609,7 @@ function DeptHeadView() {
       borderRadius: 4,
       color: "#f1f5f9",
       padding: "5px 8px",
-      fontSize: 11,
+      fontSize: 14,
       fontFamily: "'DM Mono',monospace"
     }
   }, YEAR_OPTS.map(y => /*#__PURE__*/React.createElement("option", {
@@ -12617,7 +12617,7 @@ function DeptHeadView() {
   }, y)))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       marginBottom: 3
     }
   }, "MONTH"), /*#__PURE__*/React.createElement("select", {
@@ -12629,7 +12629,7 @@ function DeptHeadView() {
       borderRadius: 4,
       color: "#f1f5f9",
       padding: "5px 8px",
-      fontSize: 11,
+      fontSize: 14,
       fontFamily: "'DM Mono',monospace"
     }
   }, ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"].map(m => /*#__PURE__*/React.createElement("option", {
@@ -12655,7 +12655,7 @@ function DeptHeadView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9,
+      fontSize: 12,
       marginBottom: 3
     }
   }, f.lbl.toUpperCase()), /*#__PURE__*/React.createElement("input", {
@@ -12671,7 +12671,7 @@ function DeptHeadView() {
       borderRadius: 4,
       color: "#f1f5f9",
       padding: "5px 8px",
-      fontSize: 11,
+      fontSize: 14,
       fontFamily: "'DM Mono',monospace",
       width: 100
     }
@@ -12683,7 +12683,7 @@ function DeptHeadView() {
       borderRadius: 4,
       padding: "6px 14px",
       color: daveSaved ? "#4ade80" : "#f59e0b",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer",
       fontWeight: 700,
       letterSpacing: 1
@@ -12800,14 +12800,14 @@ function ProductMixView() {
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 22,
+      fontSize: 26,
       color: "#34d399",
       letterSpacing: 2
     }
   }, "PRODUCT MIX"), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       background: "#0d1e32",
       border: "1px solid #1a3550",
       borderRadius: 4,
@@ -12822,7 +12822,7 @@ function ProductMixView() {
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 10
+      fontSize: 13
     }
   }, "PERIOD:"), ["Oct", "Nov", "Dec", "Jan", "Feb", "all"].map(p => /*#__PURE__*/React.createElement("button", {
     key: p,
@@ -12833,7 +12833,7 @@ function ProductMixView() {
       borderRadius: 4,
       padding: "4px 10px",
       color: period === p ? "#34d399" : "#7ec8e3",
-      fontSize: 11,
+      fontSize: 14,
       cursor: "pointer",
       fontFamily: "'DM Mono',monospace"
     }
@@ -12845,19 +12845,19 @@ function ProductMixView() {
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 40,
+      fontSize: 44,
       marginBottom: 16
     }
   }, "\uD83D\uDCCA"), /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 20,
+      fontSize: 24,
       letterSpacing: 2,
       marginBottom: 8
     }
   }, "NO PRODUCT DATA YET"), /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 12
+      fontSize: 15
     }
   }, "Go to ", /*#__PURE__*/React.createElement("strong", {
     style: {
@@ -12885,7 +12885,7 @@ function ProductMixView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1.5,
       marginBottom: 12
     }
@@ -12907,7 +12907,7 @@ function ProductMixView() {
     contentStyle: {
       background: "#0a1525",
       border: "1px solid #22d3ee44",
-      fontSize: 11
+      fontSize: 14
     },
     formatter: (v, n, p) => [`${fmt$(v)} · ${p.payload.units} deals`, n]
   })))), /*#__PURE__*/React.createElement("div", {
@@ -12951,14 +12951,14 @@ function ProductMixView() {
     style: {
       color: pt.color,
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 14,
+      fontSize: 17,
       letterSpacing: 1
     }
   }, pt.label), /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#f1f5f9",
       fontWeight: 700,
-      fontSize: 13
+      fontSize: 16
     }
   }, fmt$(teamTotals[pt.key].amount))), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -12969,12 +12969,12 @@ function ProductMixView() {
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9
+      fontSize: 12
     }
   }, teamTotals[pt.key].units, " deals \xB7 ", pct(teamTotals[pt.key].amount, totalAmount), " of volume"), /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 9
+      fontSize: 12
     }
   }, "avg ", teamTotals[pt.key].units > 0 ? fmt$(Math.round(teamTotals[pt.key].amount / teamTotals[pt.key].units)) : "—")), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -13001,7 +13001,7 @@ function ProductMixView() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 10,
+      fontSize: 13,
       letterSpacing: 1.5,
       marginBottom: 12
     }
@@ -13023,7 +13023,7 @@ function ProductMixView() {
     style: {
       padding: "8px 10px",
       color: "#7ec8e3",
-      fontSize: 10,
+      fontSize: 13,
       textAlign: "left",
       whiteSpace: "nowrap"
     }
@@ -13032,7 +13032,7 @@ function ProductMixView() {
     style: {
       padding: "8px 10px",
       color: pt.color,
-      fontSize: 10,
+      fontSize: 13,
       textAlign: "right",
       whiteSpace: "nowrap"
     }
@@ -13040,7 +13040,7 @@ function ProductMixView() {
     style: {
       padding: "8px 10px",
       color: "#f1f5f9",
-      fontSize: 10,
+      fontSize: 13,
       textAlign: "right"
     }
   }, "TOTAL $"))), /*#__PURE__*/React.createElement("tbody", null, periodData.sort((a, b) => b.totalAmount - a.totalAmount).map((r, i) => {
@@ -13064,12 +13064,12 @@ function ProductMixView() {
         padding: "8px 10px",
         textAlign: "right",
         color: r.byProd[pt.key].amount > 0 ? pt.color : "#2a4a6a",
-        fontSize: 11
+        fontSize: 14
       }
     }, r.byProd[pt.key].amount > 0 ? fmt$(r.byProd[pt.key].amount) : "—", r.byProd[pt.key].units > 0 && /*#__PURE__*/React.createElement("span", {
       style: {
         color: "#4a7fa8",
-        fontSize: 9,
+        fontSize: 12,
         marginLeft: 4
       }
     }, "(", r.byProd[pt.key].units, ")"))), /*#__PURE__*/React.createElement("td", {
@@ -13141,7 +13141,7 @@ function TokenSetup({
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 22,
+      fontSize: 26,
       fontWeight: 700,
       color: "#22d3ee",
       marginBottom: 8,
@@ -13150,7 +13150,7 @@ function TokenSetup({
     }
   }, "REP TRACKER"), /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 13,
+      fontSize: 16,
       color: "#64748b",
       marginBottom: 32
     }
@@ -13160,7 +13160,7 @@ function TokenSetup({
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 11,
+      fontSize: 14,
       color: "#94a3b8",
       marginBottom: 6,
       textTransform: "uppercase",
@@ -13179,13 +13179,13 @@ function TokenSetup({
       borderRadius: 6,
       padding: "10px 12px",
       color: "#e2e8f0",
-      fontSize: 13,
+      fontSize: 16,
       fontFamily: "monospace",
       outline: "none"
     }
   })), /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 11,
+      fontSize: 14,
       color: "#475569",
       marginBottom: 24,
       lineHeight: 1.6
@@ -13212,7 +13212,7 @@ function TokenSetup({
       border: "none",
       borderRadius: 6,
       padding: "11px 0",
-      fontSize: 13,
+      fontSize: 16,
       fontWeight: 700,
       cursor: "pointer",
       letterSpacing: 1,
@@ -13222,7 +13222,7 @@ function TokenSetup({
     style: {
       marginTop: 12,
       color: "#f87171",
-      fontSize: 12,
+      fontSize: 15,
       textAlign: "center"
     }
   }, err)));
@@ -13400,7 +13400,7 @@ function AppInner() {
       minHeight: "100vh",
       color: "#f1f5f9",
       fontFamily: "'DM Mono','Courier New',monospace",
-      fontSize: 13
+      fontSize: 16
     }
   }, /*#__PURE__*/React.createElement("style", null, `@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Bebas+Neue&display=swap');*{box-sizing:border-box;margin:0;padding:0}::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:#050c18}::-webkit-scrollbar-thumb{background:#1e3a5f;border-radius:2px}tbody tr:hover td{background:#0f2438!important;cursor:pointer}`), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -13419,19 +13419,19 @@ function AppInner() {
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 28,
+      fontSize: 32,
       color: "#22d3ee",
       letterSpacing: 3
     }
   }, "REP PERFORMANCE TRACKER ", /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#4a7fa8",
-      fontSize: 17
+      fontSize: 21
     }
   }, "v3")), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
-      fontSize: 12,
+      fontSize: 15,
       letterSpacing: 1,
       marginTop: 3
     }
@@ -13488,7 +13488,7 @@ function AppInner() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 26,
+      fontSize: 30,
       color: s.c,
       letterSpacing: 1,
       lineHeight: 1
@@ -13496,7 +13496,7 @@ function AppInner() {
   }, s.v), /*#__PURE__*/React.createElement("div", {
     style: {
       color: s.s && statusFilt === s.s ? s.c : "#4a7fa8",
-      fontSize: 11,
+      fontSize: 14,
       letterSpacing: 1.2,
       marginTop: 5
     }
@@ -13528,7 +13528,7 @@ function AppInner() {
         borderBottom: `2px solid ${view === id ? activeColor : "transparent"}`,
         color: view === id ? activeColor : "#7ec8e3",
         padding: "8px 16px",
-        fontSize: 13,
+        fontSize: 16,
         letterSpacing: 1.5,
         cursor: "pointer",
         fontFamily: "'DM Mono',monospace",
@@ -13543,7 +13543,7 @@ function AppInner() {
         borderRadius: "50%",
         width: 14,
         height: 14,
-        fontSize: 8,
+        fontSize: 14,
         color: "#fff",
         display: "flex",
         alignItems: "center",
@@ -13566,7 +13566,7 @@ function AppInner() {
       borderRadius: "4px 4px 0 0",
       color: meetingMode ? "#f59e0b" : "#4a7fa8",
       padding: "7px 14px",
-      fontSize: 12,
+      fontSize: 15,
       letterSpacing: 1.5,
       cursor: "pointer",
       fontFamily: "'DM Mono',monospace",
@@ -13578,7 +13578,7 @@ function AppInner() {
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 14
+      fontSize: 17
     }
   }, meetingMode ? "🎯" : "○"), meetingMode ? "EXIT MEETING" : "MEETING MODE"), /*#__PURE__*/React.createElement("button", {
     onClick: () => setView("bench"),
@@ -13588,7 +13588,7 @@ function AppInner() {
       borderRadius: "4px 4px 0 0",
       color: view === "bench" ? "#22d3ee" : "#4a7fa8",
       padding: "7px 16px",
-      fontSize: 12,
+      fontSize: 15,
       letterSpacing: 1.5,
       cursor: "pointer",
       fontFamily: "'DM Mono',monospace",
@@ -13612,12 +13612,12 @@ function AppInner() {
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
-      fontSize: 16
+      fontSize: 20
     }
   }, "\uD83C\uDFAF"), /*#__PURE__*/React.createElement("span", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 15,
+      fontSize: 18,
       color: "#f59e0b",
       letterSpacing: 2
     }
@@ -13636,7 +13636,7 @@ function AppInner() {
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#a8c4d8",
-      fontSize: 11,
+      fontSize: 14,
       letterSpacing: 1
     }
   }, "PRESENTING FOR:"), /*#__PURE__*/React.createElement("select", {
@@ -13648,7 +13648,7 @@ function AppInner() {
       borderRadius: 4,
       color: focusRep ? "#fcd34d" : "#6b7280",
       padding: "4px 10px",
-      fontSize: 12,
+      fontSize: 15,
       fontFamily: "'DM Mono',monospace",
       cursor: "pointer",
       outline: "none"
@@ -13668,17 +13668,17 @@ function AppInner() {
     style: {
       color: "#f59e0b",
       fontWeight: 700,
-      fontSize: 13
+      fontSize: 16
     }
   }, focusRep), /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#6b7280",
-      fontSize: 11
+      fontSize: 14
     }
   }, "\u2014 all other names hidden")) : /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#6b7280",
-      fontSize: 11,
+      fontSize: 14,
       fontStyle: "italic"
     }
   }, "Select a rep above \u2014 all names are currently hidden")), /*#__PURE__*/React.createElement("div", {

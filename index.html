@@ -10251,12 +10251,31 @@ function DataEntryView() {
   };
 
   // ── CSV Parser (year-aware) ─────────────────────────────────────────────────
+  const parseCSVLine = line => {
+    const result = [];
+    let cur = "";
+    let inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === '"') {
+        if (inQ && line[i + 1] === '"') {
+          cur += '"';
+          i++;
+        } else inQ = !inQ;
+      } else if (ch === ',' && !inQ) {
+        result.push(cur);
+        cur = "";
+      } else cur += ch;
+    }
+    result.push(cur);
+    return result;
+  };
   const parseCSV = text => {
     const lines = text.trim().split(/\r?\n/);
     if (lines.length < 2) return {
       error: "File appears empty"
     };
-    const rawHeaders = lines[0].split(",").map(h => h.trim().replace(/^"|"$/g, "").toLowerCase());
+    const rawHeaders = parseCSVLine(lines[0]).map(h => h.trim().replace(/^\"|\"$/g, "").toLowerCase());
     const colMap = {};
     rawHeaders.forEach((h, i) => {
       const mapped = HEADER_MAP[h];
@@ -10275,8 +10294,8 @@ function DataEntryView() {
     for (let i = 1; i < lines.length; i++) {
       const line = lines[i].trim();
       if (!line) continue;
-      const cells = line.match(/("(?:[^"]|"")*"|[^,]*)/g) || [];
-      const clean = cells.map(c => c.trim().replace(/^"|"$/g, "").replace(/""/g, '"'));
+      const cells = parseCSVLine(line);
+      const clean = cells.map(c => c.trim());
       const repName = clean[colMap.rep]?.trim();
       let monthRaw = clean[colMap.month]?.trim();
       if (!repName || !monthRaw) {
@@ -13779,12 +13798,7 @@ function AppInner() {
       letterSpacing: 1,
       marginTop: 3
     }
-  }, "OCT \u2013 DEC 2025 \xB7 ", ACTIVE.length, " ACTIVE REPS", formerCount > 0 && /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: "#f87171",
-      marginLeft: 8
-    }
-  }, "\xB7 ", formerCount, " FORMER"))), /*#__PURE__*/React.createElement("div", {
+  }, "OCT \u2013 DEC 2025 \xB7 ", ACTIVE.length, " ACTIVE REPS")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       gap: 10,

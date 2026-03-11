@@ -1,10 +1,28 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>Rep Performance Tracker — Historical Data</title><style>*{margin:0;padding:0;box-sizing:border-box}body{background:#0f1923;color:#e2e8f0;font-family:sans-serif}#root{min-height:100vh}</style></head><body><div id="root"></div>
-<script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prop-types@15.8.1/prop-types.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/recharts@2.12.7/umd/Recharts.min.js"></script>
-<script>if(typeof React==='undefined'||typeof Recharts==='undefined'){document.getElementById('root').innerHTML='<div style="color:red;padding:40px">CDN load error</div>';throw new Error('CDN');}</script>
-<script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Rep Performance Tracker — Live</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:#020e1a;color:#e2e8f0;font-family:'Montserrat',sans-serif;min-height:100vh;}
+    ::-webkit-scrollbar{width:6px;height:6px;}
+    ::-webkit-scrollbar-track{background:#06111f;}
+    ::-webkit-scrollbar-thumb{background:#1a3550;border-radius:3px;}
+    input,select,textarea{font-family:'Montserrat',sans-serif;}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prop-types@15.8.1/prop-types.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/recharts@2.12.7/umd/Recharts.min.js"></script>
+  <script>
 const {
   useState,
   useEffect,
@@ -29,639 +47,13 @@ const {
   Pie,
   Legend
 } = Recharts;
-const SHEET = [{
-  name: "Chris Mothershed",
-  start: "12/3/2020",
-  group: "Team Leader",
-  title: "Team Leader",
-  expPos: "Team Leader",
-  status: "On Track",
-  daysNext: "MAX",
-  tier: 7,
-  expTier: 7,
-  unitProg: 188,
-  revProg: 202,
-  totalFunded: 15121655,
-  avgMonthly: 3024331,
-  expMonthly: 1500000,
-  febPts: 117,
-  janPts: 105,
-  decPts: 117
-}, {
-  name: "Huda Alyesh",
-  start: "9/1/2021",
-  group: "Team Leader",
-  title: "Team Leader",
-  expPos: "Team Leader",
-  status: "On Track",
-  daysNext: "MAX",
-  tier: 7,
-  expTier: 7,
-  unitProg: 144,
-  revProg: 106,
-  totalFunded: 7947306,
-  avgMonthly: 1589461,
-  expMonthly: 1500000,
-  febPts: 104,
-  janPts: 111,
-  decPts: 80
-}, {
-  name: "Darel Kimi",
-  start: "8/1/2019",
-  group: "Team Leader",
-  title: "Team Leader",
-  expPos: "Team Leader",
-  status: "On Track",
-  daysNext: "MAX",
-  tier: 7,
-  expTier: 7,
-  unitProg: 100,
-  revProg: 239,
-  totalFunded: 17901373,
-  avgMonthly: 3580275,
-  expMonthly: 1500000,
-  febPts: 91,
-  janPts: 107,
-  decPts: 120
-}, {
-  name: "Marvin Guerra",
-  start: "4/8/2024",
-  group: "Up & Comer",
-  title: "Up & Comer",
-  expPos: "Up & Comer",
-  status: "Promotion Ready",
-  daysNext: "34",
-  tier: 7,
-  expTier: 5,
-  unitProg: 30,
-  revProg: 335,
-  totalFunded: 13404625,
-  avgMonthly: 2680925,
-  expMonthly: 800000,
-  febPts: 42,
-  janPts: 84,
-  decPts: 43
-}, {
-  name: "Dante Siordia",
-  start: "11/8/2021",
-  group: "OCTA",
-  title: "OCTA-Level",
-  expPos: "Team Leader",
-  status: "Needs Attention",
-  daysNext: "MAX",
-  tier: 6,
-  expTier: 7,
-  unitProg: 19,
-  revProg: 54,
-  totalFunded: 4050930,
-  avgMonthly: 810186,
-  expMonthly: 1500000,
-  febPts: 35,
-  janPts: 8,
-  decPts: 11
-}, {
-  name: "Siuzanna Saparkina",
-  start: "8/30/2021",
-  group: "OCTA",
-  title: "Up & Comer",
-  expPos: "Team Leader",
-  status: "Underperforming",
-  daysNext: "MAX",
-  tier: 5,
-  expTier: 7,
-  unitProg: 69,
-  revProg: 43,
-  totalFunded: 3226393,
-  avgMonthly: 645279,
-  expMonthly: 1500000,
-  febPts: 0,
-  janPts: 22,
-  decPts: 32
-}, {
-  name: "Jake Goranson",
-  start: "2/21/2022",
-  group: "OCTA",
-  title: "Entry-level",
-  expPos: "Team Leader",
-  status: "Underperforming",
-  daysNext: "MAX",
-  tier: 1,
-  expTier: 7,
-  unitProg: 31,
-  revProg: 16,
-  totalFunded: 1206645,
-  avgMonthly: 241329,
-  expMonthly: 1500000,
-  febPts: 28,
-  janPts: 50,
-  decPts: 22
-}, {
-  name: "Nikita Kalin",
-  start: "8/15/2023",
-  group: "Up & Comer",
-  title: "Intermediate",
-  expPos: "Up & Comer",
-  status: "Underperforming",
-  daysNext: "MAX",
-  tier: 2,
-  expTier: 5,
-  unitProg: 56,
-  revProg: 29,
-  totalFunded: 2159225,
-  avgMonthly: 431845,
-  expMonthly: 1500000,
-  febPts: 108,
-  janPts: 129,
-  decPts: 83
-}, {
-  name: "Victoriano Hernandez",
-  start: "6/24/2024",
-  group: "Up & Comer",
-  title: "Intermediate",
-  expPos: "Up & Comer",
-  status: "Underperforming",
-  daysNext: "111",
-  tier: 2,
-  expTier: 5,
-  unitProg: 70,
-  revProg: 46,
-  totalFunded: 1820283,
-  avgMonthly: 364057,
-  expMonthly: 800000,
-  febPts: 125,
-  janPts: 72,
-  decPts: 50
-}, {
-  name: "Carter Taylor",
-  start: "6/23/2025",
-  group: "RIT",
-  title: "Intermediate",
-  expPos: "RIT",
-  status: "On Track",
-  daysNext: "110",
-  tier: 2,
-  expTier: 0,
-  unitProg: 75,
-  revProg: 102,
-  totalFunded: 1535909,
-  avgMonthly: 307182,
-  expMonthly: 300000,
-  febPts: 83,
-  janPts: 108,
-  decPts: 37
-}, {
-  name: "Jeremy Chiprin",
-  start: "3/31/2025",
-  group: "RIT",
-  title: "Entry-level",
-  expPos: "RIT",
-  status: "Needs Attention",
-  daysNext: "26",
-  tier: 1,
-  expTier: 0,
-  unitProg: 75,
-  revProg: 67,
-  totalFunded: 1007195,
-  avgMonthly: 201439,
-  expMonthly: 300000,
-  febPts: 93,
-  janPts: 88,
-  decPts: 63
-}, {
-  name: "Triston Eugenio",
-  start: "5/19/2025",
-  group: "RIT",
-  title: "Entry-level",
-  expPos: "RIT",
-  status: "Needs Attention",
-  daysNext: "75",
-  tier: 1,
-  expTier: 0,
-  unitProg: 50,
-  revProg: 39,
-  totalFunded: 586500,
-  avgMonthly: 117300,
-  expMonthly: 300000,
-  febPts: 63,
-  janPts: 71,
-  decPts: 26
-}, {
-  name: "Michael Kalin",
-  start: "11/17/2025",
-  group: "RIT",
-  title: "Entry-level",
-  expPos: "RIT",
-  status: "On Track",
-  daysNext: "73",
-  tier: 1,
-  expTier: 0,
-  unitProg: 100,
-  revProg: 110,
-  totalFunded: 550627,
-  avgMonthly: 110125,
-  expMonthly: 100000,
-  febPts: 42,
-  janPts: 77,
-  decPts: 28
-}, {
-  name: "Nasir Kakar",
-  start: "5/12/2025",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "Underperforming",
-  daysNext: "68",
-  tier: 0,
-  expTier: 0,
-  unitProg: 25,
-  revProg: 33,
-  totalFunded: 489825,
-  avgMonthly: 97965,
-  expMonthly: 300000,
-  febPts: 15,
-  janPts: 24,
-  decPts: 33
-}, {
-  name: "Juan Ocampo",
-  start: "7/14/2025",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "Underperforming",
-  daysNext: "131",
-  tier: 0,
-  expTier: 0,
-  unitProg: 25,
-  revProg: 22,
-  totalFunded: 333750,
-  avgMonthly: 66750,
-  expMonthly: 300000,
-  febPts: 75,
-  janPts: 52,
-  decPts: 23
-}, {
-  name: "Mike Zajac",
-  start: "11/10/2025",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "Needs Attention",
-  daysNext: "66",
-  tier: 0,
-  expTier: 0,
-  unitProg: 50,
-  revProg: 45,
-  totalFunded: 223000,
-  avgMonthly: 44600,
-  expMonthly: 100000,
-  febPts: 67,
-  janPts: 56,
-  decPts: null
-}, {
-  name: "Nicholas Lila",
-  start: "9/8/2025",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "Needs Attention",
-  daysNext: "3",
-  tier: 0,
-  expTier: 0,
-  unitProg: 50,
-  revProg: 92,
-  totalFunded: 458925,
-  avgMonthly: 91785,
-  expMonthly: 100000,
-  febPts: 5,
-  janPts: 7,
-  decPts: 52
-}, {
-  name: "Christian Douglass-Devine",
-  start: "10/20/2025",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "Needs Attention",
-  daysNext: "46",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 0,
-  totalFunded: 0,
-  avgMonthly: 0,
-  expMonthly: 100000,
-  febPts: 20,
-  janPts: 14,
-  decPts: null
-}, {
-  name: "Tom Voltz",
-  start: "11/3/2025",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "Needs Attention",
-  daysNext: "59",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 7,
-  totalFunded: 35000,
-  avgMonthly: 7000,
-  expMonthly: 100000,
-  febPts: 30,
-  janPts: 25,
-  decPts: null
-}, {
-  name: "Negean Faal",
-  start: "11/24/2025",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "Needs Attention",
-  daysNext: "80",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 0,
-  totalFunded: 0,
-  avgMonthly: 0,
-  expMonthly: 100000,
-  febPts: 22,
-  janPts: 32,
-  decPts: null
-}, {
-  name: "Jacey Cruz",
-  start: "12/15/2025",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "Needs Attention",
-  daysNext: "102",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 0,
-  totalFunded: 0,
-  avgMonthly: 0,
-  expMonthly: 100000,
-  febPts: -5,
-  janPts: 23,
-  decPts: null
-}, {
-  name: "Hunter Nyhuis",
-  start: "2/9/2026",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "On Track",
-  daysNext: "4",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 0,
-  totalFunded: 0,
-  avgMonthly: 0,
-  expMonthly: 0,
-  febPts: -3,
-  janPts: null,
-  decPts: null
-}, {
-  name: "Mathew Liebmann",
-  start: "2/9/2026",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "On Track",
-  daysNext: "4",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 0,
-  totalFunded: 0,
-  avgMonthly: 0,
-  expMonthly: 0,
-  febPts: -14,
-  janPts: null,
-  decPts: null
-}, {
-  name: "Christopher Simonian",
-  start: "2/17/2026",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "On Track",
-  daysNext: "12",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 0,
-  totalFunded: 0,
-  avgMonthly: 0,
-  expMonthly: 0,
-  febPts: 0,
-  janPts: null,
-  decPts: null
-}, {
-  name: "Jade Medina",
-  start: "2/17/2026",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "On Track",
-  daysNext: "12",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 0,
-  totalFunded: 0,
-  avgMonthly: 0,
-  expMonthly: 0,
-  febPts: 0,
-  janPts: null,
-  decPts: null
-}, {
-  name: "Lana Saleh",
-  start: "2/17/2026",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "On Track",
-  daysNext: "12",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 0,
-  totalFunded: 0,
-  avgMonthly: 0,
-  expMonthly: 0,
-  febPts: -5,
-  janPts: null,
-  decPts: null
-},
-// ── Former reps — preserved for historical data ───────────────────────────
-{
-  name: "Sebastian Devia",
-  start: "8/12/2024",
-  group: "Up & Comer",
-  title: "Up & Comer",
-  expPos: "Up & Comer",
-  status: "Needs Attention",
-  daysNext: "MAX",
-  tier: 5,
-  expTier: 5,
-  unitProg: 83,
-  revProg: 75,
-  totalFunded: 1358597,
-  avgMonthly: 339649,
-  expMonthly: 450000,
-  febPts: 18,
-  janPts: 90,
-  decPts: 72
-}, {
-  name: "Jabril Perryman",
-  start: "6/18/2025",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "Needs Attention",
-  daysNext: "MAX",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 0,
-  totalFunded: 148000,
-  avgMonthly: 37000,
-  expMonthly: 100000,
-  febPts: 31,
-  janPts: 39,
-  decPts: 30
-}, {
-  name: "Jacob Margolies",
-  start: "7/7/2025",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "Underperforming",
-  daysNext: "MAX",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 0,
-  totalFunded: 127000,
-  avgMonthly: 63500,
-  expMonthly: 100000,
-  febPts: null,
-  janPts: null,
-  decPts: 3
-}, {
-  name: "Shyann Franklin",
-  start: "11/3/2025",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "Needs Attention",
-  daysNext: "MAX",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 0,
-  totalFunded: 273099,
-  avgMonthly: 54620,
-  expMonthly: 100000,
-  febPts: 17,
-  janPts: 7,
-  decPts: 16
-}, {
-  name: "Charlize Farahmand",
-  start: "12/22/2025",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "Needs Attention",
-  daysNext: "MAX",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 0,
-  totalFunded: 56644,
-  avgMonthly: 18882,
-  expMonthly: 100000,
-  febPts: 45,
-  janPts: 28,
-  decPts: null
-}, {
-  name: "Lucianna Julian",
-  start: "2/9/2026",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "On Track",
-  daysNext: "8",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 0,
-  totalFunded: 0,
-  avgMonthly: 0,
-  expMonthly: 0,
-  febPts: 0,
-  janPts: null,
-  decPts: null
-}, {
-  name: "Max Gualtieri",
-  start: "1/1/2019",
-  group: "Dept Head",
-  title: "SBA Director",
-  expPos: "Dept Head",
-  status: "On Track",
-  daysNext: "MAX",
-  tier: 7,
-  expTier: 7,
-  unitProg: 100,
-  revProg: 301,
-  totalFunded: 22609570,
-  avgMonthly: 4521914,
-  expMonthly: 1500000,
-  febPts: null,
-  janPts: null,
-  decPts: null
-}, {
-  name: "Dave Salas",
-  start: "1/1/2020",
-  group: "Dept Head",
-  title: "CC Processing Director",
-  expPos: "Dept Head",
-  status: "On Track",
-  daysNext: "MAX",
-  tier: 1,
-  expTier: 1,
-  unitProg: 100,
-  revProg: 23,
-  totalFunded: 113000,
-  avgMonthly: 22600,
-  expMonthly: 100000,
-  febPts: null,
-  janPts: null,
-  decPts: null
-}, {
-  name: "Carlo Moreno",
-  start: "1/1/2022",
-  group: "RIT",
-  title: "New, ramping up",
-  expPos: "RIT",
-  status: "Underperforming",
-  daysNext: "MAX",
-  tier: 0,
-  expTier: 0,
-  unitProg: 0,
-  revProg: 7,
-  totalFunded: 35000,
-  avgMonthly: 7000,
-  expMonthly: 100000,
-  febPts: null,
-  janPts: null,
-  decPts: null
-}];
+
+// ──────────────────────────────────────────────────────────────────────────────
+// v4: ALL REP DATA IS DYNAMIC — stored in Gist, no hardcoded data
+// Rep definitions: Gist key "leaderboard-reps-v2"  [{name,start,group,...}]
+// Monthly data:    Gist key "leaderboard-data-v1"   {"rep::year::mon": {...}}
+// ──────────────────────────────────────────────────────────────────────────────
+
 const BENCHMARKS_DEFAULT = [{
   tier: 0,
   range: "0–<1 mo",
@@ -700,10 +92,19 @@ const BENCHMARKS_DEFAULT = [{
   pos: "Team Leader"
 }];
 const BENCHMARKS_STORAGE_KEY = "leaderboard-benchmarks-v1";
-// Context: provides {bm, saveBm} — populated by App, consumed by all components
 const BenchmarksCtx = React.createContext({
   bm: BENCHMARKS_DEFAULT,
   saveBm: () => {}
+});
+
+// Module-level empty placeholder — real computed array lives in AllRepsCtx
+const ALL = [];
+
+// AllRepsCtx provides {allReps, saveReps} to all components
+// allReps = rep definitions + computed .mos from data entry storage
+const AllRepsCtx = React.createContext({
+  allReps: [],
+  saveReps: async () => {}
 });
 const POS_GROUPS = [{
   key: "Dept Head",
@@ -726,8 +127,6 @@ const POS_GROUPS = [{
   color: "#9db4c8",
   rank: 4
 }];
-
-// Department heads — excluded from ACTIVE rep pool, tracked separately
 const DEPT_HEAD_NAMES = ["Max Gualtieri", "Dave Salas"];
 const DEPT_HEAD_ROLES = {
   "Max Gualtieri": {
@@ -742,8 +141,6 @@ const DEPT_HEAD_ROLES = {
   }
 };
 const DEPTHEAD_KEY = "leaderboard-depthead-v1";
-
-// Product types tracked across all reps
 const PRODUCT_TYPES = [{
   key: "MCA",
   color: "#22d3ee",
@@ -774,8 +171,6 @@ const PRODUCT_TYPES = [{
   label: "LOC"
 }];
 const PRODUCTS_KEY = "leaderboard-products-v1";
-
-// Contexts for new features
 const DeptHeadsCtx = React.createContext({
   deptData: {},
   saveDeptData: () => {}
@@ -786,8 +181,8 @@ const ProductsCtx = React.createContext({
 });
 const ALL_MONTHS_12 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const YEAR_OPTS = ["2024", "2025", "2026", "2027"];
-const MOS_2025 = ["Oct", "Nov", "Dec"];
-const MOS_2026 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"];
+const MOS_2025 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]; // v4: all months treated as valid
+const MOS_2026 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const STATUS_CFG = {
   "Exceeding": {
     bg: "#172554",
@@ -825,8 +220,6 @@ const STATUS_CFG = {
     urgency: 3
   }
 };
-
-// Global status calculator used by leaderboard, rep detail, and header counts
 const calcStatus = (totalFunded, numMonths, expMonthly, isMax = false) => {
   if (!expMonthly) return "On Track";
   const avgMonthly = numMonths > 0 ? totalFunded / numMonths : totalFunded;
@@ -836,1255 +229,8 @@ const calcStatus = (totalFunded, numMonths, expMonthly, isMax = false) => {
   if (pct >= 0.40) return "Needs Attention";
   return "Underperforming";
 };
-const RAW = {
-  "Chris Mothershed": {
-    "months": [{
-      "month": "Oct",
-      "sent": 26,
-      "received": 22,
-      "approved": 21,
-      "approvedAmt": 1343814,
-      "funded": 37,
-      "fundedAmt": 2169151.59,
-      "meetingPct": 33
-    }, {
-      "month": "Nov",
-      "sent": 14,
-      "received": 17,
-      "approved": 17,
-      "approvedAmt": 1396676,
-      "funded": 23,
-      "fundedAmt": 1267968.48,
-      "meetingPct": 64
-    }, {
-      "month": "Dec",
-      "sent": 31,
-      "received": 19,
-      "approved": 23,
-      "approvedAmt": 4024453,
-      "funded": 35,
-      "fundedAmt": 4452228.5,
-      "meetingPct": 74
-    }],
-    "calls": {
-      "dials": 473,
-      "contacts": 57,
-      "contactPct": 12
-    }
-  },
-  "Huda Alyesh": {
-    "months": [{
-      "month": "Oct",
-      "sent": 13,
-      "received": 12,
-      "approved": 10,
-      "approvedAmt": 931581,
-      "funded": 17,
-      "fundedAmt": 893764.43,
-      "meetingPct": 75
-    }, {
-      "month": "Nov",
-      "sent": 35,
-      "received": 21,
-      "approved": 17,
-      "approvedAmt": 1208421,
-      "funded": 34,
-      "fundedAmt": 1748994.38,
-      "meetingPct": 90
-    }, {
-      "month": "Dec",
-      "sent": 36,
-      "received": 21,
-      "approved": 19,
-      "approvedAmt": 1336400,
-      "funded": 24,
-      "fundedAmt": 2053500.0,
-      "meetingPct": 89
-    }],
-    "calls": {
-      "dials": 1411,
-      "contacts": 181,
-      "contactPct": 13
-    }
-  },
-  "Darel Kimi": {
-    "months": [{
-      "month": "Oct",
-      "sent": 20,
-      "received": 22,
-      "approved": 17,
-      "approvedAmt": 1237741,
-      "funded": 20,
-      "fundedAmt": 13935919.92,
-      "meetingPct": 5
-    }, {
-      "month": "Nov",
-      "sent": 23,
-      "received": 19,
-      "approved": 19,
-      "approvedAmt": 2891328,
-      "funded": 13,
-      "fundedAmt": 1101828.87,
-      "meetingPct": 55
-    }, {
-      "month": "Dec",
-      "sent": 34,
-      "received": 44,
-      "approved": 19,
-      "approvedAmt": 2576803,
-      "funded": 19,
-      "fundedAmt": 1550272.69,
-      "meetingPct": 32
-    }],
-    "calls": {
-      "dials": 952,
-      "contacts": 156,
-      "contactPct": 16
-    }
-  },
-  "Dante Siordia": {
-    "months": [{
-      "month": "Oct",
-      "sent": 5,
-      "received": 3,
-      "approved": 5,
-      "approvedAmt": 3980869,
-      "funded": 3,
-      "fundedAmt": 2880869.05,
-      "meetingPct": 15
-    }, {
-      "month": "Nov",
-      "sent": 3,
-      "received": 1,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 2,
-      "fundedAmt": 23500.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 3,
-      "received": 2,
-      "approved": 2,
-      "approvedAmt": 228000,
-      "funded": 4,
-      "fundedAmt": 575500.0,
-      "meetingPct": 16
-    }],
-    "calls": {
-      "dials": 758,
-      "contacts": 73,
-      "contactPct": 10
-    }
-  },
-  "Siuzanna Saparkina": {
-    "months": [{
-      "month": "Oct",
-      "sent": 14,
-      "received": 12,
-      "approved": 7,
-      "approvedAmt": 471500,
-      "funded": 13,
-      "fundedAmt": 781582.72,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 7,
-      "received": 4,
-      "approved": 5,
-      "approvedAmt": 338000,
-      "funded": 14,
-      "fundedAmt": 517000.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 4,
-      "received": 7,
-      "approved": 3,
-      "approvedAmt": 123000,
-      "funded": 11,
-      "fundedAmt": 317000.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 277,
-      "contacts": 26,
-      "contactPct": 9
-    }
-  },
-  "Jake Goranson": {
-    "months": [{
-      "month": "Oct",
-      "sent": 42,
-      "received": 13,
-      "approved": 9,
-      "approvedAmt": 441162,
-      "funded": 7,
-      "fundedAmt": 230129.02,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 49,
-      "received": 19,
-      "approved": 19,
-      "approvedAmt": 574500,
-      "funded": 4,
-      "fundedAmt": 228000.0,
-      "meetingPct": 5
-    }, {
-      "month": "Dec",
-      "sent": 37,
-      "received": 21,
-      "approved": 22,
-      "approvedAmt": 1192557,
-      "funded": 9,
-      "fundedAmt": 235357.8,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 1853,
-      "contacts": 222,
-      "contactPct": 12
-    }
-  },
-  "Nikita Kalin": {
-    "months": [{
-      "month": "Oct",
-      "sent": 26,
-      "received": 27,
-      "approved": 14,
-      "approvedAmt": 635500,
-      "funded": 12,
-      "fundedAmt": 749582.72,
-      "meetingPct": 70
-    }, {
-      "month": "Nov",
-      "sent": 45,
-      "received": 40,
-      "approved": 22,
-      "approvedAmt": 1084535,
-      "funded": 7,
-      "fundedAmt": 181000.0,
-      "meetingPct": 90
-    }, {
-      "month": "Dec",
-      "sent": 34,
-      "received": 29,
-      "approved": 15,
-      "approvedAmt": 901800,
-      "funded": 10,
-      "fundedAmt": 391174.0,
-      "meetingPct": 95
-    }],
-    "calls": {
-      "dials": 688,
-      "contacts": 219,
-      "contactPct": 32
-    }
-  },
-  "Victoriano Hernandez": {
-    "months": [{
-      "month": "Oct",
-      "sent": 25,
-      "received": 22,
-      "approved": 7,
-      "approvedAmt": 257582,
-      "funded": 5,
-      "fundedAmt": 187782.54,
-      "meetingPct": 70
-    }, {
-      "month": "Nov",
-      "sent": 36,
-      "received": 36,
-      "approved": 12,
-      "approvedAmt": 656925,
-      "funded": 10,
-      "fundedAmt": 583574.5,
-      "meetingPct": 85
-    }, {
-      "month": "Dec",
-      "sent": 28,
-      "received": 30,
-      "approved": 16,
-      "approvedAmt": 502226,
-      "funded": 7,
-      "fundedAmt": 163000.0,
-      "meetingPct": 53
-    }],
-    "calls": {
-      "dials": 885,
-      "contacts": 130,
-      "contactPct": 15
-    }
-  },
-  "Marvin Guerra": {
-    "months": [{
-      "month": "Oct",
-      "sent": 23,
-      "received": 26,
-      "approved": 7,
-      "approvedAmt": 1560500,
-      "funded": 4,
-      "fundedAmt": 13170125.0,
-      "meetingPct": 30
-    }, {
-      "month": "Nov",
-      "sent": 26,
-      "received": 26,
-      "approved": 9,
-      "approvedAmt": 321000,
-      "funded": 3,
-      "fundedAmt": 67000.0,
-      "meetingPct": 75
-    }, {
-      "month": "Dec",
-      "sent": 28,
-      "received": 29,
-      "approved": 9,
-      "approvedAmt": 378421,
-      "funded": 3,
-      "fundedAmt": 62000.0,
-      "meetingPct": 53
-    }],
-    "calls": {
-      "dials": 1890,
-      "contacts": 98,
-      "contactPct": 5
-    }
-  },
-  "Sebastian Devia": {
-    "months": [{
-      "month": "Oct",
-      "sent": 14,
-      "received": 18,
-      "approved": 8,
-      "approvedAmt": 316049,
-      "funded": 4,
-      "fundedAmt": 225000.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 9,
-      "received": 29,
-      "approved": 6,
-      "approvedAmt": 382097,
-      "funded": 5,
-      "fundedAmt": 274597.07,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 10,
-      "received": 32,
-      "approved": 6,
-      "approvedAmt": 740500,
-      "funded": 6,
-      "fundedAmt": 695000.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 0,
-      "contacts": 0,
-      "contactPct": 0
-    }
-  },
-  "Jeremy Chiprin": {
-    "months": [{
-      "month": "Oct",
-      "sent": 51,
-      "received": 32,
-      "approved": 13,
-      "approvedAmt": 465648,
-      "funded": 4,
-      "fundedAmt": 123148.94,
-      "meetingPct": 80
-    }, {
-      "month": "Nov",
-      "sent": 47,
-      "received": 41,
-      "approved": 15,
-      "approvedAmt": 1151718,
-      "funded": 4,
-      "fundedAmt": 115000.0,
-      "meetingPct": 85
-    }, {
-      "month": "Dec",
-      "sent": 60,
-      "received": 41,
-      "approved": 19,
-      "approvedAmt": 1570975,
-      "funded": 3,
-      "fundedAmt": 60000.0,
-      "meetingPct": 60
-    }],
-    "calls": {
-      "dials": 722,
-      "contacts": 161,
-      "contactPct": 22
-    }
-  },
-  "Nasir Kakar": {
-    "months": [{
-      "month": "Oct",
-      "sent": 26,
-      "received": 7,
-      "approved": 3,
-      "approvedAmt": 136500,
-      "funded": 1,
-      "fundedAmt": 45000.0,
-      "meetingPct": 45
-    }, {
-      "month": "Nov",
-      "sent": 26,
-      "received": 16,
-      "approved": 7,
-      "approvedAmt": 709578,
-      "funded": 1,
-      "fundedAmt": 71000.0,
-      "meetingPct": 55
-    }, {
-      "month": "Dec",
-      "sent": 22,
-      "received": 19,
-      "approved": 6,
-      "approvedAmt": 687774,
-      "funded": 2,
-      "fundedAmt": 223825.0,
-      "meetingPct": 33
-    }],
-    "calls": {
-      "dials": 2035,
-      "contacts": 250,
-      "contactPct": 12
-    }
-  },
-  "Triston Eugenio": {
-    "months": [{
-      "month": "Oct",
-      "sent": 58,
-      "received": 21,
-      "approved": 12,
-      "approvedAmt": 657270,
-      "funded": 4,
-      "fundedAmt": 162000.0,
-      "meetingPct": 80
-    }, {
-      "month": "Nov",
-      "sent": 69,
-      "received": 27,
-      "approved": 11,
-      "approvedAmt": 363700,
-      "funded": 2,
-      "fundedAmt": 53000.0,
-      "meetingPct": 95
-    }, {
-      "month": "Dec",
-      "sent": 39,
-      "received": 26,
-      "approved": 11,
-      "approvedAmt": 818000,
-      "funded": 1,
-      "fundedAmt": 33500.0,
-      "meetingPct": 94
-    }],
-    "calls": {
-      "dials": 826,
-      "contacts": 71,
-      "contactPct": 9
-    }
-  },
-  "Juan Ocampo": {
-    "months": [{
-      "month": "Oct",
-      "sent": 37,
-      "received": 5,
-      "approved": 2,
-      "approvedAmt": 43000,
-      "funded": 1,
-      "fundedAmt": 0.0,
-      "meetingPct": 50
-    }, {
-      "month": "Nov",
-      "sent": 32,
-      "received": 9,
-      "approved": 2,
-      "approvedAmt": 35500,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 75
-    }, {
-      "month": "Dec",
-      "sent": 31,
-      "received": 13,
-      "approved": 5,
-      "approvedAmt": 224000,
-      "funded": 1,
-      "fundedAmt": 5000.0,
-      "meetingPct": 44
-    }],
-    "calls": {
-      "dials": 2658,
-      "contacts": 56,
-      "contactPct": 2
-    }
-  },
-  "Carter Taylor": {
-    "months": [{
-      "month": "Oct",
-      "sent": 66,
-      "received": 30,
-      "approved": 15,
-      "approvedAmt": 1709000,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 80
-    }, {
-      "month": "Nov",
-      "sent": 53,
-      "received": 34,
-      "approved": 20,
-      "approvedAmt": 976300,
-      "funded": 8,
-      "fundedAmt": 641900.0,
-      "meetingPct": 80
-    }, {
-      "month": "Dec",
-      "sent": 81,
-      "received": 33,
-      "approved": 13,
-      "approvedAmt": 921461,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 79
-    }],
-    "calls": {
-      "dials": 1687,
-      "contacts": 154,
-      "contactPct": 9
-    }
-  },
-  "Jabril Perryman": {
-    "months": [{
-      "month": "Oct",
-      "sent": 3,
-      "received": 7,
-      "approved": 1,
-      "approvedAmt": 155300,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 6,
-      "received": 11,
-      "approved": 4,
-      "approvedAmt": 58000,
-      "funded": 5,
-      "fundedAmt": 63000.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 5,
-      "received": 16,
-      "approved": 3,
-      "approvedAmt": 35500,
-      "funded": 2,
-      "fundedAmt": 28000.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 0,
-      "contacts": 0,
-      "contactPct": 0
-    }
-  },
-  "Jacob Margolies": {
-    "months": [{
-      "month": "Oct",
-      "sent": 0,
-      "received": 3,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 2,
-      "received": 8,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 0,
-      "received": 5,
-      "approved": 1,
-      "approvedAmt": 20000,
-      "funded": 1,
-      "fundedAmt": 127000.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 0,
-      "contacts": 0,
-      "contactPct": 0
-    }
-  },
-  "Mike Zajac": {
-    "months": [{
-      "month": "Oct",
-      "sent": 1,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 10,
-      "received": 5,
-      "approved": 4,
-      "approvedAmt": 71000,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 80
-    }, {
-      "month": "Dec",
-      "sent": 23,
-      "received": 12,
-      "approved": 3,
-      "approvedAmt": 76000,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 95
-    }],
-    "calls": {
-      "dials": 839,
-      "contacts": 115,
-      "contactPct": 14
-    }
-  },
-  "Shyann Franklin": {
-    "months": [{
-      "month": "Oct",
-      "sent": 6,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 16,
-      "received": 8,
-      "approved": 2,
-      "approvedAmt": 55000,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 20,
-      "received": 9,
-      "approved": 3,
-      "approvedAmt": 146399,
-      "funded": 1,
-      "fundedAmt": 106399.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 0,
-      "contacts": 0,
-      "contactPct": 0
-    }
-  },
-  "Nicholas Lila": {
-    "months": [{
-      "month": "Oct",
-      "sent": 5,
-      "received": 3,
-      "approved": 1,
-      "approvedAmt": 55000,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 45
-    }, {
-      "month": "Nov",
-      "sent": 31,
-      "received": 5,
-      "approved": 2,
-      "approvedAmt": 219000,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 65
-    }, {
-      "month": "Dec",
-      "sent": 31,
-      "received": 12,
-      "approved": 7,
-      "approvedAmt": 730925,
-      "funded": 3,
-      "fundedAmt": 458925.0,
-      "meetingPct": 68
-    }],
-    "calls": {
-      "dials": 1169,
-      "contacts": 100,
-      "contactPct": 9
-    }
-  },
-  "Christian Douglass-Devine": {
-    "months": [{
-      "month": "Oct",
-      "sent": 7,
-      "received": 2,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 24,
-      "received": 11,
-      "approved": 3,
-      "approvedAmt": 117500,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 29,
-      "received": 19,
-      "approved": 8,
-      "approvedAmt": 163500,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 2765,
-      "contacts": 34,
-      "contactPct": 1
-    }
-  },
-  "Tom Voltz": {
-    "months": [{
-      "month": "Oct",
-      "sent": 1,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 29,
-      "received": 3,
-      "approved": 1,
-      "approvedAmt": 200000,
-      "funded": 1,
-      "fundedAmt": 35000.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 23,
-      "received": 8,
-      "approved": 5,
-      "approvedAmt": 147000,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 3900,
-      "contacts": 82,
-      "contactPct": 2
-    }
-  },
-  "Charlize Farahmand": {
-    "months": [{
-      "month": "Oct",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 4,
-      "received": 3,
-      "approved": 1,
-      "approvedAmt": 10000,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 0,
-      "contacts": 0,
-      "contactPct": 0
-    }
-  },
-  "Michael Kalin": {
-    "months": [{
-      "month": "Oct",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 8,
-      "received": 2,
-      "approved": 1,
-      "approvedAmt": 10000,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 21,
-      "received": 13,
-      "approved": 7,
-      "approvedAmt": 150775,
-      "funded": 2,
-      "fundedAmt": 78775.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 834,
-      "contacts": 108,
-      "contactPct": 13
-    }
-  },
-  "Negean Faal": {
-    "months": [{
-      "month": "Oct",
-      "sent": 1,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 2,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 20
-    }, {
-      "month": "Dec",
-      "sent": 43,
-      "received": 5,
-      "approved": 1,
-      "approvedAmt": 13000,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 60
-    }],
-    "calls": {
-      "dials": 1265,
-      "contacts": 103,
-      "contactPct": 8
-    }
-  },
-  "Jacey Cruz": {
-    "months": [{
-      "month": "Oct",
-      "sent": 6,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 8,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 4,
-      "received": 1,
-      "approved": 1,
-      "approvedAmt": 125000,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 2294,
-      "contacts": 80,
-      "contactPct": 3
-    }
-  },
-  "Hunter Nyhuis": {
-    "months": [{
-      "month": "Oct",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 3366,
-      "contacts": 116,
-      "contactPct": 3
-    }
-  },
-  "Lucianna Julian": {
-    "months": [{
-      "month": "Oct",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 0,
-      "contacts": 0,
-      "contactPct": 0
-    }
-  },
-  "Mathew Liebmann": {
-    "months": [{
-      "month": "Oct",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 3607,
-      "contacts": 135,
-      "contactPct": 4
-    }
-  },
-  "Christopher Simonian": {
-    "months": [{
-      "month": "Oct",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 3227,
-      "contacts": 42,
-      "contactPct": 1
-    }
-  },
-  "Jade Medina": {
-    "months": [{
-      "month": "Oct",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0.0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 3371,
-      "contacts": 68,
-      "contactPct": 2
-    }
-  },
-  "Lana Saleh": {
-    "months": [{
-      "month": "Oct",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 2853,
-      "contacts": 67,
-      "contactPct": 2
-    }
-  },
-  "Max Gualtieri": {
-    "months": [{
-      "month": "Oct",
-      "sent": 7,
-      "received": 10,
-      "approved": 7,
-      "approvedAmt": 3238597,
-      "funded": 9,
-      "fundedAmt": 16176396,
-      "meetingPct": 65
-    }, {
-      "month": "Nov",
-      "sent": 7,
-      "received": 5,
-      "approved": 5,
-      "approvedAmt": 1138249,
-      "funded": 8,
-      "fundedAmt": 1630266.5,
-      "meetingPct": 56
-    }, {
-      "month": "Dec",
-      "sent": 7,
-      "received": 8,
-      "approved": 9,
-      "approvedAmt": 1715978,
-      "funded": 7,
-      "fundedAmt": 1276978.25,
-      "meetingPct": 42
-    }],
-    "calls": {
-      "dials": 0,
-      "contacts": 0,
-      "contactPct": 0
-    }
-  },
-  "Dave Salas": {
-    "months": [{
-      "month": "Oct",
-      "sent": 8,
-      "received": 11,
-      "approved": 12,
-      "approvedAmt": 26000,
-      "funded": 12,
-      "fundedAmt": 13000,
-      "meetingPct": 47
-    }, {
-      "month": "Nov",
-      "sent": 8,
-      "received": 4,
-      "approved": 4,
-      "approvedAmt": 85000,
-      "funded": 4,
-      "fundedAmt": 85000,
-      "meetingPct": 48
-    }, {
-      "month": "Dec",
-      "sent": 4,
-      "received": 5,
-      "approved": 5,
-      "approvedAmt": 15000,
-      "funded": 5,
-      "fundedAmt": 15000,
-      "meetingPct": 44
-    }],
-    "calls": {
-      "dials": 0,
-      "contacts": 0,
-      "contactPct": 0
-    }
-  },
-  "Carlo Moreno": {
-    "months": [{
-      "month": "Oct",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 1,
-      "fundedAmt": 35000,
-      "meetingPct": 0
-    }, {
-      "month": "Nov",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0,
-      "meetingPct": 0
-    }, {
-      "month": "Dec",
-      "sent": 0,
-      "received": 0,
-      "approved": 0,
-      "approvedAmt": 0,
-      "funded": 0,
-      "fundedAmt": 0,
-      "meetingPct": 0
-    }],
-    "calls": {
-      "dials": 0,
-      "contacts": 0,
-      "contactPct": 0
-    }
-  }
-};
 const fmt$ = v => v >= 1e6 ? `$${(v / 1e6).toFixed(1)}M` : v >= 1e3 ? `$${(v / 1e3).toFixed(0)}K` : v > 0 ? `$${Math.round(v)}` : "—";
-const ALL = SHEET.map(s => {
-  const raw = RAW[s.name] || {
-    months: [],
-    calls: {
-      dials: 0,
-      contacts: 0,
-      contactPct: 0
-    }
-  };
-  const mos = raw.months || [];
-  const feb = mos.find(m => m.month === "Feb") || {};
-  const mtgMos = mos.filter(m => m.meetingPct > 0);
-  const avgMtg = mtgMos.length ? Math.round(mtgMos.reduce((a, m) => a + m.meetingPct, 0) / mtgMos.length) : 0;
-  return {
-    ...s,
-    raw,
-    mos,
-    feb,
-    avgMtg
-  };
-});
+const REPS_STORAGE_KEY = "leaderboard-reps-v2";
 
 // ─── Module-level tier / meeting helpers ─────────────────────────────────────
 const TIER_ORDER_ARR = [0, 1, 2, 5, 6, 7];
@@ -2102,8 +248,8 @@ const DATA_STORAGE_KEY = "leaderboard-data-v1";
 const ROSTER_STORAGE_KEY = "leaderboard-roster-v1";
 
 // ── GitHub Gist Backend ───────────────────────────────────────────────────────
-const GIST_ID = "34e0b4e2aa64701dea371cfc1389b3da";
-const TOKEN_KEY = "rep-tracker-gh-token";
+const GIST_ID = "REPLACE_WITH_YOUR_GIST_ID"; // ← Create a new Gist and paste the ID here
+const TOKEN_KEY = "rep-tracker-v4-gh-token"; // separate from historical version
 
 // Token is stored in localStorage — never hardcoded
 function getToken() {
@@ -2812,7 +958,7 @@ function LeaderboardView({
   onSel,
   statusFilt = "all",
   setStatusFilt = () => {},
-  active = ALL,
+  active = [],
   period = "Feb",
   setPeriod = () => {}
 }) {
@@ -4100,8 +2246,8 @@ function LeaderboardView({
           return /*#__PURE__*/React.createElement("td", {
             key: "mtgcol",
             style: {
-              padding: "6px 14px 6px 10px",
-              minWidth: 230
+              padding: "6px 10px",
+              minWidth: 220
             },
             onClick: e => e.stopPropagation()
           }, /*#__PURE__*/React.createElement("div", {
@@ -4109,8 +2255,8 @@ function LeaderboardView({
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              gap: 10,
-              marginBottom: 6
+              gap: 8,
+              marginBottom: 5
             }
           }, /*#__PURE__*/React.createElement("button", {
             onClick: e => {
@@ -4119,11 +2265,11 @@ function LeaderboardView({
             },
             style: {
               background: hasMet ? "#052e16" : "#0a1f35",
-              border: `1px solid ${hasMet ? "#166534" : "#1e4a6e"}`,
+              border: `1px solid ${hasMet ? "#166534" : "#1a3550"}`,
               borderRadius: 4,
-              padding: "3px 10px",
+              padding: "3px 8px",
               cursor: "pointer",
-              color: hasMet ? "#4ade80" : "#7ec8e3",
+              color: hasMet ? "#4ade80" : "#4a7fa8",
               fontSize: 12,
               fontWeight: 700,
               whiteSpace: "nowrap",
@@ -4135,29 +2281,29 @@ function LeaderboardView({
             }
           }, /*#__PURE__*/React.createElement("div", {
             style: {
-              color: "#4a7fa8",
+              color: "#2a4a6a",
               fontSize: 11,
               lineHeight: 1.2
             }
           }, "Prev: ", /*#__PURE__*/React.createElement("span", {
             style: {
-              color: "#7ec8e3"
+              color: "#4a7fa8"
             }
           }, fmtD(prev))), /*#__PURE__*/React.createElement("div", {
             style: {
-              color: "#2a4a6a",
+              color: "#1a3040",
               fontSize: 10
             }
           }, prevDaysAgo, "d ago")) : /*#__PURE__*/React.createElement("div", {
             style: {
-              color: "#2a4a6a",
+              color: "#1a3040",
               fontSize: 11,
               fontStyle: "italic"
             }
           }, "no prev")), /*#__PURE__*/React.createElement("div", {
             style: {
               borderTop: "1px solid #0f2030",
-              paddingTop: 5
+              paddingTop: 4
             }
           }, isEditing ? /*#__PURE__*/React.createElement("div", {
             onClick: e => e.stopPropagation()
@@ -4242,7 +2388,7 @@ function LeaderboardView({
             style: {
               display: "flex",
               alignItems: "center",
-              gap: 5
+              gap: 4
             }
           }, hasSched && /*#__PURE__*/React.createElement("a", {
             href: gcalUrl(r.name, m.scheduledDate),
@@ -4252,20 +2398,17 @@ function LeaderboardView({
             style: {
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
               background: "#0a1f35",
               border: "1px solid #1e4a6e",
               borderRadius: 3,
-              padding: "3px 5px",
+              padding: "2px 4px",
               color: "#7ec8e3",
               textDecoration: "none",
-              flexShrink: 0,
-              width: 22,
-              height: 22
+              flexShrink: 0
             }
           }, /*#__PURE__*/React.createElement("svg", {
-            width: "12",
-            height: "12",
+            width: "11",
+            height: "11",
             viewBox: "0 0 24 24",
             fill: "none",
             stroke: "#7ec8e3",
@@ -4314,7 +2457,7 @@ function LeaderboardView({
             }
           }, schedOverdue ? "⚠ " : "", fmtD(m.scheduledDate)) : /*#__PURE__*/React.createElement("span", {
             style: {
-              color: "#3a6a8a",
+              color: "#2a4a6a",
               fontSize: 12,
               fontStyle: "italic"
             }
@@ -4322,8 +2465,7 @@ function LeaderboardView({
             style: {
               color: diff < 0 ? "#f87171" : diff <= 3 ? "#fcd34d" : "#4a7fa8",
               fontSize: 11,
-              whiteSpace: "nowrap",
-              marginRight: 4
+              whiteSpace: "nowrap"
             }
           }, diff < 0 ? `${Math.abs(diff)}d past` : diff === 0 ? "today" : `${diff}d`), hasAny && !isConfirming && /*#__PURE__*/React.createElement("button", {
             onClick: e => {
@@ -4331,17 +2473,13 @@ function LeaderboardView({
               setConfirmClear(r.name);
             },
             style: {
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "#1a0a0a",
-              border: "1px solid #4a1a1a",
-              borderRadius: 3,
+              background: "none",
+              border: "none",
               cursor: "pointer",
-              color: "#c84040",
-              fontSize: 12,
-              width: 22,
-              height: 22,
+              color: "#2a1515",
+              fontSize: 13,
+              padding: "0 2px",
+              lineHeight: 1,
               flexShrink: 0
             },
             title: "Clear"
@@ -8539,7 +6677,7 @@ function RepDetail({
 }
 function TeamComparisonView({
   onSel,
-  active = ALL
+  active = []
 }) {
   const {
     useState,
@@ -9216,7 +7354,10 @@ function RepCompareView() {
     n[slot] = val;
     return n;
   });
-  const reps = selected.map(n => ALL.find(r => r.name === n)).filter(Boolean);
+  const {
+    allReps: ALL_CTX
+  } = React.useContext(AllRepsCtx);
+  const reps = selected.map(n => ALL_CTX.find(r => r.name === n)).filter(Boolean);
 
   // Build metric definitions using getStats per rep
   const buildMetrics = r => {
@@ -9476,7 +7617,7 @@ function RepCompareView() {
   const {
     isActive: isRepActive
   } = React.useContext(RosterCtx);
-  const allNames = ALL.map(r => r.name);
+  const allNames = ALL_CTX.map(r => r.name);
   const tabBtn = (active, color, onClick, label) => /*#__PURE__*/React.createElement("button", {
     onClick: onClick,
     style: {
@@ -10079,6 +8220,10 @@ function DataEntryView() {
     key: "meetingPct",
     label: "Meeting %",
     type: "number"
+  }, {
+    key: "pts",
+    label: "Points",
+    type: "number"
   }];
 
   // Header aliases for CSV import — case-insensitive
@@ -10310,7 +8455,10 @@ function DataEntryView() {
       if (!yr) yr = selYear; // fall back to currently selected year in form
 
       // Match rep name to roster
-      const matched = ALL.find(r => r.name.toLowerCase() === repName.toLowerCase());
+      const {
+        allReps: ALL_DE
+      } = React.useContext(AllRepsCtx);
+      const matched = ALL_DE.find(r => r.name.toLowerCase() === repName.toLowerCase());
       if (!matched) {
         errors.push(`Row ${i + 1}: rep "${repName}" not in roster (check spelling)`);
         continue;
@@ -10377,7 +8525,10 @@ function DataEntryView() {
     setCsvMsg(`✓ Imported ${csvPreview.rows.length} entries — ${summary}`);
     setTimeout(() => setCsvMsg(""), 5000);
   };
-  const filteredReps = ALL.map(r => r.name).filter(n => n.toLowerCase().includes(search.toLowerCase()));
+  const {
+    allReps: ALL_DE2
+  } = React.useContext(AllRepsCtx);
+  const filteredReps = ALL_DE2.map(r => r.name).filter(n => n.toLowerCase().includes(search.toLowerCase()));
   const fmt$v = v => v >= 1e6 ? `$${(v / 1e6).toFixed(1)}M` : v >= 1e3 ? `$${(v / 1e3).toFixed(0)}K` : v > 0 ? `$${Number(v).toLocaleString()}` : "—";
 
   // Group staged entries by year for display
@@ -11623,81 +9774,346 @@ function RepRow({
 }
 function RosterView() {
   const {
-    useState,
-    useMemo
+    useState
   } = React;
   const {
-    roster,
-    saveRoster
-  } = React.useContext(RosterCtx);
+    allReps: ALL_RV,
+    saveReps
+  } = React.useContext(AllRepsCtx);
   const ALL_MONTHS_12 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const YEAR_OPTS = ["2024", "2025", "2026", "2027"];
+  const GRP_OPTS = ["Team Leader", "OCTA", "Up & Comer", "RIT", "Dept Head"];
+  const TIER_OPTS = [0, 1, 2, 5, 6, 7];
   const [search, setSearch] = useState("");
-  const [sortDir, setSortDir] = useState("az"); // az | za
-  const [editName, setEditName] = useState(null); // rep name being edited
+  const [sortDir, setSortDir] = useState("az");
+  const [editIdx, setEditIdx] = useState(null); // index in ALL_RV, or "new"
   const [editVals, setEditVals] = useState({});
   const [saveMsg, setSaveMsg] = useState("");
   const [showFormer, setShowFormer] = useState(true);
-  const active = ALL.filter(r => roster[r.name]?.active !== false);
-  const former = ALL.filter(r => roster[r.name]?.active === false);
+  const [confirmDel, setConfirmDel] = useState(null);
+  const active = ALL_RV.filter(r => r.active !== false);
+  const former = ALL_RV.filter(r => r.active === false);
+  const fmt$v = v => v >= 1e6 ? `$${(v / 1e6).toFixed(1)}M` : v >= 1e3 ? `$${(v / 1e3).toFixed(0)}K` : v > 0 ? `$${Math.round(v)}` : "—";
   const filtered = list => {
     const f = search ? list.filter(r => r.name.toLowerCase().includes(search.toLowerCase())) : list;
     return [...f].sort((a, b) => sortDir === "az" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
   };
-  const fmt$v = v => v >= 1e6 ? `$${(v / 1e6).toFixed(1)}M` : v >= 1e3 ? `$${(v / 1e3).toFixed(0)}K` : v > 0 ? `$${Math.round(v)}` : "—";
-  const startEdit = rep => {
-    const existing = roster[rep.name] || {};
-    setEditName(rep.name);
+  const BLANK_REP = {
+    name: "",
+    start: "",
+    group: "RIT",
+    expPos: "RIT",
+    tier: 0,
+    expTier: 0,
+    expMonthly: 100000,
+    daysNext: "4",
+    active: true,
+    note: ""
+  };
+  const startAdd = () => {
+    setEditIdx("new");
     setEditVals({
-      active: existing.active !== false,
-      group: existing.group || rep.group,
-      endYear: existing.endYear || "2026",
-      endMonth: existing.endMonth || "Jan",
-      note: existing.note || ""
+      ...BLANK_REP
+    });
+  };
+  const startEdit = (rep, idx) => {
+    setEditIdx(idx);
+    setEditVals({
+      ...rep
     });
   };
   const cancelEdit = () => {
-    setEditName(null);
+    setEditIdx(null);
     setEditVals({});
   };
   const commitEdit = async () => {
-    const next = {
-      ...roster,
-      [editName]: {
-        ...editVals
+    if (!editVals.name?.trim()) {
+      setSaveMsg("⚠ Name is required");
+      setTimeout(() => setSaveMsg(""), 3000);
+      return;
+    }
+    let next;
+    if (editIdx === "new") {
+      // Check for duplicate name
+      if (ALL_RV.find(r => r.name.toLowerCase() === editVals.name.trim().toLowerCase())) {
+        setSaveMsg("⚠ Rep with this name already exists");
+        setTimeout(() => setSaveMsg(""), 3000);
+        return;
       }
-    };
-    await saveRoster(next);
-    setEditName(null);
+      next = [...ALL_RV, {
+        ...editVals,
+        name: editVals.name.trim(),
+        expMonthly: Number(editVals.expMonthly) || 0,
+        tier: Number(editVals.tier) || 0,
+        expTier: Number(editVals.expTier) || 0
+      }];
+    } else {
+      next = ALL_RV.map((r, i) => i === editIdx ? {
+        ...editVals,
+        name: editVals.name.trim(),
+        expMonthly: Number(editVals.expMonthly) || 0,
+        tier: Number(editVals.tier) || 0,
+        expTier: Number(editVals.expTier) || 0
+      } : r);
+    }
+    await saveReps(next);
+    setEditIdx(null);
     setEditVals({});
-    setSaveMsg(`✓ ${editName} updated`);
+    setSaveMsg(editIdx === "new" ? `✓ ${editVals.name.trim()} added` : `✓ ${editVals.name.trim()} updated`);
     setTimeout(() => setSaveMsg(""), 3000);
   };
-  const quickDeactivate = async rep => {
-    const next = {
-      ...roster,
-      [rep.name]: {
-        active: false,
-        endYear: "2026",
-        endMonth: "Jan",
-        note: ""
-      }
-    };
-    await saveRoster(next);
-    setSaveMsg(`✓ ${rep.name} marked inactive`);
+  const quickToggle = async (rep, idx) => {
+    const next = ALL_RV.map((r, i) => i === idx ? {
+      ...r,
+      active: !r.active
+    } : r);
+    await saveReps(next);
+    setSaveMsg(`✓ ${rep.name} ${rep.active !== false ? "deactivated" : "reactivated"}`);
     setTimeout(() => setSaveMsg(""), 3000);
   };
-  const reactivate = async name => {
-    const next = {
-      ...roster,
-      [name]: {
-        ...roster[name],
-        active: true
-      }
-    };
-    await saveRoster(next);
-    setSaveMsg(`✓ ${name} reactivated`);
+  const deleteRep = async idx => {
+    const next = ALL_RV.filter((_, i) => i !== idx);
+    await saveReps(next);
+    setConfirmDel(null);
+    setSaveMsg("✓ Rep removed");
     setTimeout(() => setSaveMsg(""), 3000);
+  };
+  const inp = (key, label, type = "text", opts = null) => /*#__PURE__*/React.createElement("div", {
+    key: key,
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 3
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: "#4a7fa8",
+      fontSize: 12,
+      letterSpacing: 1
+    }
+  }, label), opts ? /*#__PURE__*/React.createElement("select", {
+    value: editVals[key] || "",
+    onChange: e => setEditVals(v => ({
+      ...v,
+      [key]: e.target.value
+    })),
+    style: {
+      background: "#06111f",
+      border: "1px solid #1a3550",
+      borderRadius: 4,
+      color: "#e2e8f0",
+      padding: "5px 8px",
+      fontSize: 14
+    }
+  }, opts.map(o => /*#__PURE__*/React.createElement("option", {
+    key: o,
+    value: o
+  }, o))) : /*#__PURE__*/React.createElement("input", {
+    type: type,
+    value: editVals[key] || "",
+    onChange: e => setEditVals(v => ({
+      ...v,
+      [key]: e.target.value
+    })),
+    style: {
+      background: "#06111f",
+      border: "1px solid #1a3550",
+      borderRadius: 4,
+      color: "#e2e8f0",
+      padding: "5px 8px",
+      fontSize: 14,
+      outline: "none"
+    }
+  }));
+  const RepCard = ({
+    rep,
+    idx
+  }) => {
+    const gc = POS_GROUPS.find(p => p.key === rep.group);
+    const gc2 = gc?.color || "#22d3ee";
+    const isEditing = editIdx === idx;
+    return /*#__PURE__*/React.createElement("div", {
+      style: {
+        background: "#0d1e32",
+        border: `1px solid ${isEditing ? gc2 + "88" : "#1a3550"}`,
+        borderRadius: 6,
+        padding: "12px 14px",
+        marginBottom: 8
+      }
+    }, isEditing ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "grid",
+        gridTemplateColumns: "repeat(3,1fr)",
+        gap: 8,
+        marginBottom: 10
+      }
+    }, inp("name", "FULL NAME"), inp("start", "START DATE", "text"), inp("group", "GROUP", "text", GRP_OPTS), inp("expPos", "EXPECTED POSITION"), inp("tier", "CURRENT TIER", "text", TIER_OPTS.map(String)), inp("expTier", "TENURE TIER", "text", TIER_OPTS.map(String)), inp("expMonthly", "MONTHLY TARGET $", "number"), inp("daysNext", "DAYS TO NEXT TIER"), inp("note", "NOTE")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 6,
+        alignItems: "center"
+      }
+    }, /*#__PURE__*/React.createElement("label", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 5,
+        color: "#7ec8e3",
+        fontSize: 13,
+        cursor: "pointer"
+      }
+    }, /*#__PURE__*/React.createElement("input", {
+      type: "checkbox",
+      checked: editVals.active !== false,
+      onChange: e => setEditVals(v => ({
+        ...v,
+        active: e.target.checked
+      }))
+    }), "Active"), /*#__PURE__*/React.createElement("button", {
+      onClick: commitEdit,
+      style: {
+        background: "#052e16",
+        border: "1px solid #166534",
+        borderRadius: 4,
+        padding: "4px 14px",
+        color: "#4ade80",
+        fontSize: 13,
+        cursor: "pointer"
+      }
+    }, "\u2713 Save"), /*#__PURE__*/React.createElement("button", {
+      onClick: cancelEdit,
+      style: {
+        background: "none",
+        border: "1px solid #1a3550",
+        borderRadius: 4,
+        padding: "4px 14px",
+        color: "#4a7fa8",
+        fontSize: 13,
+        cursor: "pointer"
+      }
+    }, "Cancel"))) : /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 12,
+        flexWrap: "wrap"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 4,
+        height: 48,
+        background: gc2,
+        borderRadius: 2,
+        flexShrink: 0
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1,
+        minWidth: 140
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        flexWrap: "wrap"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: gc2,
+        fontFamily: "'Bebas Neue',sans-serif",
+        fontSize: 32,
+        letterSpacing: 1,
+        lineHeight: 1
+      }
+    }, rep.name), /*#__PURE__*/React.createElement("span", {
+      style: {
+        background: `${gc2}22`,
+        color: gc2,
+        fontSize: 12,
+        fontWeight: 700,
+        padding: "2px 8px",
+        borderRadius: 10,
+        letterSpacing: .5
+      }
+    }, rep.group)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        color: "#4a7fa8",
+        fontSize: 13,
+        marginTop: 1
+      }
+    }, "Start: ", rep.start, " \xB7 Tier ", rep.tier, " \xB7 ", fmt$v(rep.expMonthly), "/mo target")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 6
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: () => startEdit(rep, idx),
+      style: {
+        background: "#0a1f35",
+        border: "1px solid #1e3a5f",
+        borderRadius: 4,
+        padding: "4px 12px",
+        color: "#7ec8e3",
+        fontSize: 12,
+        cursor: "pointer"
+      }
+    }, "Edit"), /*#__PURE__*/React.createElement("button", {
+      onClick: () => quickToggle(rep, idx),
+      style: {
+        background: rep.active !== false ? "#2d1b00" : "#052e16",
+        border: `1px solid ${rep.active !== false ? "#9a3412" : "#166534"}`,
+        borderRadius: 4,
+        padding: "4px 10px",
+        color: rep.active !== false ? "#fb923c" : "#4ade80",
+        fontSize: 12,
+        cursor: "pointer"
+      }
+    }, rep.active !== false ? "Deactivate" : "Reactivate"), confirmDel === idx ? /*#__PURE__*/React.createElement("span", {
+      style: {
+        display: "flex",
+        gap: 4,
+        alignItems: "center"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: "#f87171",
+        fontSize: 12
+      }
+    }, "Delete?"), /*#__PURE__*/React.createElement("button", {
+      onClick: () => deleteRep(idx),
+      style: {
+        background: "#3b0a0a",
+        border: "1px solid #991b1b",
+        borderRadius: 4,
+        padding: "3px 10px",
+        color: "#f87171",
+        fontSize: 12,
+        cursor: "pointer"
+      }
+    }, "Yes"), /*#__PURE__*/React.createElement("button", {
+      onClick: () => setConfirmDel(null),
+      style: {
+        background: "none",
+        border: "1px solid #1a3550",
+        borderRadius: 4,
+        padding: "3px 10px",
+        color: "#4a7fa8",
+        fontSize: 12,
+        cursor: "pointer"
+      }
+    }, "No")) : /*#__PURE__*/React.createElement("button", {
+      onClick: () => setConfirmDel(idx),
+      style: {
+        background: "none",
+        border: "1px solid #3b0a0a",
+        borderRadius: 4,
+        padding: "4px 10px",
+        color: "#f87171",
+        fontSize: 12,
+        cursor: "pointer"
+      }
+    }, "\u2715"))));
   };
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -11713,24 +10129,25 @@ function RosterView() {
       fontSize: 14,
       marginBottom: 16
     }
-  }, "Mark reps inactive when they leave \u2014 their data is preserved for historical reporting. Inactive reps are hidden from the leaderboard and current-month views."), /*#__PURE__*/React.createElement("div", {
+  }, "Add reps here first \u2014 then enter their monthly data in Data Entry. All rep data is stored in your Gist."), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
-      gap: 16,
+      gap: 12,
       marginBottom: 16,
-      flexWrap: "wrap"
+      flexWrap: "wrap",
+      alignItems: "center"
     }
   }, [{
-    l: "ACTIVE REPS",
+    l: "ACTIVE",
     v: active.length,
     c: "#34d399"
   }, {
-    l: "FORMER REPS",
+    l: "FORMER",
     v: former.length,
     c: "#f87171"
   }, {
-    l: "TOTAL ON RECORD",
-    v: ALL.length,
+    l: "TOTAL",
+    v: ALL_RV.length,
     c: "#22d3ee"
   }].map(s => /*#__PURE__*/React.createElement("div", {
     key: s.l,
@@ -11738,14 +10155,13 @@ function RosterView() {
       background: "#0d1e32",
       border: `1px solid ${s.c}44`,
       borderRadius: 6,
-      padding: "8px 16px",
-      textAlign: "center",
-      minWidth: 100
+      padding: "6px 14px",
+      textAlign: "center"
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Bebas Neue',sans-serif",
-      fontSize: 32,
+      fontSize: 28,
       color: s.c,
       letterSpacing: 1,
       lineHeight: 1
@@ -11753,23 +10169,85 @@ function RosterView() {
   }, s.v), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#4a7fa8",
-      fontSize: 13,
-      letterSpacing: 1,
-      marginTop: 4
+      fontSize: 12,
+      letterSpacing: 1
     }
-  }, s.l))), saveMsg && /*#__PURE__*/React.createElement("div", {
+  }, s.l))), /*#__PURE__*/React.createElement("button", {
+    onClick: startAdd,
     style: {
+      background: "#052e16",
+      border: "1px solid #166534",
+      borderRadius: 6,
+      padding: "8px 18px",
       color: "#4ade80",
-      fontSize: 14,
-      alignSelf: "center",
+      fontSize: 15,
+      letterSpacing: 1,
+      cursor: "pointer",
       fontWeight: 700
     }
-  }, saveMsg)), /*#__PURE__*/React.createElement("div", {
+  }, "+ ADD REP"), saveMsg && /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: saveMsg.startsWith("⚠") ? "#f87171" : "#4ade80",
+      fontSize: 14,
+      fontWeight: 700
+    }
+  }, saveMsg)), editIdx === "new" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "#0d1e32",
+      border: "1px solid #22d3ee55",
+      borderRadius: 6,
+      padding: "14px",
+      marginBottom: 16
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: "#22d3ee",
+      fontSize: 14,
+      fontWeight: 800,
+      letterSpacing: 1.5,
+      marginBottom: 10
+    }
+  }, "NEW REP"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "grid",
+      gridTemplateColumns: "repeat(3,1fr)",
+      gap: 8,
+      marginBottom: 10
+    }
+  }, inp("name", "FULL NAME"), inp("start", "START DATE (MM/DD/YYYY)"), inp("group", "GROUP", "text", GRP_OPTS), inp("expPos", "TARGET POSITION"), inp("tier", "CURRENT TIER", "text", TIER_OPTS.map(String)), inp("expTier", "TENURE TIER", "text", TIER_OPTS.map(String)), inp("expMonthly", "MONTHLY TARGET $", "number"), inp("daysNext", "DAYS TO NEXT TIER"), inp("note", "NOTE")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: commitEdit,
+    style: {
+      background: "#052e16",
+      border: "1px solid #166534",
+      borderRadius: 4,
+      padding: "6px 18px",
+      color: "#4ade80",
+      fontSize: 14,
+      cursor: "pointer",
+      fontWeight: 700
+    }
+  }, "\u2713 Add Rep"), /*#__PURE__*/React.createElement("button", {
+    onClick: cancelEdit,
+    style: {
+      background: "none",
+      border: "1px solid #1a3550",
+      borderRadius: 4,
+      padding: "6px 14px",
+      color: "#4a7fa8",
+      fontSize: 14,
+      cursor: "pointer"
+    }
+  }, "Cancel"))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       gap: 8,
       alignItems: "center",
-      marginBottom: 16,
+      marginBottom: 12,
       flexWrap: "wrap"
     }
   }, /*#__PURE__*/React.createElement("input", {
@@ -11778,7 +10256,7 @@ function RosterView() {
     placeholder: "Search reps...",
     style: {
       width: "100%",
-      maxWidth: 280,
+      maxWidth: 260,
       background: "#06111f",
       border: "1px solid #1a3550",
       borderRadius: 5,
@@ -11787,120 +10265,77 @@ function RosterView() {
       fontSize: 15,
       outline: "none"
     }
-  }), /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setSortDir(d => d === "az" ? "za" : "az"),
     style: {
-      color: "#4a7fa8",
-      fontSize: 12,
-      letterSpacing: 1
-    }
-  }, "SORT:"), [{
-    v: "az",
-    l: "A → Z"
-  }, {
-    v: "za",
-    l: "Z → A"
-  }].map(o => /*#__PURE__*/React.createElement("button", {
-    key: o.v,
-    onClick: () => setSortDir(o.v),
-    style: {
-      background: sortDir === o.v ? "#0f2438" : "none",
-      border: `1px solid ${sortDir === o.v ? "#22d3ee" : "#1a3550"}`,
+      background: "#0a1525",
+      border: "1px solid #1a3550",
       borderRadius: 4,
       padding: "5px 12px",
-      color: sortDir === o.v ? "#22d3ee" : "#4a7fa8",
+      color: "#7ec8e3",
       fontSize: 13,
-      cursor: "pointer",
-      fontWeight: sortDir === o.v ? 700 : 400,
-      letterSpacing: .5
-    }
-  }, o.l))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginBottom: 20
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      color: "#34d399",
-      fontSize: 13,
-      fontWeight: 700,
-      letterSpacing: 1.5,
-      marginBottom: 10,
-      display: "flex",
-      alignItems: "center",
-      gap: 8
-    }
-  }, "ACTIVE (", filtered(active).length, ")", /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1,
-      height: 1,
-      background: "#34d39922"
-    }
-  })), filtered(active).map(r => /*#__PURE__*/React.createElement(RepRow, {
-    key: r.name,
-    rep: r,
-    isFmr: false,
-    roster: roster,
-    editName: editName,
-    editVals: editVals,
-    setEditVals: setEditVals,
-    startEdit: startEdit,
-    cancelEdit: cancelEdit,
-    commitEdit: commitEdit,
-    reactivate: reactivate,
-    quickDeactivate: quickDeactivate
-  }))), (former.length > 0 || search) && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      alignItems: "center",
-      gap: 8,
-      marginBottom: 10,
       cursor: "pointer"
-    },
-    onClick: () => setShowFormer(p => !p)
+    }
+  }, "Sort: ", sortDir === "az" ? "A→Z" : "Z→A"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setShowFormer(f => !f),
+    style: {
+      background: "#0a1525",
+      border: "1px solid #1a3550",
+      borderRadius: 4,
+      padding: "5px 12px",
+      color: "#7ec8e3",
+      fontSize: 13,
+      cursor: "pointer"
+    }
+  }, showFormer ? "Hide" : "Show", " Former")), ALL_RV.length === 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "center",
+      padding: "60px 20px",
+      color: "#2a4a6a"
+    }
   }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 44,
+      marginBottom: 16
+    }
+  }, "\uD83D\uDC65"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "'Bebas Neue',sans-serif",
+      fontSize: 24,
+      letterSpacing: 2,
+      marginBottom: 8
+    }
+  }, "NO REPS YET"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 15
+    }
+  }, "Click ", /*#__PURE__*/React.createElement("strong", {
+    style: {
+      color: "#4ade80"
+    }
+  }, "+ ADD REP"), " above to get started.")), filtered(active).map(rep => {
+    const idx = ALL_RV.findIndex(r => r.name === rep.name);
+    return /*#__PURE__*/React.createElement(RepCard, {
+      key: rep.name,
+      rep: rep,
+      idx: idx
+    });
+  }), showFormer && former.length > 0 && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#f87171",
       fontSize: 13,
+      letterSpacing: 1.5,
       fontWeight: 700,
-      letterSpacing: 1.5
+      margin: "16px 0 8px"
     }
-  }, "FORMER REPS (", filtered(former).length, ")"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1,
-      height: 1,
-      background: "#f8717122"
-    }
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: "#f87171",
-      fontSize: 14
-    }
-  }, showFormer ? "▲" : "▼")), showFormer && /*#__PURE__*/React.createElement("div", null, filtered(former).length === 0 ? /*#__PURE__*/React.createElement("div", {
-    style: {
-      color: "#2a4a6a",
-      fontSize: 14,
-      fontStyle: "italic",
-      padding: "10px 0"
-    }
-  }, "No former reps match search") : filtered(former).map(r => /*#__PURE__*/React.createElement(RepRow, {
-    key: r.name,
-    rep: r,
-    isFmr: true,
-    roster: roster,
-    editName: editName,
-    editVals: editVals,
-    setEditVals: setEditVals,
-    startEdit: startEdit,
-    cancelEdit: cancelEdit,
-    commitEdit: commitEdit,
-    reactivate: reactivate,
-    quickDeactivate: quickDeactivate
-  })))), former.length === 0 && !search && /*#__PURE__*/React.createElement("div", {
-    style: {
-      color: "#2a4a6a",
-      fontSize: 14,
-      fontStyle: "italic"
-    }
-  }, "No former reps yet. Use \"Mark Inactive\" on a rep when they leave."));
+  }, "FORMER REPS (", former.length, ")"), filtered(former).map(rep => {
+    const idx = ALL_RV.findIndex(r => r.name === rep.name);
+    return /*#__PURE__*/React.createElement(RepCard, {
+      key: rep.name,
+      rep: rep,
+      idx: idx
+    });
+  })));
 }
 
 // ─── DeptHeadView ─────────────────────────────────────────────────────────────
@@ -11928,8 +10363,11 @@ function DeptHeadView() {
   const fmt$ = v => v >= 1e6 ? `$${(v / 1e6).toFixed(2)}M` : v >= 1e3 ? `$${(v / 1e3).toFixed(0)}K` : v > 0 ? `$${Math.round(v)}` : "—";
   const makeKey = (name, year, month) => `${name}::${year}::${month}`;
   const moYear = mo => "2025";
-  const maxRep = ALL.find(r => r.name === "Max Gualtieri");
-  const daveRep = ALL.find(r => r.name === "Dave Salas");
+  const {
+    allReps: ALL_DH
+  } = React.useContext(AllRepsCtx);
+  const maxRep = ALL_DH.find(r => r.name === "Max Gualtieri");
+  const daveRep = ALL_DH.find(r => r.name === "Dave Salas");
 
   // ── Max SBA Panel ──────────────────────────────────────────────────────────
   const [maxY, setMaxY] = useState("2025");
@@ -12681,7 +11119,10 @@ function ProductMixView() {
   const [period, setPeriod] = useState("Dec");
   const [open25, setOpen25] = useState(false);
   const makeKey = (name, yr, mo) => `${name}::${yr}::${mo}`;
-  const ACTIVE_REPS = ALL.filter(r => isActive(r.name) && !DEPT_HEAD_NAMES.includes(r.name));
+  const {
+    allReps: ALL_PM
+  } = React.useContext(AllRepsCtx);
+  const ACTIVE_REPS = ALL_PM.filter(r => r.active !== false && !DEPT_HEAD_NAMES.includes(r.name));
   const is25Mo = MOS25_OPTS.some(m => m.id === period);
   const is26Mo = MOS26_OPTS.some(m => m.id === period);
   const periodLabel = period === "all" ? "ALL TIME" : period === "2025" ? "2025 YTD" : MOS25_OPTS.find(m => m.id === period)?.label || period;
@@ -13309,7 +11750,73 @@ function AppInner() {
     } catch (e) {}
   };
 
-  // ── Roster context ─────────────────────────────────────────────────────────
+  // ── Reps (v4): loaded from leaderboard-reps-v2 ────────────────────────────
+  const [repDefs, setRepDefs] = useState([]); // [{name,start,group,expPos,tier,expTier,expMonthly,daysNext,active,...}]
+  const [entryData, setEntryData] = useState({}); // {"name::year::month": {sent,...,pts,...}}
+  useEffect(() => {
+    (async () => {
+      try {
+        const r = await storage.get(REPS_STORAGE_KEY);
+        if (r) setRepDefs(JSON.parse(r.value));
+      } catch (e) {}
+    })();
+  }, []);
+  useEffect(() => {
+    (async () => {
+      try {
+        const r = await storage.get(DATA_STORAGE_KEY);
+        if (r) setEntryData(JSON.parse(r.value));
+      } catch (e) {}
+    })();
+  }, []);
+  const saveReps = async next => {
+    setRepDefs(next);
+    try {
+      await storage.save(REPS_STORAGE_KEY, JSON.stringify(next));
+    } catch (e) {}
+  };
+
+  // Build dynamic ALL from rep definitions + data entry storage
+  const ALL_DYNAMIC = useMemo(() => {
+    const MO_ORD = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return repDefs.map(s => {
+      const mos = Object.entries(entryData).filter(([k]) => k.startsWith(s.name + "::")).map(([k, v]) => ({
+        month: v.month || k.split("::")[2],
+        year: v.year || k.split("::")[1],
+        ...v
+      })).filter(m => m.month).sort((a, b) => (a.year || "2025") !== b.year ? (a.year || "2025").localeCompare(b.year || "2025") : MO_ORD.indexOf(a.month) - MO_ORD.indexOf(b.month));
+      const mtgMos = mos.filter(m => m.meetingPct > 0);
+      const avgMtg = mtgMos.length ? Math.round(mtgMos.reduce((a, m) => a + m.meetingPct, 0) / mtgMos.length) : 0;
+      const totalFunded = mos.reduce((a, m) => a + (m.fundedAmt || 0), 0);
+      const avgMonthly = mos.length ? Math.round(totalFunded / mos.length) : 0;
+      const ptsMap = {};
+      mos.forEach(m => {
+        if (m.pts != null) ptsMap[m.month] = m.pts;
+      });
+      const title = s.tier >= 7 ? "Team Leader" : s.tier >= 6 ? "OCTA-Level" : s.tier >= 5 ? "Up & Comer" : s.tier >= 2 ? "Intermediate" : s.tier >= 1 ? "Entry-level" : "New, ramping up";
+      return {
+        ...s,
+        mos,
+        avgMtg,
+        totalFunded,
+        avgMonthly,
+        title,
+        unitProg: 0,
+        revProg: 0,
+        raw: {
+          calls: {
+            dials: 0,
+            contacts: 0,
+            contactPct: 0
+          }
+        },
+        // Dynamic pts by month — decPts, janPts, febPts, etc.
+        ...Object.fromEntries(Object.entries(ptsMap).map(([mo, v]) => [mo.toLowerCase() + "Pts", v]))
+      };
+    });
+  }, [repDefs, entryData]);
+
+  // ── Roster context (legacy active toggle — v4 uses active field in repDefs) ─
   const [roster, setRoster] = useState({});
   useEffect(() => {
     (async () => {
@@ -13325,9 +11832,11 @@ function AppInner() {
       await storage.save(ROSTER_STORAGE_KEY, JSON.stringify(next));
     } catch (e) {}
   };
-  const isActive = name => roster[name]?.active !== false;
-  // ACTIVE = reps not marked inactive — used in all current-view components
-  const ACTIVE = useMemo(() => ALL.filter(r => isActive(r.name) && !DEPT_HEAD_NAMES.includes(r.name)), [roster]);
+  const isActive = name => {
+    const d = repDefs.find(r => r.name === name);
+    return d ? d.active !== false : roster[name]?.active !== false;
+  };
+  const ACTIVE = useMemo(() => ALL_DYNAMIC.filter(r => r.active !== false && !DEPT_HEAD_NAMES.includes(r.name)), [ALL_DYNAMIC]);
   // ──────────────────────────────────────────────────────────────────────────
 
   // ── Dept Head custom data ──────────────────────────────────────────────────
@@ -13372,7 +11881,7 @@ function AppInner() {
   const [focusRep, setFocusRep] = useState(null);
   // Stable alphabetical anon map: "Rep 01" … "Rep 35"
   const anonMap = useMemo(() => {
-    const sorted = [...ALL].sort((a, b) => a.name.localeCompare(b.name));
+    const sorted = [...ALL_DYNAMIC].sort((a, b) => a.name.localeCompare(b.name));
     const m = {};
     sorted.forEach((r, i) => {
       m[r.name] = `Rep ${String(i + 1).padStart(2, "0")}`;
@@ -13414,16 +11923,21 @@ function AppInner() {
       act: statuses.filter(s => s === "Underperforming").length,
       avgFebPts: Math.round(ACTIVE.filter(r => r.febPts !== null).reduce((s, r) => s + (r.febPts || 0), 0) / Math.max(1, ACTIVE.filter(r => r.febPts !== null).length))
     };
-  }, [ACTIVE, lbPeriod]);
-  const formerCount = ALL.length - ACTIVE.length;
-  const detailRep = sel ? ALL.find(r => r.name === sel) : null;
+  }, [ALL_DYNAMIC, ACTIVE, lbPeriod]);
+  const formerCount = ALL_DYNAMIC.length - ACTIVE.length;
+  const detailRep = sel ? ALL_DYNAMIC.find(r => r.name === sel) : null;
   const handleStatClick = statusKey => {
     setSel(null);
     setView("board");
     setStatusFilt(sf => sf === statusKey ? "all" : statusKey);
   };
   const MAIN_TABS = [["board", "LEADERBOARD"], ["groups", "POINTS GROUPS"], ["compare", "TEAM COMPARISON"], ["repcompare", "REP COMPARE"], ["depthead", "DEPT HEADS"], ["products", "PRODUCT MIX"], ["data", "DATA ENTRY"], ["roster", "ROSTER"]];
-  return /*#__PURE__*/React.createElement(BenchmarksCtx.Provider, {
+  return /*#__PURE__*/React.createElement(AllRepsCtx.Provider, {
+    value: {
+      allReps: ALL_DYNAMIC,
+      saveReps
+    }
+  }, /*#__PURE__*/React.createElement(BenchmarksCtx.Provider, {
     value: {
       bm,
       saveBm
@@ -13483,17 +11997,20 @@ function AppInner() {
     }
   }, "REP PERFORMANCE TRACKER ", /*#__PURE__*/React.createElement("span", {
     style: {
-      color: "#a78bfa",
+      color: "#34d399",
       fontSize: 21
     }
-  }, "HISTORICAL DATA")), /*#__PURE__*/React.createElement("div", {
+  }, "LIVE")), /*#__PURE__*/React.createElement("div", {
     style: {
       color: "#7ec8e3",
       fontSize: 15,
       letterSpacing: 1,
       marginTop: 3
     }
-  }, "OCT \u2013 DEC 2025 \xB7 ", ACTIVE.length, " ACTIVE REPS", formerCount > 0 && /*#__PURE__*/React.createElement("span", {
+  }, new Date().toLocaleString("default", {
+    month: "short",
+    year: "numeric"
+  }).toUpperCase(), " \xB7 ", ACTIVE.length, " ACTIVE REPS", formerCount > 0 && /*#__PURE__*/React.createElement("span", {
     style: {
       color: "#f87171",
       marginLeft: 8
@@ -13748,7 +12265,9 @@ function AppInner() {
     active: ACTIVE,
     period: lbPeriod,
     setPeriod: setLbPeriod
-  }))))))));
+  })))))))));
 }
 ReactDOM.createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));
-  </script></body></html>
+  </script>
+</body>
+</html>

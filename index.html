@@ -785,7 +785,7 @@ const ProductsCtx = React.createContext({
   saveProducts: () => {}
 });
 const ALL_MONTHS_12 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const YEAR_OPTS = ["2024", "2025", "2026", "2027"];
+const YEAR_OPTS = ["2024", "2025"];
 const MOS_2025 = ["Oct", "Nov", "Dec"];
 const MOS_2026 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"];
 const STATUS_CFG = {
@@ -10047,7 +10047,7 @@ function DataEntryView() {
 
   // ── Year / Month config ─────────────────────────────────────────────────────
   const ALL_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const YEAR_OPTS = ["2024", "2025", "2026", "2027"]; // extend as needed
+  const YEAR_OPTS = ["2024", "2025"]; // extend as needed
   // Year colors for visual differentiation
   const YEAR_COLORS = {
     "2024": "#a78bfa",
@@ -11631,7 +11631,7 @@ function RosterView() {
     saveRoster
   } = React.useContext(RosterCtx);
   const ALL_MONTHS_12 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const YEAR_OPTS = ["2024", "2025", "2026", "2027"];
+  const YEAR_OPTS = ["2024", "2025"];
   const GRP_OPTS = ["Team Leader", "OCTA", "Up & Comer", "RIT", "Dept Head"];
   const TIER_OPTS = [0, 1, 2, 5, 6, 7];
   const [search, setSearch] = useState("");
@@ -12204,7 +12204,7 @@ function DeptHeadView() {
     maskName
   } = React.useContext(MeetingCtx);
   const MOS_ORDER = ["Oct", "Nov", "Dec", "Jan", "Feb"];
-  const YEAR_OPTS = ["2024", "2025", "2026", "2027"];
+  const YEAR_OPTS = ["2024", "2025"];
   const YEAR_COLORS = {
     "2024": "#a78bfa",
     "2025": "#818cf8",
